@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Seigneur des Anneaux/Le Hobbit"</title>
+    <link rel="stylesheet" href="lotr.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="icon" type="image/png" href="images/anneau.png">
+    <style>
+        .quiz-container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: left;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .answers {
+            list-style-type: none;
+            padding: 0;
+        }
+        .answers li {
+            margin-bottom: 10px;
+        }
+        .submit-button {
+            display: block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #82b74b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+        .submit-button:hover {
+            background-color: #6fa34a;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: antiquewhite;
+        }
+        .correct-answer {
+            color: green;
+            font-weight: bold;
+        }
+        .wrong-answer {
+            color: red;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body class="background-image">
+
+    <h1>Le Seigneur des Anneaux / Le Hobbit</h1>
+
+    <div class="film-section">
+        <h2>Première partie - Le Seigneur des Anneaux</h2>
+        <div class="film">
+            <h3>Film n°1 : La Communauté de l'Anneau (2001)</h3>
+            <img src="images/frodon.png" class="film-poster">
+            <button class="toggle-button" onclick="toggleContent('synopsis1')">Synopsis</button>
+            <div id="synopsis1" class="content">
+                <p>L'histoire commence dans la paisible Comté, où Bilbon Sacquet, un hobbit, célèbre ses 111 ans. Lors de sa fête, il utilise un 
+                    anneau magique pour disparaître et quitte le Comté, laissant tous ses biens, y compris l'anneau, à son neveu Frodon Sacquet.
+                    Gandalf le Gris, un puissant magicien et ami de la famille Sacquet, découvre que cet anneau est en réalité l'Anneau Unique, 
+                    forgé par le Seigneur Sauron pour dominer toute la Terre du Milieu. Conscient du danger, Gandalf conseille à Frodon de quitter la Comté 
+                    avec l'anneau. Accompagné de ses amis hobbits Samwise Gamgee, Meriadoc Brandybuck, et Peregrin Took, Frodo entreprend un périlleux voyage.
+                    En chemin, ils rencontrent Aragorn, un rôdeur mystérieux, qui les guide vers la sécurité à Fondcombe, la demeure d'Elrond. Là, un conseil 
+                    se réunit pour décider du sort de l'anneau. Il est convenu que l'anneau doit être détruit dans les feux de la Montagne du Destin, où il 
+                    a été forgé. Une communauté est formée pour protéger Frodo dans cette quête : Gandalf, Aragorn, Legolas le Elfe, Gimli le Nain, Boromir 
+                    l'Humain, et les quatre hobbits.                  
+                    La communauté traverse divers dangers, affrontant des créatures maléfiques et des forces obscures. Gandalf tombe dans l'ombre lors d'une 
+                    bataille contre un Balrog dans les Mines de la Moria. Ils trouvent refuge chez Galadriel en Lothlórien avant de reprendre leur chemin.
+                    La communauté se désintègre sous la pression des ennemis et les tensions internes. Boromir, sous l'influence de l'anneau, tente de le 
+                    prendre à Frodon. Celui-ci décide de continuer seul, mais Sam le rejoint par loyauté indéfectible. Aragorn, Legolas et Gimli poursuivent 
+                    les Uruk-hai qui ont capturé Merry et Pippin.
+                    Le film se termine avec Frodon et Sam se dirigeant vers le Mordor, déterminés à accomplir leur mission de détruire l'anneau, tandis que 
+                    le reste de la communauté fait face à leurs propres défis pour soutenir la quête.
+                </p>
+            </div>
+            <button class="toggle-button" onclick="toggleContent('actors1')">Acteurs</button>
+            <div id="actors1" class="content">
+                <ul>
+                    <li><strong>Elijah Wood incarne Frodon Sacquet</strong></li>
+                    <li><strong>Sean Astin incarne Samwise Gamgee</strong></li>
+                    <li><strong>Ian McKellen incarne Gandalf</strong></li>
+                    <li><strong>Viggo Mortensen incarne Aragorn/Grand Pas</strong></li>
+                    <li><strong>Orlando Bloom incarne Legolas</strong></li>
+                    <li><strong>Liv Tyler incarne Arwen</strong></li>
+                </ul>
+            </div>
+            <button class="toggle-button" onclick="toggleContent('technique1')">Equipe Technique</button>
+            <div id="technique1" class="content">
+                <ul>
+                    <li><strong>Réalisateur : Peter Jackson</strong></li>
+                    <li><strong>Scénario : Peter Jackson, Fran Walsh et Philippa Boyens</strong></li>
+                    <li><strong>Décors : Grant Major</strong></li>
+                    <li><strong>Costumes : Ngila Dickson et Richard Taylor</strong></li>
+                    <li><strong>Musique : Howard Shore</strong></li>
+                </ul>
+            </div>
+            <h3>Film n°2 : Les Deux Tours (2002)</h3>
+            <img src="images/legolas.png" class="film-poster">
+            <button class="toggle-button" onclick="toggleContent('synopsis2')">Synopsis</button>
+            <div id="synopsis2" class="content">
+                <p>Après la dissolution de la Communauté de l'Anneau, les membres restants poursuivent leur mission de diverses manières. Frodon Sacquet et 
+                    Samwise Gamgee continuent leur périlleux voyage vers le Mordor pour détruire l'Anneau Unique. En chemin, ils rencontrent Gollum, une 
+                    créature déformée par l'Anneau, qui devient leur guide malgré les réticences de Sam.
+                    Pendant ce temps, Aragorn, Legolas et Gimli poursuivent les Uruk-hai qui ont capturé Merry et Pippin. Les deux Hobbits parviennent à 
+                    s'échapper et rencontrent Sylvebarbe, un Ent (être-arbre), qui les conduit à une réunion des Ents pour décider d'une action contre Saruman, 
+                    le magicien corrompu.
+                    À Rohan, le roi Théoden, influencé par le maléfique Saruman à travers son conseiller Gríma Langue-de-Serpent, est libéré de son emprise 
+                    grâce à l'intervention de Gandalf, désormais Gandalf le Blanc. Théoden prépare son peuple pour la guerre contre les forces de Saruman.
+                    La bataille du Gouffre de Helm est l'un des moments les plus marquants du film. Aragorn, Legolas, Gimli et les Rohirrim défendent la 
+                    forteresse contre l'assaut massif des Uruk-hai. Malgré de lourdes pertes, l'arrivée de Gandalf avec les cavaliers d'Erkenbrand renverse 
+                    le cours de la bataille en leur faveur.
+                    En parallèle, Frodon, Sam et Gollum arrivent à l'ancienne forteresse de Minas Morgul. Frodon commence à ressentir de plus en plus l'influence 
+                    de l'Anneau, tandis que Gollum complote en secret pour récupérer son "précieux".
+                </p>
+            </div>
+            <button class="toggle-button" onclick="toggleContent('actors2')">Acteurs</button>
+            <div id="actors2" class="content">
+                <ul>
+                    <li><strong>Elijah Wood incarne Frodon Sacquet</strong></li>
+                    <li><strong>Sean Astin incarne Samwise Gamgee</strong></li>
+                    <li><strong>Ian McKellen incarne Gandalf</strong></li>
+                    <li><strong>Viggo Mortensen incarne Aragorn/Grand Pas</strong></li>
+                    <li><strong>Orlando Bloom incarne Legolas</strong></li>
+                    <li><strong>Liv Tyler incarne Arwen</strong></li>
+                </ul>
+            </div>
+            <button class="toggle-button" onclick="toggleContent('technique2')">Equipe Technique</button>
+            <div id="technique2" class="content">
+                <ul>
+                    <li><strong>Réalisateur : Peter Jackson</strong></li>
+                    <li><strong>Scénario : Peter Jackson, Fran Walsh et Philippa Boyens</strong></li>
+                    <li><strong>Décors : Grant Major</strong></li>
+                    <li><strong>Costumes : Ngila Dickson et Richard Taylor</strong></li>
+                    <li><strong>Musique : Howard Shore</strong></li>
+                </ul>
+            </div>
+            <h3>Film n°3 : Le Retour du Roi (2003)</h3>
+            <img src="images/aragorn.png" class="film-poster">
+            <button class="toggle-button" onclick="toggleContent('synopsis3')">Synopsis</button>
+            <div id="synopsis3" class="content">
+                <p>Le film commence avec la conclusion du voyage épique de la Communauté de l'Anneau. Alors que les forces du mal de Sauron menacent de 
+                    submerger la Terre du Milieu, les héros de la saga se préparent pour leur ultime bataille.<br>
+                    <u>Le chemin de Frodon et Sam :</u><br>
+                    Frodon Sacquet et Samwise Gamgee, guidés par Gollum, continuent leur périlleux voyage vers le Mordor pour détruire l'Anneau Unique. Ils 
+                    se rapprochent de plus en plus du Mont Doom, mais Gollum les trahit et tente de les séparer. Frodon est capturé par une araignée géante 
+                    nommée Shelob, mais Sam le sauve. Malgré les difficultés et les ruses de Gollum, les deux Hobbits parviennent enfin au Mont Doom.<br>
+                    <u>Le royaume de Gondor :</u><br>
+                    Aragorn, Legolas et Gimli arrivent à Minas Tirith, la capitale du Gondor, pour défendre la ville contre les forces de Sauron. Le roi 
+                    Théoden de Rohan rassemble ses troupes pour venir en aide à Gondor. La bataille des Champs du Pelennor est une confrontation épique où 
+                    les forces de Sauron, comprenant des trolls, des oliphants et des Nazgûl, assiègent la ville. Les Rohirrim arrivent juste à temps pour 
+                    renforcer les défenses, et Éowyn, déguisée en guerrier, tue le Roi-Sorcier d'Angmar avec l'aide de Merry.<br>
+                    <u>Le retour d'Aragorn :</u><br>
+                    Aragorn, Legolas et Gimli empruntent les Chemins des Morts pour recruter une armée de morts afin de les aider à libérer Gondor. Avec cette 
+                    armée, ils réussissent à retourner la bataille en leur faveur. Après la victoire, Aragorn accepte son destin et est couronné roi d'Arnor 
+                    et de Gondor. Il renoue avec Arwen, son amour de toujours.<br>
+                    <u>La bataille finale :</u><br>
+                    Pour donner à Frodon et Sam une chance d'atteindre le Mont Doom, Aragorn mène une armée vers la Porte Noire du Mordor pour distraire Sauron. 
+                    La bataille à la Porte Noire est intense, mais elle permet à Frodon d'atteindre le Mont Doom. À la dernière minute, Frodon succombe au pouvoir
+                    de l'Anneau, mais Gollum intervient, mordant le doigt de Frodon pour récupérer l'Anneau. Dans la lutte, Gollum et l'Anneau tombent dans 
+                    la lave, détruisant ainsi l'Anneau Unique et provoquant la chute de Sauron.<br>
+                    <u>La fin de la quête :</u><br>
+                    Avec la destruction de l'Anneau, les armées de Sauron s'effondrent, et la paix revient en Terre du Milieu. Frodon, Sam, Merry et Pippin 
+                    retournent à la Comté, où ils trouvent que la vie continue comme avant. Cependant, Frodon est marqué par ses expériences et décide de 
+                    quitter la Terre du Milieu avec Gandalf, Bilbon, et les Elfes pour les Terres Immortelles.
+                </p>
+            </div>
+            <button class="toggle-button" onclick="toggleContent('actors3')">Acteurs</button>
+            <div id="actors3" class="content">
+                <ul>
+                    <li><strong>Elijah Wood incarne Frodon Sacquet</strong></li>
+                    <li><strong>Sean Astin incarne Samwise Gamgee</strong></li>
+                    <li><strong>Ian McKellen incarne Gandalf</strong></li>
+                    <li><strong>Viggo Mortensen incarne Aragorn/Grand Pas</strong></li>
+                    <li><strong>Orlando Bloom incarne Legolas</strong></li>
+                    <li><strong>Liv Tyler incarne Arwen</strong></li>
+                </ul>
+            </div>
+            <button class="toggle-button" onclick="toggleContent('technique3')">Equipe Technique</button>
+            <div id="technique3" class="content">
+                <ul>
+                    <li><strong>Réalisateur : Peter Jackson</strong></li>
+                    <li><strong>Scénario : Peter Jackson, Fran Walsh et Philippa Boyens</strong></li>
+                    <li><strong>Décors : Grant Major</strong></li>
+                    <li><strong>Costumes : Ngila Dickson et Richard Taylor</strong></li>
+                    <li><strong>Musique : Howard Shore</strong></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="film-section">
+        <h2>Deuxième partie - Le Hobbit</h2>
+        <div class="film">
+            <h3>Film n°1 : Un Voyage Inattendu (2012)</h3>
+            <img src="images/bilbonsacquet.png" class="film-poster">
+            <button class="toggle-button" onclick="toggleContent('synopsis4')">Synopsis</button>
+            <div id="synopsis4" class="content">
+                <p>Introduction :
+                    Le film commence avec un prologue racontant la chute du royaume nain d'Erebor, situé sous la Montagne Solitaire. Le dragon Smaug attaque 
+                    la montagne, chasse les Nains et s'empare de leur immense trésor. Thorin Écu-de-Chêne, prince des Nains, survit à l'attaque mais est 
+                    contraint de vivre en exil.<br>
+                    <u>L'appel à l'aventure :</u><br>
+                    Des années plus tard, dans la paisible Comté, Bilbon Sacquet, un Hobbit de 50 ans, mène une vie tranquille. Son quotidien est bouleversé 
+                    par l'arrivée du magicien Gandalf le Gris, qui le recrute pour une aventure inattendue. Cette aventure consiste à aider un groupe de 
+                    treize Nains, dirigé par Thorin, à reprendre leur royaume et leur trésor volé par Smaug.<br>
+                    <u>La compagnie des Nains :</u><br>
+                    La compagnie des Nains arrive chez Bilbon de manière impromptue, et après une soirée de chants et de récits, Bilbon est convaincu (à 
+                    contrecœur) de se joindre à eux comme "cambrioleur". Le lendemain, il quitte la Comté pour la première fois de sa vie.<br>
+                    <u>Les premiers obstacles :</u><br>
+                    Le voyage est rapidement semé d'embûches. La compagnie rencontre des Trolls qui les capturent, mais Bilbon gagne du temps jusqu'à ce que 
+                    Gandalf arrive et transforme les Trolls en pierre grâce à la lumière du soleil. Plus tard, ils trouvent les épées elfes Glamdring et 
+                    Orcrist dans la cache des Trolls.<br>
+                    <u>Rivendell :</u><br>
+                    La compagnie arrive ensuite à Rivendell, où ils sont accueillis par Elrond et les Elfes. Elrond déchiffre la carte de Thorin, révélant un 
+                    indice sur une porte secrète dans la Montagne Solitaire. Thorin, cependant, reste méfiant envers les Elfes en raison de leur manque d'aide 
+                    lors de la chute d'Erebor.<br>
+                    <u>Les Monts Brumeux :</u><br>
+                    En traversant les Monts Brumeux, la compagnie est capturée par des Gobelins et emmenée dans leurs cavernes. Bilbon se retrouve séparé des 
+                    autres et rencontre la créature Gollum. Dans une scène mémorable, Bilbon et Gollum jouent à un jeu d'énigmes. Bilbon découvre l'Anneau Unique,
+                    qu'il utilise pour échapper à Gollum et aux Gobelins.<br>
+                    <u>Fuite et poursuite :</u><br>
+                    La compagnie échappe aux Gobelins mais est ensuite poursuivie par des Wargs (loups monstrueux) et des Orques. Ils sont sauvés par les 
+                    Aigles géants, qui les transportent en lieu sûr. Thorin, qui a d'abord douté de Bilbon, le remercie finalement pour son courage et son rôle 
+                    dans leur évasion.<br>
+                    <u>La fin du voyage :</u><br>
+                    Le film se termine avec la compagnie surplombant la Montagne Solitaire au loin, leur destination finale. Smaug, endormi sous l'or d'Erebor, 
+                    se réveille, indiquant que l'aventure ne fait que commencer.
+                </p>
+            </div>
+            <button class="toggle-button" onclick="toggleContent('actors4')">Acteurs</button>
+            <div id="actors4" class="content">
+                <ul>
+                    <li><strong>Martin Freeman incarne Bilbon Sacquet</strong></li>
+                    <li><strong>Ian McKellen incarne Gandalf</strong></li>
+                    <li><strong>Richard Armitage incarne Thorin Ecu-de-Chêne</strong></li>
+                    <li><strong>Graham McTavish incarne Dwalin</strong></li>
+                    <li><strong>Aidan Turner incarne Kili</strong></li>
+                    <li><strong>Cate Blanchett incarne Galadriel</strong></li>
+                </ul>
+            </div>
+            <button class="toggle-button" onclick="toggleContent('technique4')">Equipe Technique</button>
+            <div id="technique4" class="content">
+                <ul>
+                    <li><strong><u>Réalisateur :</u> Peter Jackson</strong></li>
+                    <li><strong><u>Scénario :</u> Peter Jackson, Guillermo del Toro, Fran Walsh et Philippa Boyens</strong></li>
+                    <li><strong><u>Décors :</u> Dan Hennah</strong></li>
+                    <li><strong><u>Costumes :</u> Ann Maskrey et Richard Taylor</strong></li>
+                    <li><strong><u>Musique :</u> Howard Shore</strong></li>
+                </ul>
+            </div>
+            <h3>Film n°2 : La Désolation de Smaug (2013)</h3>
+            <img src="images/smaug.png" class="film-poster">
+            <button class="toggle-button" onclick="toggleContent('synopsis5')">Synopsis</button>
+            <div id="synopsis5" class="content">
+                <p><u>Introduction :</u><br>
+                    Le film reprend là où "Un Voyage Inattendu" s'était arrêté. La compagnie de Thorin Écu-de-Chêne, composée de Bilbon Sacquet, Gandalf le Gris 
+                    et les treize Nains, continue son voyage vers la Montagne Solitaire pour récupérer le royaume perdu d'Erebor et son trésor, gardé par le 
+                    dragon Smaug.<br>
+                    <u>La rencontre avec Beorn :</u><br>
+                    La compagnie est poursuivie par les Orques et cherche refuge chez Beorn, un changeur de peau qui peut se transformer en ours. Bien 
+                    qu'hésitant au début, Beorn finit par les aider, leur fournissant des provisions et des montures pour continuer leur voyage.<br>
+                    <u>La forêt de Mirkwood :</u><br>
+                    Gandalf quitte la compagnie pour enquêter sur un sombre pouvoir émergent, laissant les Nains et Bilbon traverser la forêt de Mirkwood seuls. 
+                    La forêt est enchantée et remplie de dangers. Les Nains sont capturés par des araignées géantes, mais Bilbon, grâce à l'Anneau Unique, 
+                    parvient à les libérer.<br>
+                    <u>Les Elfes de la Forêt Noire :</u><br>
+                    Peu après, la compagnie est capturée par les Elfes de la Forêt Noire et emprisonnée dans le royaume de Thranduil. Bilbon utilise de nouveau 
+                    l'Anneau pour se rendre invisible et aider les Nains à s'échapper en utilisant des tonneaux pour descendre la rivière.<br>
+                    <u>Laketown (Esgaroth) :</u><br>
+                    Les Nains arrivent à Laketown, une ville humaine gouvernée par un Maître corrompu. Ils trouvent de l'aide auprès de Bard, un archer et 
+                    descendant de Girion, le dernier Seigneur de Dale. Bard est méfiant envers les Nains mais finit par les aider en secret à atteindre la 
+                    Montagne Solitaire.<br>
+                    <u>La Montagne Solitaire :</u><br>
+                    Arrivés à la Montagne Solitaire, Bilbon est envoyé à l'intérieur pour trouver et récupérer l'Arkenstone, une gemme précieuse et symbole de la
+                    royauté naine. Bilbon explore les vastes salles d'Erebor et finit par réveiller Smaug. Le dragon, furieux d'avoir été dérangé, engage une 
+                    conversation tendue avec Bilbon avant de découvrir la présence des Nains.<br>
+                    <u>L'attaque de Smaug :</u><br>
+                    Smaug sort de la montagne pour attaquer Laketown en représailles, laissant les Nains piégés à l'intérieur. Bilbon et les Nains tentent 
+                    désespérément de stopper le dragon en utilisant des moyens ingénieux, mais Smaug reste une menace redoutable.<br>
+                    <u>Le nécromancien :</u><br>
+                    Pendant ce temps, Gandalf découvre que le sombre pouvoir qu'il traquait est en réalité Sauron, le Seigneur des Ténèbres, dissimulé sous 
+                    l'apparence du Nécromancien. Gandalf est capturé à Dol Guldur, révélant l'étendue du retour de Sauron et la menace qu'il représente pour 
+                    toute la Terre du Milieu.<br>
+                    <u>Conclusion :</u><br>
+                    Le film se termine sur une note de suspense intense. Smaug s'envole vers Laketown, promettant de répandre la destruction et la mort. Bilbon 
+                    regarde avec horreur, conscient que leur quête a provoqué une catastrophe imminente.
+                </p>
+            </div>
+            <button class="toggle-button" onclick="toggleContent('actors5')">Acteurs</button>
+            <div id="actors5" class="content">
+                <ul>
+                    <li><strong>Martin Freeman incarne Bilbon Sacquet</strong></li>
+                    <li><strong>Ian McKellen incarne Gandalf</strong></li>
+                    <li><strong>Richard Armitage incarne Thorin Ecu-de-Chêne</strong></li>
+                    <li><strong>Graham McTavish incarne Dwalin</strong></li>
+                    <li><strong>Aidan Turner incarne Kili</strong></li>
+                    <li><strong>Cate Blanchett incarne Galadriel</strong></li>
+                </ul>
+            </div>
+            <button class="toggle-button" onclick="toggleContent('technique5')">Equipe Technique</button>
+            <div id="technique5" class="content">
+                <ul>
+                    <li><strong>Réalisateur : Peter Jackson</strong></li>
+                    <li><strong>Scénario : Peter Jackson, Guillermo del Toro, Fran Walsh et Philippa Boyens</strong></li>
+                    <li><strong>Décors : Dan Hennah</strong></li>
+                    <li><strong>Costumes : Ann Maskrey et Richard Taylor</strong></li>
+                    <li><strong>Musique : Howard Shore</strong></li>
+                </ul>
+            </div>
+            <h3>Film n°3 : La Bataille des Cinq Armées (2014)</h3>
+            <img src="images/thorin.png" class="film-poster">
+            <button class="toggle-button" onclick="toggleContent('synopsis6')">Synopsis</button>
+            <div id="synopsis6" class="content">
+                <p><u>La menace de Smaug :</u><br>
+                    Le film commence là où "La Désolation de Smaug" s'était arrêté. Smaug, le dragon, s'envole vers Laketown pour se venger de l'intrusion des 
+                    Nains et de Bilbon. Il attaque la ville, provoquant la panique et la destruction. Bard l'Archer, utilisant la dernière flèche noire et 
+                    suivant les conseils de son fils Bain, parvient à tuer Smaug en visant la partie vulnérable de son ventre. Smaug meurt, mais Laketown est 
+                    en ruines.<br>
+                    <u>Le retour à la Montagne Solitaire :</u><br>
+                    Les survivants de Laketown, dirigés par Bard, se dirigent vers les ruines de Dale, près de la Montagne Solitaire, cherchant refuge et aide. 
+                    Thorin Écu-de-Chêne, désormais roi sous la montagne, devient obsédé par le trésor d'Erebor et l'Arkenstone, succombant à la "maladie du 
+                    dragon", une folie avaricieuse.<br>
+                    <u>La confrontation :</u><br>
+                    Thorin refuse de partager le trésor avec Bard et les Elfes de Thranduil, venus réclamer leur part. Bilbon, inquiet de la folie de Thorin, 
+                    prend l'Arkenstone et la remet en secret à Bard et Thranduil pour négocier la paix. Furieux de cette trahison, Thorin se prépare à la 
+                    guerre.<br>
+                    <u>Les Cinq Armées :</u><br>
+                    L'arrivée des armées des Orques de Gundabad et de Dol Guldur, dirigées par Azog le Profanateur, change la donne. Les Hommes, les Elfes et 
+                    les Nains doivent s'unir pour combattre cette nouvelle menace. La bataille des Cinq Armées éclate, impliquant Nains, Elfes, Hommes, Orques 
+                    et Aigles géants.<br>
+                    <u>La bataille :</u><br>
+                    La bataille est intense et sanglante. Thorin, réalisant la folie de son obsession, rejoint la bataille avec ses compagnons Dwalin, Fíli et 
+                    Kíli. Fíli et Kíli sont tués par Azog et ses forces. Thorin affronte Azog en duel sur un lac gelé et, bien qu'il tue Azog, il est 
+                    mortellement blessé.<br>
+                    <u>La fin de la bataille :</u><br>
+                    Les Aigles, dirigés par Radagast et accompagnés par Beorn, interviennent et retournent le cours de la bataille en faveur des Hommes, Elfes 
+                    et Nains. La victoire est obtenue, mais au prix de nombreuses vies.<br>
+                    <u>L'adieu de Bilbon :</u><br>
+                    Bilbon, dévasté par la perte de ses amis et les horreurs de la bataille, fait ses adieux à Thorin mourant, qui retrouve sa lucidité et 
+                    demande pardon. Bilbon retourne à la Comté avec Gandalf, retrouvant enfin son foyer.<br>
+                    <u>Épilogue :</u><br>
+                    De nombreuses années plus tard, un Bilbon âgé termine d'écrire ses mémoires, "Là et de retour, Histoire d'un Hobbit". Il reçoit la visite de 
+                    Gandalf, marquant le début des événements du "Seigneur des Anneaux".
+                </p>
+            </div>
+            <button class="toggle-button" onclick="toggleContent('actors6')">Acteurs</button>
+            <div id="actors6" class="content">
+                <ul>
+                    <li><strong>Martin Freeman incarne Bilbon Sacquet</strong></li>
+                    <li><strong>Ian McKellen incarne Gandalf</strong></li>
+                    <li><strong>Richard Armitage incarne Thorin Ecu-de-Chêne</strong></li>
+                    <li><strong>Graham McTavish incarne Dwalin</strong></li>
+                    <li><strong>Aidan Turner incarne Kili</strong></li>
+                    <li><strong>Cate Blanchett incarne Galadriel</strong></li>
+                </ul>
+            </div>
+            <button class="toggle-button" onclick="toggleContent('technique6')">Equipe Technique</button>
+            <div id="technique6" class="content">
+                <ul>
+                    <li><strong>Réalisateur : Peter Jackson</strong></li>
+                    <li><strong>Scénario : Peter Jackson, Guillermo del Toro, Fran Walsh et Philippa Boyens</strong></li>
+                    <li><strong>Décors : Dan Hennah</strong></li>
+                    <li><strong>Costumes : Ann Maskrey et Richard Taylor</strong></li>
+                    <li><strong>Musique : Howard Shore</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="lotr.js"></script>
+    <div class="interactive-map">
+        <h1>Carte Interactive de la Terre du Milieu</h1>
+            <div id="map"></div>
+
+            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+            <script>
+                // Définir les dimensions de l'image de la carte
+                var imageWidth = 2000; // Largeur de l'image en pixels
+                var imageHeight = 1500; // Hauteur de l'image en pixels
+
+                // Définir les limites de la carte
+                let southWest = L.latLng(-imageHeight / 2, -imageWidth / 2),
+                northEast = L.latLng(imageHeight / 2, imageWidth / 2),
+                bounds = L.latLngBounds(southWest, northEast);
+
+                // Initialiser la carte
+                let map = L.map('map', {
+                    crs: L.CRS.Simple, // Utiliser un CRS simple pour les images
+                    maxBounds: bounds,
+                    maxBoundsViscosity: 1.0,
+                    minZoom: -2,
+                    maxZoom: 2
+                }).setView([0, 0], 0);
+
+                // Ajouter l'image de la carte comme couche
+                let imageUrl = 'images/carte_terre_milieu.jpg'; // Chemin vers ton image de carte
+                L.imageOverlay(imageUrl, bounds).addTo(map);
+
+                // Ajouter des marqueurs pour des lieux intéressants
+                let rivendell = L.marker([380, 10]).addTo(map)
+                .bindPopup('<b>Fondcombe</b><br>Royaume Elfique.');
+
+                let mordor = L.marker([-350, 600]).addTo(map)
+                .bindPopup('<b>Mordor</b><br>Le pays du mal.');
+
+                let gondor = L.marker([-350, -50]).addTo(map)
+                .bindPopup('<b>Gondor</b><br>Le royaume des hommes.');
+
+                let lonelyMountain = L.marker([525, 360]).addTo(map)
+                .bindPopup('<b>La Montagne Solitaire</b><br>Le royaume des nains.');
+
+                let minasTirith = L.marker([-300, 300]).addTo(map)
+                .bindPopup('<b>Minas Tirith</b><br>La Cité Blanche.');
+
+                let shire = L.marker([330, -500]).addTo(map)
+                .bindPopup('<b>La Comté</b><br>Havre de paix pour les Hobbits.');
+            </script>
+    </div>
+
+    <div class="character-biography">
+        <h2>Biographies des Personnages</h2>
+        <div class="character">
+            <img src="images/frodon2.png" alt="Frodon Sacquet">
+            <h3>Frodon Sacquet - Incarné par Elijah Wood</h3>
+            <p>Frodon Sacquet est un hobbit de la Comté qui se voit confier la tâche de détruire l'Anneau Unique.</p>
+        </div>
+        <div class="character">
+            <img src="images/gandalf2.png" alt="Gandalf le Gris">
+            <h3>Gandalf le Gris - Incarné par Ian McKellen</h3>
+            <p>Gandalf est un puissant sorcier qui guide et conseille la Communauté de l'Anneau.</p>
+        </div>
+        <div class="character">
+            <img src="images/aragorn.png" alt="Aragorn">
+            <h3>Aragorn - Incarné par Viggo Mortensen</h3>
+            <p>Aragorn est un rôdeur du Nord, héritier de Gondor, qui joue un rôle crucial dans la lutte contre Sauron.</p>
+        </div>
+        <div class="character">
+            <img src="images/legolas2.png" alt="Legolas">
+            <h3>Legolas - Incarné par Orlando Bloom</h3>
+            <p>Legolas est un elfe de la Forêt Noire, expert en tir à l'arc, qui rejoint la Communauté de l'Anneau pour détruire l'Anneau Unique.</p>
+        </div>
+        <div class="character">
+            <img src="images/arwen.png" alt="Arwen">
+            <h3>Arwen - Incarnée par Liv Tyler</h3>
+            <p>Arwen est une elfe de Fondcombe, fille d'Elrond, qui renonce à son immortalité pour épouser Aragorn et soutenir la lutte contre Sauron.</p>
+        </div>
+        <div class="character">
+            <img src="images/gollum.png" alt="Gollum">
+            <h3>Gollum - Incarné par Andy Serkis</h3>
+            <p>Gollum est une créature corrompue par l'Anneau Unique, qui guide Frodon et Sam vers le Mont Destin tout en cherchant à récupérer l'Anneau pour lui-même.</p>
+        </div>
+        <div class="character">
+            <img src="images/thorin2.png" alt="Thorin">
+            <h3>Thorin - Incarné par Richard Armitage</h3>
+            <p>Thorin est un nain du peuple de Durin, qui se voit confier la tâche de reconquérir Erebor et son trésor des griffes du dragon Smaug.</p>
+        </div>
+        <div class="character">
+            <img src="images/kili.png" alt="Kili">
+            <h3>Kili - Incarné par Aidan Turner</h3>
+            <p>Kili est un jeune nain courageux qui rejoint la quête de son oncle Thorin pour reconquérir Erebor et son trésor.</p>
+        </div>
+
+
+        <div class="timeline">
+            <h2>Événements importants (dans l'ordre) du Seigneur des Anneaux (les 3 films)</h2>
+            <p>(Contient des spoilers !!!)</p>
+            <div class="event">
+                <h3>La Découverte de l'Anneau</h3>
+                <p>Bilbon Sacquet découvre l'Anneau Unique et le ramène dans la Comté</p>
+                <p>Gandalf découvre la véritable nature de l'Anneau de Bilbon</p>
+            </div>
+            <div class="event">
+                <h3>Le Départ de Frodon</h3>
+                <p>Frodon Sacquet quitte la Comté avec l'Anneau pour le protéger de Sauron</p>
+                <p>Sam, Merry et Pippin se joignent à lui</p>
+            </div>
+            <div class="event">
+                <h3>La Rencontre avec Aragorn</h3>
+                <p>Frodon et ses amis rencontrent Aragorn (alias Grands-Pas) à Bree</p>
+                <p>Aragorn les aide à échapper aux Nazgûl</p>
+            </div>
+            <div class="event">
+                <h3>Le Conseil d'Elrond</h3>
+                <p>À Fondcombe, le Conseil d'Elrond décide de détruire l'Anneau Unique</p>
+                <p>La Communauté de l'Anneau est formée, composée de Frodon, Sam, Merry, Pippin, Aragorn, Gandalf, Legolas, Gimli et Boromir</p>
+            </div>
+            <div class="event">
+                <h3>La Traversée de la Moria</h3>
+                <p>La Communauté passe par la Moria et affronte le Balrog</p>
+                <p>Gandalf tombe dans l'abîme avec le Balrog</p>
+            </div>
+            <div class="event">
+                <h3>La Séparation de la Communauté</h3>
+                <p>Boromir est tué par les Uruk-hai</p>
+                <p>Merry et Pippin sont capturés</p>
+                <p>Aragorn, Legolas et Gimli partent à leur recherche</p>
+                <p>Frodon et Sam se dirigent seuls vers le Mordor</p>
+            </div>
+            <div class="event">
+                <h3>La Résurrection de Gandalf</h3>
+                <p>Gandalf revient sous la forme de Gandalf le Blanc après avoir vaincu le Balrog</p>
+            </div>
+            <div class="event">
+                <h3>La Bataille du Gouffre de Helm</h3>
+                <p>Les forces de Saruman attaquent le Rohan</p>
+                <p>Aragorn, Legolas, Gimli, Théoden et les habitant de Rohan défendent le Gouffre de Helm</p>
+                <p>Gandalf arrive avec l'armée d'Erkenbrand pour vaincre les Uruk-hai</p>
+            </div>
+            <div class="event">
+                <h3>La Chute d'Isengard</h3>
+                <p>Merry et Pippin rencontrent Sylvebarbe et les Ents</p>
+                <p>Les Ents attaquent et détruisent Isengard</p>
+            </div>
+            <div class="event">
+                <h3>La Rencontre avec Faramir</h3>
+                <p>Frodon et Sam rencontrent Faramir, le frère de Boromir, à Gondor</p>
+                <p>Faramir les aide à continuer leur chemin vers le Mordor</p>
+            </div>
+            <div class="event">
+                <h3>La Bataille des Champs du Pelennor</h3>
+                <p>Les forces de Sauron assiègent Minas Tirith</p>
+                <p>Rohan arrive à les soutenir</p>
+                <p>Aragorn arrive avec l'armée des Morts pour vaincre les forces de Sauron</p>
+            </div>
+            <div class="event">
+                <h3>Le Chemin des Morts</h3>
+                <p>Aragorn, Legolas et Gimli empruntent le Chemin des Morts pour recruter l'armée des Morts</p>
+            </div>
+            <div class="event">
+                <h3>Le Siège de Minas Tirith</h3>
+                <p>Faramir est blessé</p>
+                <p>Denethor, le Surintendant de Gondor, tente de se suicider</p>
+            </div>
+            <div class="event">
+                <h3>La Bataille de la Porte Noire</h3>
+                <p>Aragorn et ses alliés marchent vers la Porte Noire pour détourner l'attention de Sauron de Frodon et Sam</p>
+            </div>
+            <div class="event">
+                <h3>La Destruction de l'Anneau</h3>
+                <p>Frodon et Sam atteignent le Mont Destin</p>
+                <p>Gollum mord le doigt de Frodon et tombe avec l'Anneau dans la lave, le détruisant</p>
+            </div>
+            <div class="event">
+                <h3>Le Couronnement d'Aragorn</h3>
+                <p>Aragorn est couronné roi de Gondor et épouse Arwen</p>
+            </div>
+            <div class="event">
+                <h3>Le Retour à la Comté</h3>
+                <p>Frodon, Sam, Merry et Pippin retournent à la Comté pour libérer l'emprise de Saruman</p>
+                <p>Frodon finit par partir pour les Havres Gris avec les Elfes, Gandalf et Bilbon</p>
+            </div>
+            
+        </div>
+        <div class="timeline">
+            <h2>Événements importants (dans l'ordre) du Hobbit (les 3 films)</h2>
+            <p>(Contient des spoilers !!!)</p>
+            <div class="event">
+                <h3>La Départ de Bilbon</h3>
+                <p>Gandalf recrute Bilbon Sacquet pour rejoindre Thorin et sa compagnie de nains</p>
+                <p>Bilbon accepte à contrecoeur de les accompagner dans leur quête pour reconquerir Erebor et son trésor volé par le dragon Smaug</p>
+            </div>
+            <div class="event">
+                <h3>La Rencontre avec les Trolls</h3>
+                <p>Bilbon et les nains sont capturés par trois trolls</p>
+                <p>Gandalf arrive à temps pour les sauver en exposant les trolls à la lumière du soleil, les transformant en pierre</p>
+            </div>
+            <div class="event">
+                <h3>Le Passage par Fondcombe</h3>
+                <p>La compagnie arrive à Fondcombe et rencontre Elrond</p>
+                <p>Elrond aide à lire les runes sur la carte d'Erebor</p>
+            </div>
+            <div class="event">
+                <h3>La Traversée des Monts Brumeux</h3>
+                <p>La compagnie est capturée par les gobelins</p>
+                <p>Gandalf les sauve, mais bilbon se sépare du groupe et tombe dans les tunnels des gobelins</p>
+            </div>
+            <div class="event">
+                <h3>La Rencontre avec Gollum</h3>
+                <p>Bilbon rencontre Gollum dans les tunnels</p>
+                <p>Il trouve l'Anneau Unique et utilise son pouvoir d'invisibilité pour échapper à Gollum et rejoindre les nains</p>
+            </div>
+            <div class="event">
+                <h3>La Fuite des Wargs et des Gobelins</h3>
+                <p>La compagnie est poursuivie par des wargs et des gobelins</p>
+                <p>Ils sont sauvés par des aigles géants qui les transportent en sécurité</p>
+            </div>
+            <div class="event">
+                <h3>La Rencontre avec Beorn</h3>
+                <p>La compagnie trouve refuge chez Beorn, un changeur de peau capable de se transformer en ours</p>
+            </div>
+            <div class="event">
+                <h3>La Forêt de Mirkwood</h3>
+                <p>Bilbon et les nains traversent la forêt de Mirkwood</p>
+                <p>Ils sont capturés par des araignées géantes, mais Bilbon les sauve grâce à l'Anneau</p>
+                <p>Gandalf arrive avec l'armée d'Erkenbrand pour vaincre les Uruk-hai</p>
+            </div>
+            <div class="event">
+                <h3>Les Elfes de la Forêt Noire</h3>
+                <p>La compagnie est capturée par les elfes de la Forêt Noire</p>
+                <p>Bilbon utilise l'Anneau pour voler les clés et libérer les nains</p>
+            </div>
+            <div class="event">
+                <h3>Lacville</h3>
+                <p>La compagnie atteint Lacville, une ville humaine près d'Erebor</p>
+                <p>Bard l'Archer les aide à atteindre la Montagne Solitaire</p>
+            </div>
+            <div class="event">
+                <h3>La Rencontre avec Smaug</h3>
+                <p>Bilbon pénètre dans Erebor et rencontre Smaug</p>
+                <p>Il vole une coupe et découvre le point faible de Smaug</p>
+            </div>
+            <div class="event">
+                <h3>L'Attaque de Smaug sur Lacville</h3>
+                <p>Smaug, furieux, attaque Lacville</p>
+                <p>Bard l'Archer tue Smaug avec une flèche noire en visant son point faible</p>
+            </div>
+            <div class="event">
+                <h3>Les Nains à Erebor</h3>
+                <p>Thorin et les nains prennent possession d'Erebor et de son trésor</p>
+                <p>Thorin est consumé par la "maladie du dragon" et devient méfiant envers les autres</p>
+            </div>
+            <div class="event">
+                <h3>La Bataille des Cinq Armées</h3>
+                <p>Les forces des hommes, des elfes et des nains s'affrontent pour le trésor d'Erebor</p>
+                <p>Les gobelins et les wargs attaquent, unissant les trois factions contre un ennemi commun</p>
+                <p>Thorin, Kili et Fili meurent au combat</p>
+            </div>
+            <div class="event">
+                <h3>La Réconciliation et le Retour</h3>
+                <p>Thorin meurt en se réconciliant avec Bilbon</p>
+                <p>Bilbon retourne à la Comté, riche mais changé de ses aventures</p>
+            </div>
+        </div>
+        
+<div class="quiz-container">
+    <h1>Quiz Seigneur des Anneaux/Hobbit</h1>
+    <div id="quiz"></div>
+    <button class="submit-button" onclick="submitQuiz()">Soumettre</button>
+    <div id="result" class="result"></div>
+</div>
+
+    <script>
+        const quizData = [
+            {
+                question: "Quel est le nom de l'épée de Gandalf ?",
+                answers: ["Andúril", "Narsil", "Glamdring"],
+                correct: "Glamdring"
+            },
+            {
+                question: "Quel est le nom de la ville d'Elrond ?",
+                answers: ["Lothlórien", "Fondcombe", "Minas Tirith"],
+                correct: "Fondcombe"
+            },
+            {
+                question: "Qui détruit l'Anneau Unique ?",
+                answers: ["Frodon", "Sam", "Gollum"],
+                correct: "Gollum"
+            },
+            {
+                question: "Dans le film 'La Communauté de l'anneau', quel âge Bilbon fête-il ?",
+                answers: ["100 ans", "112 ans", "111 ans"],
+                correct: "111 ans"
+            },
+            {
+                question: "Comment se nomme l'auberge dans laquelle Frodon, Sam, Pippin et Merry doivent retrouver Gandalf ?",
+                answers: ["L'Auberge de Bree", "La Tanière des Loups", "Le Poney Fringant"],
+                correct: "Le Poney Fringant"
+            },
+            {
+                question: "Où Frodon est-il emmené pour être soigné du poison infligé par la lame de morgul ?",
+                answers: ["En Lothlórien", "Dans la Forêt Noire", "A Fondcombe"],
+                correct: "A Fondcombe"
+            },
+            {
+                question: "Dans le Seigneur des Anneaux, pourquoi Boromir essaye-t-il de récupérer l'anneau ?",
+                answers: ["Pour le détruire", "Pour servir Sauron", "Pour l'utiliser contre Sauron"],
+                correct: "Pour l'utiliser contre Sauron"
+            },
+            {
+                question: "Combien de membres contient la Communauté de l'anneau à l'origine ?",
+                answers: ["7", "9", "13"],
+                correct: "9"
+            },
+            {
+                question: "Pourquoi la communauté décide-t-elle de passer par les mines de la Moria ?",
+                answers: ["Pour échapper aux armées de Sauron", "Pour échapper à Saroumane", "Car c'est un chemin plus rapide pour le Mordor"],
+                correct: "Pour échapper à Saroumane"
+            },
+            {
+                question: "Quel est l'autre nom de la Moria en Khuzdul (langue naine) ?",
+                answers: ["Amon Sûl", "Khazad-dûm", "Khizdîn-Sûl"],
+                correct: "Khazad-dûm"
+            },
+
+
+            //Questions sur le Hobbit
+            {
+                question: "La compagnie de Thorin Ecu-de-Chêne se compose :",
+                answers: ["De 15 nains, de 3 hobbits et de 6 magiciens", "De 13 nains, d'un hobbit et d'un magicien", "De 2 nains, d'un homme et d'un elfe"],
+                correct: "De 13 nains, d'un hobbit et d'un magicien"
+            },
+            {
+                question: "Comment s'appelle le frère aîné de Dwalin ?",
+                answers: ["Gârlin", "Bâlin", "Fûndin"],
+                correct: "Bâlin"
+            },
+            {
+                question: "En quelle année Smaug le dragon a-t-il attaqué Erebor ?",
+                answers: ["2458", "2143", "1956"],
+                correct: "2143"
+            },
+            {
+                question: "Qui possédait l'anneau unique avant que Bilbo ne mette la main dessus ?",
+                answers: ["Gollum", "Follum", "Hollum"],
+                correct: "Gollum"
+            },
+            {
+                question: "Comment s'appelle le fils d'Azog, lieutenant de Sauron ?",
+                answers: ["Tolg", "Bolg", "Sholg"],
+                correct: "Bolg"
+            },
+            {
+                question: "Comment s'appelle le roi des elfes de Mirkwood ?",
+                answers: ["Thranduil", "Shranduilus", "Xhranduilys"],
+                correct: "Thranduil"
+            },
+            {
+                question: "Qui meurt aux côtés de Thorin pendant la bataille des cinq armées ?",
+                answers: ["Bâlin et Dwalin", "Kili et Fili", "Beorn et Radagast"],
+                correct: "Kili et Fili"
+            },
+            {
+                question: "Comment s'appelle la pierre qui pourrait réunir les peuples de Dûrin ?",
+                answers: ["Arkenstone", "Gemme bleue", "Philosopherstone"],
+                correct: "Arkenstone"
+            },
+            {
+                question: "Où se trouvent les tombes des Neufs ?",
+                answers: ["Monts Brumeux", "Monts du Rhûdaur", "Monts Blancs"],
+                correct: "Monts du Rhûdaur"
+            },
+            {
+                question: "Qui est Bard l'Archer ?",
+                answers: ["Un bachelier", "Un batelier", "Un marchand"],
+                correct: "Un batelier"
+            }
+
+        ];
+
+        const quizContainer = document.getElementById('quiz');
+
+        function loadQuiz() {
+            quizData.forEach((currentQuestion, questionIndex) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.classList.add('question');
+
+                const questionTitle = document.createElement('h3');
+                questionTitle.innerText = currentQuestion.question;
+                questionDiv.appendChild(questionTitle);
+
+                const answersList = document.createElement('ul');
+                answersList.classList.add('answers');
+
+                currentQuestion.answers.forEach(answer => {
+                    const answerItem = document.createElement('li');
+
+                    const answerLabel = document.createElement('label');
+                    answerLabel.innerHTML = `
+                        <input type="radio" name="question${questionIndex}" value="${answer}">
+                        ${answer}
+                    `;
+                    answerItem.appendChild(answerLabel);
+
+                    answersList.appendChild(answerItem);
+                });
+
+                questionDiv.appendChild(answersList);
+                quizContainer.appendChild(questionDiv);
+            });
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            quizData.forEach((currentQuestion, questionIndex) => {
+                const selectedAnswer = document.querySelector(`input[name="question${questionIndex}"]:checked`);
+                const answersList = document.querySelectorAll(`input[name="question${questionIndex}"]`);
+
+                if (selectedAnswer) {
+                    if (selectedAnswer.value === currentQuestion.correct) {
+                        score++;
+                        selectedAnswer.parentElement.classList.add('correct-answer');
+                    } else {
+                        selectedAnswer.parentElement.classList.add('wrong-answer');
+                    }
+                }
+
+                // Afficher la bonne réponse
+                answersList.forEach(answer => {
+                    if (answer.value === currentQuestion.correct) {
+                        answer.parentElement.classList.add('correct-answer');
+                    }
+                });
+            });
+
+            const resultContainer = document.getElementById('result');
+            resultContainer.innerText = `Vous avez obtenu ${score} sur ${quizData.length} correct.`;
+        }
+        // Assurez-vous que le DOM est entièrement chargé avant d'appeler loadQuiz
+        document.addEventListener('DOMContentLoaded', (event) => {
+            loadQuiz();
+        });
+    </script>
+    
+</div>
+
+</div>
+</body>
+</html>
+
+

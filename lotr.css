@@ -1,0 +1,249 @@
+@font-face {
+    font-family: 'Aniron';
+    src: url('polices/anirb___.ttf') format('truetype');
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+body.background-image {
+    background-image: url('images/middle_earth.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+h1 {
+    color: blanchedalmond;
+    font-family: 'Aniron', 'Arial', sans-serif;
+    text-align: center;
+    background-color: rgba(255, 204, 153, 0.3);
+    border-radius: 10px;
+    padding: 1%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+h2, h3 {
+    color: blanchedalmond;
+    background-color: rgba(150, 100, 100, 0.3);
+    text-align: center;
+    border-radius: 10px;
+    padding: 1%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.film-section {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.film {
+    position: relative;
+    border: 0;
+    padding: 5px;
+    background-color: transparent;
+}
+
+.film-poster {
+    max-width: 700px;
+    margin-bottom: 10px;
+    height: 500px;
+}
+
+.toggle-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: none;
+    background: linear-gradient(to left, #ffcc99, #ffa64d);
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 20px auto; /* Centrer les boutons */
+    width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.toggle-button:hover {
+    background: linear-gradient(to right, #5b8033, #ffe6cc);
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15)
+}
+
+.toggle-button:active {
+    transform: scale(0.95);
+}
+
+.content {
+    display: none;
+    background: none;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: max-height 0.3s ease; /* Transition pour une ouverture en douceur */
+    overflow: hidden;
+}
+
+.content p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    padding: none;
+}
+
+ul {
+    list-style-type: none;
+    padding: none;
+}
+
+li {
+    margin-bottom: 5px;
+    color: #fff;
+    padding: none;
+}
+strong {
+    color: #fff;
+}
+
+#map {
+    height: 500px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.interactive-map {
+    margin-bottom: 20px; /* Espace de 20px en bas de la carte interactive */
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ffe6cc;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #82b74b;
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #5b8033;
+}
+
+.character-biography {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.character-biography .character {
+    display: inline-block;
+    width: 1000px; /* Largeur fixe pour chaque bloc */
+    min-height: 400px; /* Hauteur minimale pour chaque bloc */
+    margin: 10px;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255, 204, 153, 0.8);
+    box-sizing: border-box; /* Inclut les bordures et les padding dans la largeur/hauteur totale */
+    box-shadow: #333;
+}
+
+.character-biography .character img {
+    max-width: 35%;
+}
+
+.character-biography .character h3 {
+    font-family: 'Aniron', 'Arial', sans-serif;
+    margin-top: 10px;
+}
+
+.character-biography .character p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    text-align: center;
+}
+
+.timeline {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(255, 204, 153, 0.8);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: #333;
+}
+
+.event {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: rgba(255, 204, 153, 0.9);
+    border-radius: 5px;
+}
+
+.event h3 {
+    font-family: 'Aniron', 'Arial', sans-serif;
+    margin-top: 0;
+}
+
+.event p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+
+
+/* Media Queries for Responsive Design */
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .film {
+        height: auto;
+        padding: 10px;
+    }
+
+    .buttons {
+        position: relative;
+        top: auto;
+        left: auto;
+        flex-direction: row;
+        gap: 5px;
+        justify-content: center;
+    }
+
+    .toggle-button {
+        font-size: 1em;
+        padding: 5px 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .toggle-button {
+        font-size: 0.8em;
+        padding: 5px;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+}
