@@ -206,8 +206,10 @@ strong {
 
 p{
     text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Aniron';
     color:blanchedalmond;
+    background-color: rgba(255, 204, 153, 0.3);
+    border-radius: 5px;
 }
 
 
