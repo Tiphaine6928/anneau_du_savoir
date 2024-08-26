@@ -9,9 +9,17 @@ document.addEventListener('DOMContentLoaded', function () {
             allContents.forEach(function (el) {
                 if (el !== content) {
                     el.style.display = 'none'; // Masquer tous les autres contenus
-                }
+                }/* else {
+                    el.style.display = 'block';
+                }*/
+                console.error("Ceci est une erreur");
             });
             
+            /*if(content.style.display === 'block') {
+                content.style.display = 'none'
+            } else {
+                content.style.display = "block"
+            }*/
             content.style.display = (content.style.display === 'block') ? 'none' : 'block';
         });
     });
