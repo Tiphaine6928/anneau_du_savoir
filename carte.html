@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte Intéractive</title>
+    <link rel="stylesheet" href="lotr.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="icon" type="image/png" href="images/anneau.png">
+</head>
+<body class="background-image">
+    <nav>
+        <ul>
+            <li><a href="lotr.html">Home</a></li>
+            <li><a href="biographies.html">Biographies</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li><a href="carte.html">Carte</a></li>
+            <li><a href="evenements.html">Événements Importants</a></li>
+        </ul>
+    </nav>
+    
+    <div class="interactive-map">
+        <h1>Carte Interactive de la Terre du Milieu</h1>
+            <div id="map"></div>
+
+            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+            <script>
+                // Définir les dimensions de l'image de la carte
+                var imageWidth = 2000; // Largeur de l'image en pixels
+                var imageHeight = 1500; // Hauteur de l'image en pixels
+
+                // Définir les limites de la carte
+                let southWest = L.latLng(-imageHeight / 2, -imageWidth / 2),
+                northEast = L.latLng(imageHeight / 2, imageWidth / 2),
+                bounds = L.latLngBounds(southWest, northEast);
+
+                // Initialiser la carte
+                let map = L.map('map', {
+                    crs: L.CRS.Simple, // Utiliser un CRS simple pour les images
+                    maxBounds: bounds,
+                    maxBoundsViscosity: 1.0,
+                    minZoom: -2,
+                    maxZoom: 2
+                }).setView([0, 0], 0);
+
+                // Ajouter l'image de la carte comme couche
+                let imageUrl = 'images/carte_terre_milieu.jpg'; // Chemin vers ton image de carte
+                L.imageOverlay(imageUrl, bounds).addTo(map);
+
+                // Ajouter des marqueurs pour des lieux intéressants
+                let rivendell = L.marker([380, 10]).addTo(map)
+                .bindPopup('<b>Fondcombe</b><br>Royaume Elfique.');
+
+                let mordor = L.marker([-350, 600]).addTo(map)
+                .bindPopup('<b>Mordor</b><br>Le pays du mal.');
+
+                let gondor = L.marker([-350, -50]).addTo(map)
+                .bindPopup('<b>Gondor</b><br>Le royaume des hommes.');
+
+                let lonelyMountain = L.marker([525, 360]).addTo(map)
+                .bindPopup('<b>La Montagne Solitaire</b><br>Le royaume des nains.');
+
+                let minasTirith = L.marker([-300, 300]).addTo(map)
+                .bindPopup('<b>Minas Tirith</b><br>La Cité Blanche.');
+
+                let shire = L.marker([330, -500]).addTo(map)
+                .bindPopup('<b>La Comté</b><br>Havre de paix pour les Hobbits.');
+            </script>
+    </div>
+</body>
+</html>

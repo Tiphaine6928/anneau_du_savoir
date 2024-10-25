@@ -212,6 +212,52 @@ p{
     border-radius: 5px;
 }
 
+nav {
+    background-color: #2f4f4f; /* Couleur sombre inspirée du thème fantastique */
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Style des liens de navigation */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px; /* Espacement entre les boutons */
+}
+
+nav ul li {
+    display: inline;
+}
+
+/* Bouton de navigation */
+nav ul li a {
+    text-decoration: none;
+    color: blanchedalmond;
+    font-family: 'Aniron', Arial, sans-serif; /* Police d’inspiration LOTR */
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid blanchedalmond; /* Bordure assortie */
+    background-color: rgba(0, 0, 0, 0.3); /* Fond semi-transparent */
+    transition: all 0.3s ease;
+}
+
+/* Effet au survol des boutons */
+nav ul li a:hover {
+    background-color: blanchedalmond; /* Changement de couleur de fond */
+    color: #2f4f4f; /* Couleur de texte contrastante */
+    transform: scale(1.1); /* Légère augmentation de taille */
+}
+
+/* Style actif pour indiquer la page courante */
+nav ul li a.active {
+    background-color: blanchedalmond;
+    color: #2f4f4f;
+}
+
 
 
 /* Media Queries for Responsive Design */
