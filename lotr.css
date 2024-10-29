@@ -216,15 +216,16 @@ nav {
     background-color: #2f4f4f;
     padding: 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     border-radius: 10px;
 }
 
 /* Style du logo */
 nav .logo img {
-    width: 15px; /* Ajustez la taille du logo selon vos besoins */
+    width: 50px; /* Ajustez la taille du logo selon vos besoins */
     height: auto;
     margin-right: 20px; /* Espace entre le logo et les boutons */
+    vertical-align: auto;
 }
 
 /* Style des liens de navigation */
@@ -245,7 +246,7 @@ nav ul li a {
     text-decoration: none;
     color: blanchedalmond;
     font-family: 'Aniron', Arial, sans-serif; /* Police d’inspiration LOTR */
-    font-size: 1.2em;
+    font-size: 1em;
     padding: 10px 20px;
     border-radius: 5px;
     border: 2px solid blanchedalmond; /* Bordure assortie */
