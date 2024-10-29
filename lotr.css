@@ -213,11 +213,18 @@ p{
 }
 
 nav {
-    background-color: #2f4f4f; /* Couleur sombre inspirée du thème fantastique */
+    background-color: #2f4f4f;
     padding: 15px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     border-radius: 10px;
+}
+
+/* Style du logo */
+nav .logo img {
+    width: 50px; /* Ajustez la taille du logo selon vos besoins */
+    height: auto;
+    margin-right: 20px; /* Espace entre le logo et les boutons */
 }
 
 /* Style des liens de navigation */
