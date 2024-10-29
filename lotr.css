@@ -222,7 +222,7 @@ nav {
 
 /* Style du logo */
 nav .logo img {
-    width: 50px; /* Ajustez la taille du logo selon vos besoins */
+    width: 15px; /* Ajustez la taille du logo selon vos besoins */
     height: auto;
     margin-right: 20px; /* Espace entre le logo et les boutons */
 }
