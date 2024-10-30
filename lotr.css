@@ -269,7 +269,62 @@ nav ul li a.active {
 
 .description {
     font-size: 40px;
-    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#description1, #description2 {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#noteFinale {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#search-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    font-size: 1.2em;
+    font-family: 'Aniron', serif; /* Utilise une police médiévale */
+    color: #f4e8c1; /* Couleur douce pour le texte */
+    background-color: #2d2b24; /* Couleur sombre de fond */
+    border: 2px solid #d4af37; /* Bordure dorée */
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Légère ombre */
+}
+
+/* Effet visuel au survol */
+#search-input:hover {
+    border-color: #ffd700; /* Couleur dorée brillante */
+    box-shadow: 0px 4px 12px rgba(255, 215, 0, 0.5);
+}
+
+/* Effet quand l'input est sélectionné */
+#search-input:focus {
+    background-color: #3a372f;
+    box-shadow: 0px 4px 12px rgba(255, 215, 0, 0.7);
+}
+
+/* Style pour le bouton de recherche si tu en as un */
+#search-button {
+    font-family: 'Aniron', serif;
+    font-size: 1em;
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: #2d2b24;
+    color: #f4e8c1;
+    border: 2px solid #d4af37;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#search-button:hover {
+    background-color: #3a372f;
+    border-color: #ffd700;
+    color: #ffd700;
+    box-shadow: 0px 4px 12px rgba(255, 215, 0, 0.5);
 }
 
 
