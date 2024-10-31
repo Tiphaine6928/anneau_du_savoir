@@ -112,6 +112,16 @@ li {
     color: #fff;
     padding: none;
 }
+
+.character li {
+    color: #333;
+    text-align: left;
+}
+
+.character strong {
+    color: #333;
+}
+
 strong {
     color: #fff;
 }
