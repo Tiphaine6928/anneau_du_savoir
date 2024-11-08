@@ -78,3 +78,16 @@ document.getElementById('search-button').addEventListener('click', function() {
         }
     }
 });
+
+function toggleSection(sectionId) {
+    const content = document.getElementById(sectionId);
+    const button = content.previousElementSibling.querySelector('.toggle-btn');
+
+    if (content.style.display === "none" || content.style.display === "") {
+        content.style.display = "block";
+        button.textContent = "-";
+    } else {
+        content.style.display = "none";
+        button.textContent = "+";
+    }
+}

@@ -337,6 +337,27 @@ nav ul li a.active {
     box-shadow: 0px 4px 12px rgba(255, 215, 0, 0.5);
 }
 
+.bio-section {
+    margin-top: 10px;
+}
+
+.toggle-btn {
+    font-size: 1em;
+    background-color: #ccc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.content {
+    display: none; /* Contenu caché par défaut */
+    padding-left: 20px;
+    margin-top: 5px;
+}
+
 
 
 /* Media Queries for Responsive Design */

@@ -37,28 +37,346 @@
             <img src="images/frodon2.png" alt="Frodon Sacquet">
             <h3>Frodon Sacquet - Incarné par Elijah Wood</h3>
             <p>Frodon Sacquet est un hobbit de la Comté qui se voit confier la tâche de détruire l'Anneau Unique.</p>
-            <h4>Citation célébre</h4>
-            <p>"Je vais jusqu'au bout, même si personne ne peut m'accompagner."</p>
-            <h4>Alliances et Amis proches</h4>
-            <ul>
-                <li><strong>Sam Gamegie</strong> : Son jardinier et ami dévoué qui l'accompagne jusqu'au Mordor.</li>
-                <li><strong>Gandalf</strong> : Le guide et mentor qui l'aide à comprendre l'importance de sa quête.</li>
-                <li><strong>Aragorn, Legolas et Gimli</strong> : Membres de la Communauté qui lui offrent soutien et protection.</li>
-            </ul>
-            <h4>Rôle dans la quête de l'Anneau</h4>
-            <p>Frodon hérite de l'Anneau Unique de son oncle Bilbon et accpete la dangereuse mission de le détruire. Sa bravoure, sa résistance et sa volonté d'aller au-delà 
-                de ses propres peurs font de lui le héros de cette quête.
-            </p>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('citation-frodon')">+</button> Citation célébre 
+                </h4>
+                <div id="citation-frodon" class="content">
+                    <p>"Je vais jusqu'au bout, même si personne ne peut m'accompagner."</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('allies-frodon')">+</button> Alliances et Amis proches
+                </h4>
+                <div id="allies-frodon" class="content">
+                    <ul>
+                        <li><strong>Sam Gamegie</strong> : Son jardinier et ami dévoué qui l'accompagne jusqu'au Mordor.</li>
+                        <li><strong>Gandalf</strong> : Le guide et mentor qui l'aide à comprendre l'importance de sa quête.</li>
+                        <li><strong>Aragorn, Legolas et Gimli</strong> : Membres de la Communauté qui lui offrent soutien et protection.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('role-frodon')">+</button> Rôle dans la quête de l'Anneau
+                </h4>
+                <div id="role-frodon" class="content">
+                    <p>Frodon hérite de l'Anneau Unique de son oncle Bilbon et accpete la dangereuse mission de le détruire. Sa bravoure, sa résistance et sa volonté d'aller au-delà 
+                        de ses propres peurs font de lui le héros de cette quête.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('traits-frodon')">+</button> Traits de Caractère
+                </h4>
+                <div id="traits-frodon" class="content">
+                    <ul>
+                        <li>Courageux et humble</li>
+                        <li>Dévoué et loyal</li>
+                        <li>Résilient face aux épreuves</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('chronologie-frodon')">+</button> Chronologie Personnelle
+                </h4>
+                <div id="chronologie-frodon" class="content">
+                    <ul>
+                        <li><strong>Naissance :</strong> 22 septembre 2968 du Troisème Âge</li>
+                        <li><strong>Acquisition de l'Anneau :</strong> En 3001, hérite de l'Anneau Unique</li>
+                        <li><strong>Formation de la Communauté de l'Anneau :</strong> Début de quête en 3018</li>
+                        <li><strong>Destruction de l'Anneau :</strong> Accomplissement de sa mission en 3019</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('armes-frodon')">+</button> Arme et Objet Spécifique
+                </h4>
+                <div id="armes-frodon" class="content">
+                    <ul>
+                        <li>Dard : Une épée elfique lumineuse qui lui est offerte par Bilbon, 
+                        capable de détecter les Orques à proximité.</li>
+                        <li>Mithril : Armure légère, rare et précieuse, également cadeau de Bilbon.</li>    
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('origines-frodon')">+</button> Origines et Peuple
+                </h4>
+                <div id="origines-frodon" class="content">
+                    <p>Originaire de la Comté, Frodon est un hobbit typique par sa taille, 
+                    son amour pour la nature et sa vie simple. Sa destinée le conduit 
+                    pourtant bien loin de son pays d'origine.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('anecdotes-frodon')">+</button> Anecdotes et Faits Divers
+                </h4>
+                <div id="anecdotes-frodon" class="content">
+                    <p>Frodon porte une cicatrice invisible laissée par la dague du Roi-Sorcier 
+                    à Amon Sûl, une blessure qui le tourmente pendant de nombreuses années.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('evolution-frodon')">+</button> Évolution du Personnage
+                </h4>
+                <div id="evolution-frodon" class="content">
+                    <p>Au début de son voyage, Frodon est plein d'espoir et d'innocence, mais 
+                    la charge de l'Anneau et les épreuves du Mordor le marquent profondément. Il
+                    finit par partir pour les Havres Gris, incapable de vivre en pais en Terre du
+                    Milieu après sa quête.
+                    </p>
+                </div>
+            </div>
         </div>
         <div id="sam" class="character">
             <img src="images/sam.png" alt="Sam Gamgee">
             <h3>Sam - Incarné par Sean Astin</h3>
             <p>Sam est un hobbit de la Comté, fidèle jardinier et ami de Frodon, qui l'accompagne dans sa quête pour détruire l'Anneau Unique.</p>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('citations-sam')">+</button> Citations célébres 
+                </h4>
+                <div id="citations-sam" class="content">
+                    <p>"Je ne peux pas le porter pour vous, mais je peux vous porter, vous !"</p>
+                    <p>"Il y a du bon en ce monde, Mr Frodon, et il faut se battre pour cela."</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('allies-sam')">+</button> Alliances et Amis proches
+                </h4>
+                <div id="allies-sam" class="content">
+                    <ul>
+                        <li><strong>Frodon Sacquet</strong> :  Son ami le plus proche, qu'il accompagne jusqu'au bout pour l'aider à détruire l'Anneau.</li>
+                        <li><strong>Gandalf</strong> : Le magicien qui encourage son courage et son dévouement.</li>
+                        <li><strong>Aragorn</strong> : Le chef de la Communauté qu'il respecte pour sa bravoure et son sens du devoir.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('role-sam')">+</button> Rôle dans la quête de l'Anneau
+                </h4>
+                <div id="role-sam" class="content">
+                    <p>Sam est le soutien le plus loyal et dévoué de Frodon, se chargeant des provisions, l'encouragent
+                        et le protégeant contre les dangers de la quête. Sans lui, Frodon aurait sans doute 
+                        échoué dans sa mission.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('traits-sam')">+</button> Traits de Caractère
+                </h4>
+                <div id="traits-sam" class="content">
+                    <ul>
+                        <li>Courageux</li>
+                        <li>Loyal</li>
+                        <li>Simple et humble</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('chronologie-sam')">+</button> Chronologie Personnelle
+                </h4>
+                <div id="chronologie-sam" class="content">
+                    <ul>
+                        <li><strong>Naissance :</strong> Né dans la Comté, fils du jardinier Hamfast Gamegie.</li>
+                        <li><strong>Début de la quête :</strong> Rejoint Frodon et la Communauté de l'Anneau pour protéger la Terre du Milieu.</li>
+                        <li><strong>Montagne du Destin :</strong> Accompagne Frodon jusqu'au sommet pour accomplir leur mission.</li>
+                        <li><strong>Retour dans la Comté :</strong> Après la quête, retourne chez lui et devient maire de Hobbitebourg.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('armes-sam')">+</button> Arme et Objet Spécifique
+                </h4>
+                <div id="armes-sam" class="content">
+                    <ul>
+                        <li>Sting : Utilise temporairement l'épée "Dard" appartenant à Frodon.</li>
+                        <li>Élixir d'eau d'Elven : L'eau de Lórien, qui lui est d'un grand soutien dans les moments difficiles de la quête.</li>    
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('origines-sam')">+</button> Origines et Peuple
+                </h4>
+                <div id="origines-sam" class="content">
+                    <p>Sam est un hobbit de la Comté, né dans une famille modeste de jardiniers.
+                        Les hobbits sont connus pour leur amour de la paix, de la nature, et de la simplicité.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('anecdotes-sam')">+</button> Anecdotes et Faits Divers
+                </h4>
+                <div id="anecdotes-sam" class="content">
+                    <ul>
+                        <li>Relation avec Frodon : Sa loyauté 
+                            envers Frodon a inspiré de nombreux récits et chansons dans la Terre du Milieu</li>
+                        <li>Admiration pour les Elfes : Sam est fasciné par le monde des Elfes, et rêve de les rencontrer.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('evolution-sam')">+</button> Évolution du Personnage
+                </h4>
+                <div id="evolution-sam" class="content">
+                    <p>De simple jardinier, Sam devient un héros humble qui joue un rôle essentiel dans la 
+                        destruction de l'Anneau. Son courage et son dévouement pour Frodon lui valent le respect
+                        et l'admiration des peuples libres de la Terre du Milieu.
+                    </p>
+                </div>
+            </div>
         </div>
         <div id="bilbon" class="character">
             <img src="images/bilbon2.png" alt="Bilbon Sacquet">
             <h3>Bilbon Sacquet - Incarné par Martin Freeman</h3>
             <p>Bilbon Sacquet est un hobbit de la Comté qui part à l'aventure avec une compagnie de nains pour reprendre leur royaume et trésor volé par le dragon Smaug.</p>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('citations-bilbon')">+</button> Citations célébres 
+                </h4>
+                <div id="citations-bilbon" class="content">
+                    <p>"Je ne connais pas la moitié d'entre vous à moitié que je le voudrais, et j'aime moins de 
+                        la moitié d'entre vous à moitié aussi bien que vous le méritiez."</p>
+                    <p>"Je suis en retard, en retard pour une aventure !"</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('allies-bilbon')">+</button> Alliances et Amis proches
+                </h4>
+                <div id="allies-bilbon" class="content">
+                    <ul>
+                        <li><strong>Thorin Ecu-de-Chêne</strong> :  Chef de l'expédition des Nains pour reprendre Erebor ; Bilbon développe un respect et une amitié complexe avec lui.</li>
+                        <li><strong>Gandalf</strong> : Le magicien qui l'invite à partir à l'aventure et devient son mentor.</li>
+                        <li><strong>Elrond</strong> : Seigneur de Fondcombe qui aide Bilbon et la compagnie des Nains.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('role-bilbon')">+</button> Rôle dans la quête d'Erebor
+                </h4>
+                <div id="role-bilbon" class="content">
+                    <p>Bilbon devient le "cambrioleur" de l'expédition des Nains. Il surmonte ses 
+                        peurs, afronte le dragon Smaug et récupère l'Arkenstone, jouant un rôle clé 
+                        dans la reconquête d'Erebor.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('traits-bilbon')">+</button> Traits de Caractère
+                </h4>
+                <div id="traits-bilbon" class="content">
+                    <ul>
+                        <li>Curieux et Intrépide</li>
+                        <li>Loyal et Honnête</li>
+                        <li>Intelligent et Malin</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('chronologie-bilbon')">+</button> Chronologie Personnelle
+                </h4>
+                <div id="chronologie-bilbon" class="content">
+                    <ul>
+                        <li><strong>Naissance :</strong> Né dans la Comté, au sein de la famille Sacquet.</li>
+                        <li><strong>Départ pour l'aventure :</strong> Rejoint les Nains et Gandalf pour reprendre Erebor.</li>
+                        <li><strong>Rencontre avec Gollum :</strong> Dans les Monts Brumeux, il trouve l'Anneau et trompe Gollum en résolvant ses énigmes.</li>
+                        <li><strong>Retour dans la Comté :</strong> De retour chez lui, il devient une légende et rédige ses mémoires.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('arme')">+</button> Arme et Objet Spécifique
+                </h4>
+                <div id="armes" class="content">
+                    <ul>
+                        <li>Sting : Utilise temporairement l'épée "Dard" appartenant à Frodon.</li>
+                        <li>Élixir d'eau d'Elven : L'eau de Lórien, qui lui est d'un grand soutien dans les moments difficiles de la quête.</li>    
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('origines')">+</button> Origines et Peuple
+                </h4>
+                <div id="origines" class="content">
+                    <p>Sam est un hobbit de la Comté, né dans une famille modeste de jardiniers.
+                        Les hobbits sont connus pour leur amour de la paix, de la nature, et de la simplicité.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('anecdotes')">+</button> Anecdotes et Faits Divers
+                </h4>
+                <div id="anecdotes" class="content">
+                    <ul>
+                        <li>Relation avec Frodon : Sa loyauté 
+                            envers Frodon a inspiré de nombreux récits et chansons dans la Terre du Milieu</li>
+                        <li>Admiration pour les Elfes : Sam est fasciné par le monde des Elfes, et rêve de les rencontrer.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    <button class="toggle-btn" onclick="toggleSection('evolution')">+</button> Évolution du Personnage
+                </h4>
+                <div id="evolution" class="content">
+                    <p>De simple jardinier, Sam devient un héros humble qui joue un rôle essentiel dans la 
+                        destruction de l'Anneau. Son courage et son dévouement pour Frodon lui valent le respect
+                        et l'admiration des peuples libres de la Terre du Milieu.
+                    </p>
+                </div>
+            </div>
         </div>
         <div id="gandalf" class="character">
             <img src="images/gandalf2.png" alt="Gandalf le Gris">
