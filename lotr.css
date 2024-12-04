@@ -281,8 +281,13 @@ nav ul li a.active {
     font-size: 40px;
 }
 
-#description1, #description2 {
+#description1, #description2, #description3 {
     background-color: rgba(0, 0, 0, 0.3);
+}
+
+#titre {
+    font-size: 1em;
+    background: none;
 }
 
 #noteFinale {
