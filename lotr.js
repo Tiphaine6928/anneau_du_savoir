@@ -66,8 +66,20 @@ document.getElementById('search-button').addEventListener('click', function() {
     // Mêmes liens de biographie que précédemment
     const biographyLinks = {
         'frodon': 'biographies.html#frodon',
+        'sam': 'biographies.html#sam',
+        'bilbon': "biographies.html#sam",
+        'gandalf': 'biographies.html#gandalf',
+        'aragorn': 'biographies.html#aragorn',
         'legolas': 'biographies.html#legolas',
-        'aragorn': 'biographies.html#aragorn'
+        'arwen': 'biographies.html#arwen',
+        'gollum': 'biographies.html#gollum',
+        'thorin': 'biographies.html#thorin',
+        'kili': 'biographies.html#kili',
+        'galadriel': 'biographies.html#galadriel',
+        'tauriel': 'biographies.html#tauriel',
+        'sauron': 'biographies.html#sauron',
+        'gimli': 'biographies.html#gimli',
+        'eowyn': 'biographies.html#eowyn'
     };
 
     for (const name in biographyLinks) {

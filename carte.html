@@ -30,16 +30,16 @@
 
             <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
             <script>
-                // Définir les dimensions de l'image de la carte
+                // Définition des dimensions de l'image de la carte
                 var imageWidth = 2000; // Largeur de l'image en pixels
                 var imageHeight = 1500; // Hauteur de l'image en pixels
 
-                // Définir les limites de la carte
+                // Définition des limites de la carte
                 let southWest = L.latLng(-imageHeight / 2, -imageWidth / 2),
                 northEast = L.latLng(imageHeight / 2, imageWidth / 2),
                 bounds = L.latLngBounds(southWest, northEast);
 
-                // Initialiser la carte
+                // Initialisation la carte
                 let map = L.map('map', {
                     crs: L.CRS.Simple,
                     maxBounds: bounds,
