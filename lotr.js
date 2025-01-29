@@ -68,7 +68,6 @@ document.getElementById('search-button').addEventListener('click', function() {
         'frodon': 'biographies.html#frodon',
         'legolas': 'biographies.html#legolas',
         'aragorn': 'biographies.html#aragorn'
-        // Ajoute d'autres personnages ici
     };
 
     for (const name in biographyLinks) {
