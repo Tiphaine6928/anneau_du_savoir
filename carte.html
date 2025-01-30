@@ -53,7 +53,8 @@
                 L.imageOverlay(imageUrl, bounds).addTo(map);
 
                 // Marqueurs des lieux importants
-                let rivendell = L.marker([380, 10]).addTo(map)
+                let rivendell = L.marker([380, 10]).addTo(map) // L représente l'objet Leaflet global.
+                // la méthode marker() est une fonction de la bibliothèque Leaflet
                 .bindPopup('<b>Fondcombe</b><br>Royaume Elfique.');
 
                 let mordor = L.marker([-350, 600]).addTo(map)
@@ -71,11 +72,6 @@
                 let shire = L.marker([330, -500]).addTo(map)
                 .bindPopup('<b>La Comté</b><br>Havre de paix pour les Hobbits.');
 
-                let rohan = L.marker([-350, -70]).addTo(map)
-                .bindPopup('<b>Le Rohan</b><br>Je ne sais pas quoi mettre pour le moment');
-
-                let isengard = L.marker([-63, -130]).addTo(map)
-                .bindPopup('<b>Isengard</b><br>Là où est Saruman');
             </script>
     </div>
 
