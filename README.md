@@ -18,3 +18,4 @@ Améliorations réalisées :
  - Quiz amélioré : questions et réponses mélangées à chaque partie, meilleur score sauvegardé dans le navigateur, questions oubliées signalées, correction lisible (couleurs contrastées et textes), score avec appréciation, bouton Recommencer
  - Barre de navigation commune à toutes les pages (fichier nav.js) : pour ajouter ou renommer une page du menu, il suffit de modifier la liste dans nav.js
  - Référencement : un titre principal (h1), un titre d'onglet et une description pour Google sur chaque page
+ - Frise chronologique visuelle des événements : étapes numérotées, couleur différente pour le Seigneur des Anneaux et le Hobbit, adaptée au mobile

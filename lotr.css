@@ -231,7 +231,7 @@ strong {
 .event {
     margin-bottom: 20px;
     padding: 10px;
-    background-color: rgba(255, 204, 153, 0.9);
+    background-color: #ffd9b3; /* Couleur pleine : la petite flèche de la frise est de la même couleur */
     border-radius: 5px;
 }
 
@@ -673,5 +673,141 @@ h1.site-title {
 @media (max-width: 480px) {
     h1.site-title {
         font-size: 30px; /* Texte de bienvenue : 20px */
+    }
+}
+
+/* ---------- Frise chronologique (page Événements) ---------- */
+
+/* Une couleur par trilogie : or pour le Seigneur des Anneaux, vert pour le Hobbit */
+.timeline-sda {
+    --couleur-frise: #b8860b;
+}
+
+.timeline-hobbit {
+    --couleur-frise: #4e7a2e;
+}
+
+.frise {
+    position: relative;
+    list-style: none;
+    margin: 30px 0 0;
+    padding: 0;
+    counter-reset: etape; /* Numérote les événements 1, 2, 3... */
+}
+
+/* La ligne verticale de la frise, au centre */
+.frise::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    transform: translateX(-50%);
+    background-color: var(--couleur-frise);
+    border-radius: 2px;
+}
+
+/* Chaque événement : une carte d'un côté de la ligne */
+.frise > .event {
+    position: relative;
+    width: calc(50% - 40px);
+    margin: 0 0 30px;
+    box-sizing: border-box;
+    color: #333;
+    border-top: 4px solid var(--couleur-frise);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    counter-increment: etape;
+}
+
+.frise > .event:last-child {
+    margin-bottom: 0;
+}
+
+/* Les événements alternent : à gauche, puis à droite de la ligne */
+.frise > .event:nth-child(odd) {
+    margin-right: auto;
+}
+
+.frise > .event:nth-child(even) {
+    margin-left: auto;
+}
+
+/* Pastille numérotée posée sur la ligne */
+.frise > .event::before {
+    content: counter(etape);
+    position: absolute;
+    top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    color: #f4e8c1;
+    background-color: #2d2b24;
+    border: 3px solid var(--couleur-frise);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Petite flèche qui relie la carte à la ligne */
+.frise > .event::after {
+    content: '';
+    position: absolute;
+    top: 24px;
+    border: 8px solid transparent;
+}
+
+.frise > .event:nth-child(odd)::before {
+    right: -58px; /* 40px d'écart + la moitié de la pastille (18px) */
+}
+
+.frise > .event:nth-child(odd)::after {
+    right: -16px;
+    border-left-color: #ffd9b3;
+}
+
+.frise > .event:nth-child(even)::before {
+    left: -58px;
+}
+
+.frise > .event:nth-child(even)::after {
+    left: -16px;
+    border-right-color: #ffd9b3;
+}
+
+/* Sur petit écran : la ligne passe à gauche et toutes les cartes à droite */
+@media (max-width: 768px) {
+    .timeline {
+        padding: 15px 10px;
+    }
+
+    .frise::before {
+        left: 18px;
+    }
+
+    .frise > .event,
+    .frise > .event:nth-child(odd),
+    .frise > .event:nth-child(even) {
+        width: auto;
+        margin-left: 50px;
+        margin-right: 0;
+    }
+
+    .frise > .event:nth-child(odd)::before,
+    .frise > .event:nth-child(even)::before {
+        left: -50px; /* Centre de la pastille sur la ligne, à 18px du bord */
+        right: auto;
+    }
+
+    .frise > .event:nth-child(odd)::after,
+    .frise > .event:nth-child(even)::after {
+        left: -16px;
+        right: auto;
+        border-left-color: transparent;
+        border-right-color: #ffd9b3;
     }
 }
