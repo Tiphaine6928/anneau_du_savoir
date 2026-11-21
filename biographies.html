@@ -3,21 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biographies des personnages – L'Anneau du Savoir</title>
+    <title>Biographies – L'Anneau du Savoir</title>
     <meta name="description" content="Biographies de Frodon, Gandalf, Aragorn, Legolas, Galadriel, Thorin et d'autres personnages du Seigneur des Anneaux et du Hobbit, avec leurs acteurs.">
     <link rel="stylesheet" href="lotr.css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="galerie.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
-<body class="background-image">
+<body class="background-image page-galerie">
     
     <script src="nav.js"></script>
     
     <div class="character-biography">
-        <h1>Biographies des Personnages</h1>
-        
-        <div class="search-container">
-            <input type="search" id="search-input" placeholder="Personnage ou acteur..." aria-label="Rechercher un personnage ou un acteur">
-            <button type="button" id="search-button">Go !</button>
+        <header class="page-entete">
+            <h1>Biographies</h1>
+            <div class="ornement" aria-hidden="true">
+                <svg viewBox="0 0 240 24"><path d="M0 12 H95 M145 12 H240" /><path d="M120 2 L130 12 L120 22 L110 12 Z" /><circle cx="102" cy="12" r="3" /><circle cx="138" cy="12" r="3" /></svg>
+            </div>
+            <p class="page-sous-titre">Vingt-cinq personnages des deux trilogies, des Hobbits de la Comté aux seigneurs des Elfes. Choisissez un portrait pour ouvrir sa fiche.</p>
+        </header>
+
+        <div class="galerie-outils">
+            <div class="search-container">
+                <input type="search" id="search-input" placeholder="Rechercher un personnage ou un acteur…" aria-label="Rechercher un personnage ou un acteur">
+                <button type="button" id="search-button">Ouvrir la fiche</button>
+            </div>
         </div>
 
         <div id="frodon" class="character" data-peuple="hobbit" data-films="sda hobbit">

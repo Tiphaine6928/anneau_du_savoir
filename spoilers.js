@@ -140,8 +140,8 @@ const SECTIONS_SPOILERS = [
     boutonTout.type = 'button';
     boutonTout.className = 'perso-button';
     controles.append(explication, boutonTout);
-    // Sous le titre de la page, ou sous son introduction s'il y en a une (bestiaire)
-    (document.querySelector('.bestiaire-intro') || document.querySelector('h1')).after(controles);
+    // Sous l'en-tête de la page (titre et introduction), ou à défaut sous le titre
+    (document.querySelector('.page-entete') || document.querySelector('h1')).after(controles);
 
     let modeMasque = lirePreference();
 

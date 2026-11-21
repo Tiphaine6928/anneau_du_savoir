@@ -28,3 +28,4 @@ Améliorations réalisées :
  - Nouvelle page d'accueil : Anneau animé et titre doré, citation et personnage à l'honneur tirés au hasard, cartes vers toutes les sections, présentation des deux trilogies (styles dans accueil.css)
  - Nouvelle barre de navigation : barre sombre bordée d'or qui reste en haut de l'écran, nom du site à côté de l'Anneau, liens en lettres elfiques soulignés d'or, menu burger sous 1000 px
  - Page des films redessinée : une carte par film avec onglets Synopsis / Acteurs / Équipe technique, synopsis sur parchemin, acteurs et équipe en fiches, le Hobbit avant le Seigneur des Anneaux (styles communs dans theme.css, propres à la page dans films.css)
+ - Biographies et Bestiaire redessinés : titre doré, panneau de recherche et filtres, vignettes bordées d'or, fiche ouverte avec portrait à gauche et sections en accordéon sur parchemin (styles dans galerie.css)

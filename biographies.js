@@ -61,6 +61,18 @@ function normalizeText(text) {
 
         title.id = 'titre-' + element.id; // Sert de nom à la fenêtre de la fiche
 
+        // Titre de la fiche sur deux lignes : le nom en grand, l'acteur en dessous
+        if (parts[1]) {
+            title.textContent = '';
+            const nomTitre = document.createElement('span');
+            nomTitre.className = 'bio-nom';
+            nomTitre.textContent = name;
+            const acteurTitre = document.createElement('span');
+            acteurTitre.className = 'bio-acteur';
+            acteurTitre.textContent = parts[1].trim();
+            title.append(nomTitre, acteurTitre);
+        }
+
         // Repère pour remettre la fiche à sa place quand la fenêtre se ferme
         const placeholder = document.createComment(' fiche ' + element.id + ' ');
         element.before(placeholder);
@@ -414,7 +426,9 @@ function normalizeText(text) {
     });
 
     // ---------- Mise en place ----------
-    searchContainer.after(filters, status, empty, grid);
+    // Filtres et compteur avec la recherche ; galerie juste après ce bloc d'outils
+    searchContainer.after(filters, status);
+    (searchContainer.closest('.galerie-outils') || searchContainer).after(empty, grid);
     container.classList.add('gallery-ready');
     render();
 

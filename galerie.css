@@ -1,0 +1,447 @@
+/* ==========================================================================
+   Pages en galerie : Biographies (biographies.html) et Bestiaire (bestiaire.html)
+   ========================================================================== */
+
+.page-galerie .character-biography {
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+/* ---------- Bandeau des spoilers (spoilers.js) ---------- */
+
+.page-galerie .spoiler-controles {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px 14px;
+    margin: 14px auto 0;
+}
+
+.page-galerie .spoiler-controles p {
+    margin: 0;
+    padding: 0;
+    font-size: 0.95em;
+    color: #e0d4b8;
+    background: none;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.page-galerie .spoiler-controles .perso-button {
+    margin: 0;
+    padding: 6px 16px;
+    font-size: 0.9em;
+    border-radius: 20px;
+}
+
+/* ---------- Recherche, filtres et compteur ---------- */
+
+.galerie-outils {
+    margin: 22px auto 26px;
+    padding: 20px 22px 14px;
+    max-width: 900px;
+    background: linear-gradient(180deg, rgba(45, 43, 36, 0.96), rgba(25, 18, 10, 0.96));
+    border: 1px solid rgba(212, 175, 55, 0.6);
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.page-galerie .search-container {
+    display: flex;
+    gap: 10px;
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.page-galerie #search-input {
+    flex: 1;
+    min-width: 0;
+    max-width: none;
+    padding: 11px 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1em;
+    color: var(--creme);
+    background-color: rgba(10, 6, 2, 0.6);
+    border: 1px solid var(--or);
+    border-radius: 25px;
+    box-shadow: none;
+}
+
+.page-galerie #search-input::placeholder {
+    color: #a89a7a;
+}
+
+.page-galerie #search-input:focus {
+    outline: none;
+    border-color: var(--or-vif);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.25);
+}
+
+.page-galerie #search-button {
+    margin: 0;
+    padding: 10px 20px;
+    font-family: 'Aniron', Arial, sans-serif;
+    font-size: 0.95em;
+    white-space: nowrap;
+    color: var(--encre);
+    background: linear-gradient(180deg, var(--or-clair), var(--or) 55%, #a8842a);
+    border: 1px solid var(--or-vif);
+    border-radius: 25px;
+    box-shadow: none;
+}
+
+.page-galerie #search-button:hover {
+    color: var(--encre);
+    box-shadow: 0 4px 14px rgba(212, 175, 55, 0.45);
+}
+
+.page-galerie .gallery-filters {
+    margin: 16px auto 0;
+    gap: 8px;
+}
+
+.page-galerie .filter-label {
+    min-width: 60px;
+    text-align: right;
+    color: var(--or-clair);
+    text-shadow: none;
+}
+
+.page-galerie .filter-button {
+    padding: 5px 14px;
+    background-color: rgba(10, 6, 2, 0.5);
+    border-width: 1px;
+}
+
+.page-galerie .gallery-status {
+    margin: 12px auto 0;
+    padding: 0;
+    font-size: 0.9em;
+    color: #c9b88f;
+    background: none;
+    text-shadow: none;
+}
+
+.page-galerie .gallery-empty p {
+    background: none;
+    color: var(--creme);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+/* ---------- Vignettes ---------- */
+
+.page-galerie .gallery-grid {
+    gap: 22px;
+}
+
+.page-galerie .gallery-card {
+    padding-bottom: 14px;
+    background: linear-gradient(180deg, #2d2b24, #1a120a);
+    border: 1px solid rgba(212, 175, 55, 0.7);
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+.page-galerie .gallery-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--or-vif);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.35);
+}
+
+/* Filet doré entre le portrait et le nom */
+.page-galerie .gallery-card img {
+    border-bottom: 2px solid var(--or);
+}
+
+.page-galerie .gallery-name {
+    color: var(--or-clair);
+    line-height: 1.3;
+}
+
+.page-galerie .gallery-actor {
+    font-style: italic;
+}
+
+/* ---------- Fiche ouverte (fenêtre) ---------- */
+
+.page-galerie .bio-dialog {
+    max-width: 1040px;
+}
+
+.page-galerie .bio-dialog::backdrop {
+    background-color: rgba(10, 6, 2, 0.85);
+}
+
+.page-galerie .bio-dialog-toolbar {
+    background: linear-gradient(180deg, #2d2b24, #1f170d);
+    border-color: var(--or);
+}
+
+/* La fiche : portrait à gauche, nom et résumé à droite, sections en dessous */
+.page-galerie .bio-dialog .character {
+    display: grid;
+    grid-template-columns: minmax(200px, 300px) 1fr;
+    grid-template-rows: auto auto auto 1fr;
+    column-gap: 30px;
+    align-items: start;
+    padding: 28px 32px 30px;
+    text-align: left;
+    background: linear-gradient(180deg, #2a2219, #17100a);
+    border: 2px solid var(--or);
+    border-top: none;
+    box-shadow: none;
+}
+
+.page-galerie .bio-dialog .character > img {
+    grid-column: 1;
+    grid-row: 1 / span 4;
+    width: 100%;
+    max-width: 300px;
+    max-height: none;
+    height: auto;
+    border: 2px solid var(--or);
+    border-radius: 10px;
+    box-shadow: 0 0 24px rgba(212, 175, 55, 0.25);
+}
+
+.page-galerie .bio-dialog .character > h3,
+.page-galerie .bio-dialog .character > p,
+.page-galerie .bio-dialog .character > .bio-films {
+    grid-column: 2;
+}
+
+.page-galerie .bio-dialog .character > h3 {
+    margin: 4px 0 12px;
+    padding: 0;
+    text-align: left;
+    background: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+.page-galerie .bio-nom,
+.page-galerie .bio-dialog .character > h3 {
+    font-family: 'Aniron', Arial, sans-serif;
+    font-size: clamp(1.6em, 4vw, 2.3em);
+    line-height: 1.2;
+    color: var(--or-clair);
+}
+
+.page-galerie .bio-nom {
+    display: block;
+}
+
+.page-galerie .bio-acteur {
+    display: block;
+    margin-top: 6px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 0.45em;
+    font-style: italic;
+    color: #c9b88f;
+}
+
+.page-galerie .bio-dialog .character > p {
+    margin: 0 0 12px;
+    padding: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.12em;
+    line-height: 1.65;
+    text-align: left;
+    color: var(--creme);
+}
+
+.page-galerie .bio-dialog .character > .bio-films {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.95em;
+    color: #c9b88f;
+}
+
+.page-galerie .bio-dialog .character .bio-films a {
+    color: var(--or-clair);
+}
+
+/* Sections : une liste en accordéon, sur toute la largeur */
+.page-galerie .bio-dialog .bio-section {
+    grid-column: 1 / -1;
+    margin: 0;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.page-galerie .bio-dialog .bio-section:first-of-type {
+    margin-top: 26px;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.page-galerie .bio-dialog .bio-section h4 {
+    justify-content: flex-start;
+    gap: 12px;
+    margin: 0;
+    padding: 14px 6px;
+    font-family: 'Aniron', Arial, sans-serif;
+    font-size: 1.1em;
+    font-weight: normal;
+    color: var(--creme);
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.page-galerie .bio-dialog .bio-section h4:hover {
+    color: var(--or-vif);
+    background-color: rgba(212, 175, 55, 0.06);
+}
+
+/* Le bouton +/− passe à droite de la ligne */
+.page-galerie .bio-dialog .bio-section h4 .toggle-btn {
+    order: 3;
+    margin-left: auto;
+}
+
+.page-galerie .bio-dialog .bio-section h4 .spoiler-badge {
+    order: 2;
+}
+
+/* Contenu d'une section : parchemin */
+.page-galerie .bio-dialog .character .content {
+    margin: 0 0 16px;
+    padding: 18px 22px;
+    background: linear-gradient(180deg, #f7e6c4, #ecd3a4);
+    border: 1px solid var(--or);
+    border-radius: 8px;
+}
+
+.page-galerie .bio-dialog .character .content p,
+.page-galerie .bio-dialog .character .content li {
+    margin: 0 0 8px;
+    padding: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.02em;
+    line-height: 1.6;
+    text-align: left;
+    color: #3b2a14;
+    background: none;
+    text-shadow: none;
+}
+
+.page-galerie .bio-dialog .character .content p:last-child,
+.page-galerie .bio-dialog .character .content li:last-child {
+    margin-bottom: 0;
+}
+
+.page-galerie .bio-dialog .character .content ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style: none;
+}
+
+/* Puces en losange doré */
+.page-galerie .bio-dialog .character .content li {
+    position: relative;
+}
+
+.page-galerie .bio-dialog .character .content li::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 0.6em;
+    width: 6px;
+    height: 6px;
+    background-color: var(--or);
+    transform: rotate(45deg);
+}
+
+.page-galerie .bio-dialog .character .content strong {
+    color: #6b3d0e;
+}
+
+.page-galerie .bio-dialog .character .content .lien-auto {
+    color: #6b3d0e;
+}
+
+/* Le texte flouté reste flouté : le bouton "Révéler" garde son style */
+.page-galerie .bio-dialog .spoiler-reveal {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ---------- Petits écrans ---------- */
+
+@media (max-width: 768px) {
+    .galerie-outils {
+        padding: 16px 12px 12px;
+    }
+
+    .page-galerie .search-container {
+        flex-direction: column;
+    }
+
+    .page-galerie #search-button {
+        align-self: center;
+    }
+
+    .page-galerie .filter-label {
+        min-width: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .page-galerie .bio-dialog .character {
+        display: block;
+        padding: 20px 16px 24px;
+        text-align: center;
+    }
+
+    .page-galerie .bio-dialog .character > img {
+        display: block;
+        width: 70%;
+        max-width: 260px;
+        margin: 0 auto 16px;
+    }
+
+    .page-galerie .bio-dialog .character > h3,
+    .page-galerie .bio-dialog .character > p {
+        text-align: center;
+    }
+}
+
+/* Filtre sélectionné (la règle précédente remplace le fond doré de lotr.css) */
+.page-galerie .filter-button[aria-pressed="true"] {
+    color: var(--encre);
+    background-color: var(--or);
+    border-color: var(--or-vif);
+}
+
+/* Bandeau des spoilers lisible au-dessus de la carte */
+.page-galerie .spoiler-controles p {
+    padding: 4px 12px;
+    background-color: rgba(20, 14, 8, 0.7);
+    border-radius: 6px;
+    text-shadow: none;
+}
+
+/* Badge "Spoiler" : petit, dans la police du texte */
+.page-galerie .bio-dialog .bio-section h4 .spoiler-badge {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.62em;
+    padding: 3px 8px;
+}
+
+/* Texte des sections sur toute la largeur du parchemin (lotr.css le limite à 75 caractères) */
+.page-galerie .bio-dialog .character .content p {
+    max-width: none;
+}
+
+/* Nom de l'acteur un peu plus lisible */
+.page-galerie .bio-acteur {
+    font-size: 0.5em;
+    font-weight: normal;
+}
+
+@media (max-width: 768px) {
+    .page-galerie .bio-acteur {
+        font-size: 0.55em;
+    }
+
+    /* Le contenu des sections reste aligné à gauche, plus facile à lire */
+    .page-galerie .bio-dialog .bio-section,
+    .page-galerie .bio-dialog .character .content {
+        text-align: left;
+    }
+}
