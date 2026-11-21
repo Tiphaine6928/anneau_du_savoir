@@ -3,7 +3,6 @@ Mon site est centré sur les 3 films du Seigneur des Anneaux et les 3 films du H
 Axes d'amélioration :
  - Gérer les photos autrement (par exemple créer une base de données et mettre les photos dedans)
  - Finir les biographies/mettre d'autres personnages
- - Dans la carte, rajouter d'autres lieux importants/en modifier certains
 
 Améliorations réalisées :
  - Dans les biographies, l'utilisateur peut rechercher un personnage par son nom ou par le nom de l'acteur (sans tenir compte des majuscules ni des accents)
@@ -24,3 +23,4 @@ Améliorations réalisées :
  - Test « Quel personnage es-tu ? » (personnage.html) : 10 questions, résultat parmi les 15 personnages avec lien vers sa biographie et partage ; questions et points dans personnage-data.js
  - Page d'erreur 404 « Vous ne passerez pas ! » (404.html), affichée automatiquement par GitHub Pages quand une adresse n'existe pas
  - Protection anti-spoilers sur les pages Événements et Biographies : événements et sections « Spoiler » des biographies floutés jusqu'au clic sur « Révéler », bouton pour tout afficher ou tout flouter (choix commun aux deux pages, retenu par le navigateur ; sections protégées listées dans spoilers.js)
+ - Carte enrichie : 23 lieux (contre 6), dont Bree, la Moria, la Lothlórien, Isengard, le Gouffre de Helm, Edoras, Lacville, la Forêt Noire, la Porte Noire et la Montagne du Destin, chacun relié aux événements qui s'y passent

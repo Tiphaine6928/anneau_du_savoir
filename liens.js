@@ -32,7 +32,18 @@ const LIENS = [
     { noms: ['Minas Tirith'], url: 'carte.html#minas-tirith', titre: 'Voir Minas Tirith sur la carte' },
     { noms: ['Mordor'], url: 'carte.html#mordor', titre: 'Voir le Mordor sur la carte' },
     { noms: ['Gondor'], url: 'carte.html#gondor', titre: 'Voir le Gondor sur la carte' },
-    { noms: ['Comté'], url: 'carte.html#comte', titre: 'Voir la Comté sur la carte' }
+    { noms: ['Comté'], url: 'carte.html#comte', titre: 'Voir la Comté sur la carte' },
+    { noms: ['Montagne du Destin'], url: 'carte.html#montagne-du-destin', titre: 'Voir la Montagne du Destin sur la carte' },
+    { noms: ['Gouffre de Helm'], url: 'carte.html#gouffre-de-helm', titre: 'Voir le Gouffre de Helm sur la carte' },
+    { noms: ['Porte Noire'], url: 'carte.html#porte-noire', titre: 'Voir la Porte Noire sur la carte' },
+    { noms: ['Monts Brumeux'], url: 'carte.html#monts-brumeux', titre: 'Voir les Monts Brumeux sur la carte' },
+    { noms: ['Forêt Noire'], url: 'carte.html#foret-noire', titre: 'Voir la Forêt Noire sur la carte' },
+    { noms: ['Havres Gris'], url: 'carte.html#havres-gris', titre: 'Voir les Havres Gris sur la carte' },
+    { noms: ['Lothlórien'], url: 'carte.html#lothlorien', titre: 'Voir la Lothlórien sur la carte' },
+    { noms: ['Isengard'], url: 'carte.html#isengard', titre: 'Voir Isengard sur la carte' },
+    { noms: ['Lacville'], url: 'carte.html#lacville', titre: 'Voir Lacville sur la carte' },
+    { noms: ['Moria'], url: 'carte.html#moria', titre: 'Voir la Moria sur la carte' },
+    { noms: ['Bree'], url: 'carte.html#bree', titre: 'Voir Bree sur la carte' }
 ];
 
 // Blocs dans lesquels les liens sont ajoutés (chaque bloc a ses propres "premières mentions")
