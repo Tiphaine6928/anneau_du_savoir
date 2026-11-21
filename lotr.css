@@ -225,8 +225,9 @@ p{
 
 nav {
     background-color: rgba(255, 204, 153, 0.3);
-    padding: 30px;
+    padding: 20px;
     display: flex;
+    align-items: center;
     justify-content: center;
     border-radius: 10px;
 }
@@ -245,7 +246,10 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 20px; /* Espacement entre les boutons */
+    flex-wrap: wrap; /* Les boutons passent à la ligne au lieu de se chevaucher */
+    justify-content: center;
+    min-width: 0; /* Permet à la liste de rétrécir à côté du logo */
+    gap: 12px; /* Espacement entre les boutons */
 }
 
 nav ul li {
@@ -254,11 +258,13 @@ nav ul li {
 
 /* Bouton de navigation */
 nav ul li a {
+    display: inline-block; /* Le padding est pris en compte : pas de chevauchement */
+    white-space: nowrap; /* "Description des films" reste sur une seule ligne */
     text-decoration: none;
     color: blanchedalmond;
     font-family: 'Aniron', Arial, sans-serif; /* Police d’inspiration LOTR */
     font-size: 1em;
-    padding: 10px 20px;
+    padding: 10px 14px;
     border-radius: 5px;
     border: 2px solid blanchedalmond; /* Bordure assortie */
     background-color: rgba(0, 0, 0, 0.3); /* Fond semi-transparent */
@@ -415,4 +421,80 @@ nav ul li a.active {
     color: #f4e8c1;
     font-weight: bold;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* ---------- Menu burger (petits écrans) ---------- */
+
+/* Le bouton burger est caché sur grand écran */
+.nav-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-wrap: wrap; /* La liste des liens passe sous le logo et le burger */
+        justify-content: space-between;
+        padding: 15px;
+    }
+
+    nav .logo img {
+        margin-right: 0;
+    }
+
+    .nav-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.3);
+        border: 2px solid blanchedalmond;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    /* Les 3 barres du burger */
+    .nav-toggle span {
+        display: block;
+        width: 24px;
+        height: 3px;
+        background-color: blanchedalmond;
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Quand le menu est ouvert, le burger se transforme en croix */
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Les liens sont empilés et cachés tant que le menu est fermé */
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    nav ul.open {
+        display: flex;
+    }
+
+    nav ul li a {
+        display: block;
+        text-align: center;
+    }
+
+    nav ul li a:hover {
+        transform: none;
+    }
 }

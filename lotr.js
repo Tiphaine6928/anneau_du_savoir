@@ -107,3 +107,15 @@ if (searchInput) {
 if (searchButton) {
     searchButton.addEventListener('click', searchCharacter);
 }
+
+// Menu burger : ouvre/ferme la liste des pages sur petit écran
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.getElementById('nav-links');
+
+if (navToggle && navLinks) {
+    navToggle.addEventListener('click', function () {
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen);
+        navToggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+    });
+}
