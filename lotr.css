@@ -1135,6 +1135,7 @@ body:has(.bio-dialog[open]) {
 
 /* Sur les fonds clairs (événements, biographies, bulles de la carte) : brun foncé */
 .event .lien-auto,
+.character .lien-auto,
 .bio-films a,
 .bulle-lieu a {
     color: #6b3d0e;
@@ -1670,4 +1671,15 @@ body:has(.bio-dialog[open]) {
     color: #fff;
     background-color: #a8382c;
     border-radius: 10px;
+}
+
+/* ---------- Bestiaire ---------- */
+
+.bestiaire-intro {
+    max-width: 800px;
+    margin: 0 auto 15px;
+    padding: 10px 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1em;
+    line-height: 1.5;
 }

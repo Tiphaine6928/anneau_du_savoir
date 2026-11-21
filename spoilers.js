@@ -10,7 +10,8 @@ const SECTIONS_SPOILERS = [
     'Chronologie Personnelle',
     'Évolution du Personnage',
     'Rôle dans la quête',
-    'Anecdotes et Faits Divers'
+    'Anecdotes et Faits Divers',
+    'Rencontres importantes' // Bestiaire
 ];
 
 (function () {
@@ -139,7 +140,8 @@ const SECTIONS_SPOILERS = [
     boutonTout.type = 'button';
     boutonTout.className = 'perso-button';
     controles.append(explication, boutonTout);
-    document.querySelector('h1').after(controles);
+    // Sous le titre de la page, ou sous son introduction s'il y en a une (bestiaire)
+    (document.querySelector('.bestiaire-intro') || document.querySelector('h1')).after(controles);
 
     let modeMasque = lirePreference();
 

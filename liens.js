@@ -36,6 +36,21 @@ const LIENS = [
     { noms: ['Smaug'], url: 'biographies.html#smaug', titre: 'Biographie de Smaug' },
     { noms: ['Thranduil'], url: 'biographies.html#thranduil', titre: 'Biographie de Thranduil' },
 
+    // Créatures -> bestiaire.html#id
+    { noms: ['Uruk-hai'], url: 'bestiaire.html#uruk-hai', titre: 'Bestiaire : les Uruk-hai' },
+    { noms: ['Grand Gobelin', 'Gobelins', 'gobelins'], url: 'bestiaire.html#gobelins', titre: 'Bestiaire : les Gobelins' },
+    { noms: ['Orques', 'orques', 'Orque', 'orque'], url: 'bestiaire.html#orques', titre: 'Bestiaire : les Orques' },
+    { noms: ['Trolls', 'trolls', 'troll'], url: 'bestiaire.html#trolls', titre: 'Bestiaire : les Trolls' },
+    { noms: ['Wargs', 'wargs'], url: 'bestiaire.html#wargs', titre: 'Bestiaire : les Wargs' },
+    { noms: ['Nazgûl', 'Cavaliers noirs', 'Roi-Sorcier'], url: 'bestiaire.html#nazgul', titre: 'Bestiaire : les Nazgûl' },
+    { noms: ['Balrog'], url: 'bestiaire.html#balrog', titre: 'Bestiaire : le Balrog' },
+    { noms: ['Arachne', 'araignées', 'Araignées'], url: 'bestiaire.html#araignees', titre: 'Bestiaire : les Araignées géantes' },
+    { noms: ['Mûmakil', 'Oliphants', 'oliphants', 'oliphant'], url: 'bestiaire.html#mumakil', titre: 'Bestiaire : les Mûmakil' },
+    { noms: ['Ents', 'Ent'], url: 'bestiaire.html#ents', titre: 'Bestiaire : les Ents' },
+    { noms: ['Aigles', 'aigles'], url: 'bestiaire.html#aigles', titre: 'Bestiaire : les Grands Aigles' },
+    { noms: ['Gripoil'], url: 'bestiaire.html#mearas', titre: 'Bestiaire : les Mearas' },
+    { noms: ['Armée des Morts', 'armée des Morts', 'armée des morts'], url: 'bestiaire.html#armee-des-morts', titre: 'Bestiaire : l\'Armée des Morts' },
+
     // Lieux -> carte.html#id (la carte se centre sur le lieu)
     { noms: ['Fondcombe'], url: 'carte.html#fondcombe', titre: 'Voir Fondcombe sur la carte' },
     { noms: ['Montagne Solitaire', 'Erebor'], url: 'carte.html#montagne-solitaire', titre: 'Voir la Montagne Solitaire sur la carte' },
@@ -59,7 +74,8 @@ const LIENS = [
 // Blocs dans lesquels les liens sont ajoutés (chaque bloc a ses propres "premières mentions")
 const BLOCS_AVEC_LIENS = [
     '.film .content', // Synopsis, acteurs et équipe technique de chaque film
-    '.event'          // Chaque événement de la frise
+    '.event',         // Chaque événement de la frise
+    '.bestiaire .content' // Sections des fiches du bestiaire
 ];
 
 // Éléments dont le texte n'est jamais transformé en lien

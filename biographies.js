@@ -27,6 +27,18 @@ const FILMS_LIENS = {
     hobbit: 'synopsis.html#le-hobbit'
 };
 
+// Réglages de la galerie. Par défaut : la page Biographies. Une autre page (le Bestiaire)
+// peut définir window.GALERIE_CONFIG avant de charger ce script pour changer les libellés.
+const GALERIE = Object.assign({
+    categories: PEUPLES,        // Valeurs possibles de l'attribut data-peuple
+    libelleCategorie: 'Peuple', // Nom du premier filtre
+    singulier: 'personnage',
+    pluriel: 'personnages',
+    rechercheSur: 'personnage ni acteur', // "Aucun … ne correspond à « … »"
+    aucun: 'Aucun', // "Aucune" pour un mot féminin
+    tous: 'tous'    // "toutes" pour un mot féminin
+}, window.GALERIE_CONFIG || {});
+
 // Met en minuscules et retire les accents ("Éowyn" -> "eowyn", "Kíli" -> "kili")
 function normalizeText(text) {
     return text.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
@@ -45,7 +57,7 @@ function normalizeText(text) {
         const parts = title.textContent.split(' - ');
         const actorMatch = (parts[1] || '').match(/par (.+)$/);
         const name = parts[0].trim();
-        const actor = actorMatch ? actorMatch[1].trim() : '';
+        const actor = actorMatch ? actorMatch[1].trim() : (element.dataset.sousTitre || '');
 
         title.id = 'titre-' + element.id; // Sert de nom à la fenêtre de la fiche
 
@@ -65,7 +77,7 @@ function normalizeText(text) {
             image: element.querySelector('img').getAttribute('src'),
             peuple: element.dataset.peuple || 'autre',
             films: films,
-            search: normalizeText(name + ' ' + actor)
+            search: normalizeText(name + ' ' + actor + ' ' + (element.dataset.alias || ''))
         };
     });
 
@@ -126,7 +138,7 @@ function normalizeText(text) {
 
     const filters = document.createElement('div');
     filters.className = 'gallery-filters';
-    filters.append(createFilterGroup('Peuple', 'peuple', PEUPLES), createFilterGroup('Films', 'film', FILMS));
+    filters.append(createFilterGroup(GALERIE.libelleCategorie, 'peuple', GALERIE.categories), createFilterGroup('Films', 'film', FILMS));
 
     // Nombre de personnages affichés, annoncé aux lecteurs d'écran
     const status = document.createElement('p');
@@ -141,7 +153,7 @@ function normalizeText(text) {
     const resetButton = document.createElement('button');
     resetButton.type = 'button';
     resetButton.className = 'filter-button';
-    resetButton.textContent = 'Afficher tous les personnages';
+    resetButton.textContent = 'Afficher ' + GALERIE.tous + ' les ' + GALERIE.pluriel;
     resetButton.addEventListener('click', resetFilters);
     empty.append(emptyText, resetButton);
 
@@ -188,7 +200,7 @@ function normalizeText(text) {
 
         const badge = document.createElement('span');
         badge.className = 'gallery-badge';
-        badge.textContent = PEUPLES[character.peuple] || character.peuple;
+        badge.textContent = GALERIE.categories[character.peuple] || character.peuple;
 
         card.append(img, badge, name, actor);
         card.addEventListener('click', function () {
@@ -219,14 +231,14 @@ function normalizeText(text) {
 
         const count = visible.length;
         status.textContent = count === characters.length
-            ? count + ' personnages'
-            : count + ' personnage' + (count > 1 ? 's' : '') + ' sur ' + characters.length;
+            ? count + ' ' + GALERIE.pluriel
+            : count + ' ' + (count > 1 ? GALERIE.pluriel : GALERIE.singulier) + ' sur ' + characters.length;
 
         empty.hidden = count > 0;
         if (count === 0) {
             emptyText.textContent = state.query
-                ? 'Aucun personnage ni acteur ne correspond à « ' + searchInput.value.trim() + ' » avec ces filtres.'
-                : 'Aucun personnage ne correspond à ces filtres.';
+                ? GALERIE.aucun + ' ' + GALERIE.rechercheSur + ' ne correspond à « ' + searchInput.value.trim() + ' » avec ces filtres.'
+                : GALERIE.aucun + ' ' + GALERIE.singulier + ' ne correspond à ces filtres.';
         }
     }
 
@@ -269,8 +281,8 @@ function normalizeText(text) {
         return button;
     }
 
-    const prevButton = toolbarButton('bio-prev', 'Personnage précédent');
-    const nextButton = toolbarButton('bio-next', 'Personnage suivant');
+    const prevButton = toolbarButton('bio-prev', 'Fiche précédente');
+    const nextButton = toolbarButton('bio-next', 'Fiche suivante');
     const closeButton = toolbarButton('bio-close', 'Fermer la fiche');
     closeButton.textContent = '✕';
     const position = document.createElement('span');
@@ -304,8 +316,8 @@ function normalizeText(text) {
         nextButton.hidden = single;
         prevButton.textContent = '← ' + prev.name;
         nextButton.textContent = next.name + ' →';
-        prevButton.setAttribute('aria-label', 'Personnage précédent : ' + prev.name);
-        nextButton.setAttribute('aria-label', 'Personnage suivant : ' + next.name);
+        prevButton.setAttribute('aria-label', 'Fiche précédente : ' + prev.name);
+        nextButton.setAttribute('aria-label', 'Fiche suivante : ' + next.name);
         prevButton.onclick = function () { openCharacter(prev); };
         nextButton.onclick = function () { openCharacter(next); };
         position.textContent = (index + 1) + ' / ' + list.length;

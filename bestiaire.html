@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bestiaire de la Terre du Milieu – L'Anneau du Savoir</title>
+    <meta name="description" content="Orques, Uruk-hai, Nazgûl, Balrog, Ents, Grands Aigles… Le bestiaire des créatures du Seigneur des Anneaux et du Hobbit.">
+    <link rel="stylesheet" href="lotr.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body class="background-image">
+    <script src="nav.js"></script>
+
+    <div class="character-biography bestiaire">
+        <h1>Bestiaire de la Terre du Milieu</h1>
+        <p class="bestiaire-intro">Des profondeurs de la Moria aux sommets des Monts Brumeux, découvrez les créatures qui peuplent les films du Seigneur des Anneaux et du Hobbit.</p>
+
+        <div class="search-container">
+            <input type="search" id="search-input" placeholder="Créature..." aria-label="Rechercher une créature">
+            <button type="button" id="search-button">Go !</button>
+        </div>
+        <div id="orques" class="character" data-peuple="ombre" data-films="sda hobbit" data-sous-titre="Soldats de Sauron" data-alias="orcs orc">
+            <img src="images/bestiaire-orques.webp" alt="Les Orques" width="600" height="800" loading="lazy" decoding="async">
+            <h3>Les Orques</h3>
+            <p>Soldats de Sauron</p>
+
+            <div class="bio-section">
+                <h4>
+                    Description
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="description-orques">+</button>
+                </h4>
+                <div id="description-orques" class="content">
+                    <p>Créatures cruelles au service de Sauron, que l'on dit issues d'Elfes corrompus par Morgoth au cours des premiers âges. Elles détestent la lumière du soleil et se déplacent en grandes bandes.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Où les trouver
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="lieux-orques">+</button>
+                </h4>
+                <div id="lieux-orques" class="content">
+                    <p>Dans tout le Mordor, mais aussi dans la Moria et dans les Monts Brumeux.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Rencontres importantes
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="rencontres-orques">+</button>
+                </h4>
+                <div id="rencontres-orques" class="content">
+                    <ul>
+                        <li>Ils attaquent la Communauté de l'Anneau dans les galeries de la Moria.</li>
+                        <li>Les armées d'orques du Mordor assiègent Minas Tirith et combattent aux Champs du Pelennor.</li>
+                        <li>Dans Le Hobbit, Azog, le chef des orques, traque Thorin et sa compagnie.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Le saviez-vous ?
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="savoir-orques">+</button>
+                </h4>
+                <div id="savoir-orques" class="content">
+                    <ul>
+                        <li>Tolkien a emprunté le mot « orc » à l'anglais ancien, où il désignait un démon.</li>
+                        <li>Pour les films, les maquilleurs ont fabriqué des centaines de prothèses et de masques d'orques.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="uruk-hai" class="character" data-peuple="ombre" data-films="sda" data-sous-titre="L&#x27;armée de Saroumane" data-alias="uruks uruk">
+            <img src="images/bestiaire-uruk-hai.webp" alt="Les Uruk-hai" width="600" height="800" loading="lazy" decoding="async">
+            <h3>Les Uruk-hai</h3>
+            <p>L'armée de Saroumane</p>
+
+            <div class="bio-section">
+                <h4>
+                    Description
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="description-uruk-hai">+</button>
+                </h4>
+                <div id="description-uruk-hai" class="content">
+                    <p>Orques plus grands, plus forts et plus disciplinés que les autres, capables de supporter la lumière du soleil. Saroumane en lève une armée pour servir ses propres ambitions.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Où les trouver
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="lieux-uruk-hai">+</button>
+                </h4>
+                <div id="lieux-uruk-hai" class="content">
+                    <p>Isengard, où ils sont créés, puis le Rohan, jusqu'au Gouffre de Helm.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Rencontres importantes
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="rencontres-uruk-hai">+</button>
+                </h4>
+                <div id="rencontres-uruk-hai" class="content">
+                    <ul>
+                        <li>À Amon Hen, ils capturent Merry et Pippin, et Boromir tombe en les défendant.</li>
+                        <li>Une immense armée d'Uruk-hai donne l'assaut au Gouffre de Helm.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Le saviez-vous ?
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="savoir-uruk-hai">+</button>
+                </h4>
+                <div id="savoir-uruk-hai" class="content">
+                    <ul>
+                        <li>Dans les films, ils naissent de fosses de boue creusées sous Isengard.</li>
+                        <li>La main blanche peinte sur leurs armures est le symbole de Saroumane.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="gobelins" class="character" data-peuple="ombre" data-films="hobbit" data-sous-titre="Le peuple des cavernes" data-alias="gobelin grand gobelin">
+            <img src="images/bestiaire-gobelins.webp" alt="Les Gobelins" width="600" height="800" loading="lazy" decoding="async">
+            <h3>Les Gobelins</h3>
+            <p>Le peuple des cavernes</p>
+
+            <div class="bio-section">
+                <h4>
+                    Description
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="description-gobelins">+</button>
+                </h4>
+                <div id="description-gobelins" class="content">
+                    <p>Orques des Monts Brumeux, qui vivent dans un labyrinthe de grottes et de tunnels sous les montagnes, sous les ordres du Grand Gobelin.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Où les trouver
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="lieux-gobelins">+</button>
+                </h4>
+                <div id="lieux-gobelins" class="content">
+                    <p>Sous les Monts Brumeux, près du col emprunté par la compagnie de Thorin.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Rencontres importantes
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="rencontres-gobelins">+</button>
+                </h4>
+                <div id="rencontres-gobelins" class="content">
+                    <ul>
+                        <li>Ils capturent Thorin et sa compagnie, qui s'étaient abrités dans une grotte.</li>
+                        <li>C'est en fuyant leurs galeries que Bilbon trouve l'Anneau et rencontre Gollum.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Le saviez-vous ?
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="savoir-gobelins">+</button>
+                </h4>
+                <div id="savoir-gobelins" class="content">
+                    <ul>
+                        <li>Chez Tolkien, « gobelin » et « orque » désignent en fait des créatures de la même race.</li>
+                        <li>Le Grand Gobelin est joué par Barry Humphries, grâce à la capture de mouvement.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="trolls" class="character" data-peuple="ombre" data-films="sda hobbit" data-sous-titre="Les géants de pierre" data-alias="troll olog-hai">
+            <img src="images/bestiaire-trolls.webp" alt="Les Trolls" width="600" height="800" loading="lazy" decoding="async">
+            <h3>Les Trolls</h3>
+            <p>Les géants de pierre</p>
+
+            <div class="bio-section">
+                <h4>
+                    Description
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="description-trolls">+</button>
+                </h4>
+                <div id="description-trolls" class="content">
+                    <p>Énormes créatures d'une force colossale, mais peu intelligentes. Les trolls des montagnes se changent en pierre à la lumière du jour.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Où les trouver
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="lieux-trolls">+</button>
+                </h4>
+                <div id="lieux-trolls" class="content">
+                    <p>Le repaire des Trolls, la Moria et les armées du Mordor.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Rencontres importantes
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="rencontres-trolls">+</button>
+                </h4>
+                <div id="rencontres-trolls" class="content">
+                    <ul>
+                        <li>Dans Le Hobbit, trois trolls capturent la compagnie de Thorin ; Gandalf les pétrifie au lever du soleil.</li>
+                        <li>Un troll des cavernes attaque la Communauté dans la Moria.</li>
+                        <li>Des trolls combattent dans les armées de Sauron jusqu'à la Porte Noire.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Le saviez-vous ?
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="savoir-trolls">+</button>
+                </h4>
+                <div id="savoir-trolls" class="content">
+                    <ul>
+                        <li>Les trois trolls du Hobbit s'appellent Bert, Bill et Tom.</li>
+                        <li>Sauron a créé les Olog-hai, des trolls capables de supporter le soleil.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="wargs" class="character" data-peuple="ombre" data-films="sda hobbit" data-sous-titre="Les loups géants" data-alias="warg loups">
+            <img src="images/bestiaire-wargs.webp" alt="Les Wargs" width="600" height="800" loading="lazy" decoding="async">
+            <h3>Les Wargs</h3>
+            <p>Les loups géants</p>
+
+            <div class="bio-section">
+                <h4>
+                    Description
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="description-wargs">+</button>
+                </h4>
+                <div id="description-wargs" class="content">
+                    <p>Loups géants, intelligents et féroces, alliés des orques qui les chevauchent au combat.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Où les trouver
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="lieux-wargs">+</button>
+                </h4>
+                <div id="lieux-wargs" class="content">
+                    <p>Les Monts Brumeux et les plaines du Rohan.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Rencontres importantes
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="rencontres-wargs">+</button>
+                </h4>
+                <div id="rencontres-wargs" class="content">
+                    <ul>
+                        <li>Ils encerclent la compagnie de Thorin, réfugiée dans les arbres, avant l'arrivée des Aigles.</li>
+                        <li>Ils attaquent le peuple du Rohan en route vers le Gouffre de Helm ; Aragorn tombe d'une falaise pendant le combat.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Le saviez-vous ?
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="savoir-wargs">+</button>
+                </h4>
+                <div id="savoir-wargs" class="content">
+                    <ul>
+                        <li>Dans Le Seigneur des Anneaux, les films leur donnent une allure proche de la hyène ; dans Le Hobbit, ils ressemblent davantage à des loups.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="nazgul" class="character" data-peuple="ombre" data-films="sda hobbit" data-sous-titre="Les Spectres de l&#x27;Anneau" data-alias="cavaliers noirs spectres roi-sorcier">
+            <img src="images/bestiaire-nazgul.webp" alt="Les Nazgûl" width="600" height="800" loading="lazy" decoding="async">
+            <h3>Les Nazgûl</h3>
+            <p>Les Spectres de l'Anneau</p>
+
+            <div class="bio-section">
+                <h4>
+                    Description
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="description-nazgul">+</button>
+                </h4>
+                <div id="description-nazgul" class="content">
+                    <p>Neuf rois des Hommes, corrompus par les anneaux de pouvoir que Sauron leur avait offerts, devenus des spectres. Leur chef est le Roi-Sorcier d'Angmar.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Où les trouver
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="lieux-nazgul">+</button>
+                </h4>
+                <div id="lieux-nazgul" class="content">
+                    <p>Minas Morgul et le Mordor ; ils parcourent aussi la Comté et Bree à la recherche de l'Anneau.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Rencontres importantes
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="rencontres-nazgul">+</button>
+                </h4>
+                <div id="rencontres-nazgul" class="content">
+                    <ul>
+                        <li>Ils traquent Frodon depuis la Comté jusqu'au gué de Fondcombe.</li>
+                        <li>Au mont Venteux, le Roi-Sorcier blesse Frodon d'une lame de Morgul.</li>
+                        <li>Aux Champs du Pelennor, le Roi-Sorcier est vaincu par Éowyn, aidée de Merry.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Le saviez-vous ?
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="savoir-nazgul">+</button>
+                </h4>
+                <div id="savoir-nazgul" class="content">
+                    <ul>
+                        <li>Selon une prophétie, le Roi-Sorcier ne peut être tué par « aucun homme ».</li>
+                        <li>Dans Le Hobbit, ils réapparaissent à Dol Guldur.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="betes-ailees" class="character" data-peuple="ombre" data-films="sda" data-sous-titre="Montures des Nazgûl" data-alias="bete ailee fell beasts">
+            <img src="images/bestiaire-betes-ailees.webp" alt="Les Bêtes ailées" width="600" height="800" loading="lazy" decoding="async">
+            <h3>Les Bêtes ailées</h3>
+            <p>Montures des Nazgûl</p>
+
+            <div class="bio-section">
+                <h4>
+                    Description
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="description-betes-ailees">+</button>
+                </h4>
+                <div id="description-betes-ailees" class="content">
+                    <p>Grandes créatures volantes et terrifiantes, que les Nazgûl chevauchent après avoir perdu leurs chevaux.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Où les trouver
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="lieux-betes-ailees">+</button>
+                </h4>
+                <div id="lieux-betes-ailees" class="content">
+                    <p>Le ciel du Mordor et du Gondor, jusqu'au-dessus de Minas Tirith.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Rencontres importantes
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="rencontres-betes-ailees">+</button>
+                </h4>
+                <div id="rencontres-betes-ailees" class="content">
+                    <ul>
+                        <li>Elles survolent Frodon, Sam et Gollum dans les Marais des Morts.</li>
+                        <li>Elles attaquent Minas Tirith et les Champs du Pelennor ; Éowyn tranche la tête de celle du Roi-Sorcier.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Le saviez-vous ?
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="savoir-betes-ailees">+</button>
+                </h4>
+                <div id="savoir-betes-ailees" class="content">
+                    <ul>
+                        <li>Tolkien ne leur donne pas de nom : on les appelle souvent « Fell beasts » en anglais.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="balrog" class="character" data-peuple="ombre" data-films="sda" data-sous-titre="Le Fléau de Durin" data-alias="fleau de durin">
+            <img src="images/bestiaire-balrog.webp" alt="Le Balrog" width="600" height="800" loading="lazy" decoding="async">
+            <h3>Le Balrog</h3>
+            <p>Le Fléau de Durin</p>
+
+            <div class="bio-section">
+                <h4>
+                    Description
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="description-balrog">+</button>
+                </h4>
+                <div id="description-balrog" class="content">
+                    <p>Démon de feu et d'ombre venu des premiers âges, un esprit corrompu par Morgoth. Réveillé par les Nains, qui avaient creusé trop profond, il hante la Moria depuis des siècles.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Où les trouver
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="lieux-balrog">+</button>
+                </h4>
+                <div id="lieux-balrog" class="content">
+                    <p>Les profondeurs de la Moria.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Rencontres importantes
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="rencontres-balrog">+</button>
+                </h4>
+                <div id="rencontres-balrog" class="content">
+                    <ul>
+                        <li>Sur le pont de Khazad-dûm, Gandalf lui barre la route : « Vous ne passerez pas ! »</li>
+                        <li>Gandalf et le Balrog tombent ensemble dans l'abîme et combattent jusqu'au sommet d'une montagne, où Gandalf le vainc.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Le saviez-vous ?
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="savoir-balrog">+</button>
+                </h4>
+                <div id="savoir-balrog" class="content">
+                    <ul>
+                        <li>Les Nains l'appellent le Fléau de Durin.</li>
+                        <li>Gandalf et le Balrog sont tous deux des Maiar, des esprits venus avant la création du monde.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="araignees" class="character" data-peuple="ombre" data-films="sda hobbit" data-sous-titre="Arachne et sa descendance" data-alias="arachne araignee">
+            <img src="images/bestiaire-araignees.webp" alt="Les Araignées géantes" width="600" height="800" loading="lazy" decoding="async">
+            <h3>Les Araignées géantes</h3>
+            <p>Arachne et sa descendance</p>
+
+            <div class="bio-section">
+                <h4>
+                    Description
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="description-araignees">+</button>
+                </h4>
+                <div id="description-araignees" class="content">
+                    <p>Araignées monstrueuses descendant d'Ungoliant. La plus terrible d'entre elles, Arachne, garde le col de Cirith Ungol, à l'entrée du Mordor.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Où les trouver
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="lieux-araignees">+</button>
+                </h4>
+                <div id="lieux-araignees" class="content">
+                    <p>La Forêt Noire et le col de Cirith Ungol, dans le Mordor.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Rencontres importantes
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="rencontres-araignees">+</button>
+                </h4>
+                <div id="rencontres-araignees" class="content">
+                    <ul>
+                        <li>Dans la Forêt Noire, elles capturent les Nains ; Bilbon les sauve, armé de son épée.</li>
+                        <li>Gollum attire Frodon et Sam dans l'antre d'Arachne ; Sam la blesse et la met en fuite.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Le saviez-vous ?
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="savoir-araignees">+</button>
+                </h4>
+                <div id="savoir-araignees" class="content">
+                    <ul>
+                        <li>Bilbon nomme son épée Dard après son combat contre les araignées.</li>
+                        <li>Ungoliant, l'ancêtre d'Arachne, avait aidé Morgoth à détruire les Arbres de Valinor.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="mumakil" class="character" data-peuple="ombre" data-films="sda" data-sous-titre="Les oliphants" data-alias="oliphants oliphant mumak">
+            <img src="images/bestiaire-mumakil.webp" alt="Les Mûmakil" width="600" height="800" loading="lazy" decoding="async">
+            <h3>Les Mûmakil</h3>
+            <p>Les oliphants</p>
+
+            <div class="bio-section">
+                <h4>
+                    Description
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="description-mumakil">+</button>
+                </h4>
+                <div id="description-mumakil" class="content">
+                    <p>Gigantesques éléphants du Sud, montés par les Haradrim, qui portent de véritables tours de guerre sur leur dos.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Où les trouver
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="lieux-mumakil">+</button>
+                </h4>
+                <div id="lieux-mumakil" class="content">
+                    <p>L'Ithilien et les Champs du Pelennor.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Rencontres importantes
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="rencontres-mumakil">+</button>
+                </h4>
+                <div id="rencontres-mumakil" class="content">
+                    <ul>
+                        <li>Sam aperçoit un oliphant en Ithilien, pendant l'embuscade des hommes de Faramir.</li>
+                        <li>Ils chargent aux Champs du Pelennor ; Legolas en abat un à lui seul.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Le saviez-vous ?
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="savoir-mumakil">+</button>
+                </h4>
+                <div id="savoir-mumakil" class="content">
+                    <ul>
+                        <li>Gimli insiste pour que l'oliphant abattu par Legolas ne compte que pour un seul ennemi.</li>
+                        <li>Les hobbits connaissent une comptine sur l'oliphant, qu'ils prennent pour une légende.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="dragons" class="character" data-peuple="ombre" data-films="hobbit" data-sous-titre="Les fléaux d&#x27;or et de feu" data-alias="dragon">
+            <img src="images/bestiaire-dragons.webp" alt="Les Dragons" width="600" height="800" loading="lazy" decoding="async">
+            <h3>Les Dragons</h3>
+            <p>Les fléaux d'or et de feu</p>
+
+            <div class="bio-section">
+                <h4>
+                    Description
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="description-dragons">+</button>
+                </h4>
+                <div id="description-dragons" class="content">
+                    <p>Immenses reptiles cracheurs de feu créés par Morgoth, avides d'or et de trésors. À l'époque du Hobbit, Smaug est le dernier des grands dragons.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Où les trouver
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="lieux-dragons">+</button>
+                </h4>
+                <div id="lieux-dragons" class="content">
+                    <p>La Montagne Solitaire, et autrefois les landes du Nord.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Rencontres importantes
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="rencontres-dragons">+</button>
+                </h4>
+                <div id="rencontres-dragons" class="content">
+                    <ul>
+                        <li>Smaug chasse les Nains d'Erebor et s'empare de leur trésor.</li>
+                        <li>Réveillé par Bilbon et les Nains, il incendie Lacville avant d'être abattu par Bard.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Le saviez-vous ?
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="savoir-dragons">+</button>
+                </h4>
+                <div id="savoir-dragons" class="content">
+                    <ul>
+                        <li>Le premier dragon de l'histoire de la Terre du Milieu s'appelait Glaurung.</li>
+                        <li>Les dragons de Tolkien parlent, aiment les énigmes et la flatterie.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="ents" class="character" data-peuple="libres" data-films="sda" data-sous-titre="Les Bergers des arbres" data-alias="ent sylvebarbe bergers">
+            <img src="images/bestiaire-ents.webp" alt="Les Ents" width="600" height="800" loading="lazy" decoding="async">
+            <h3>Les Ents</h3>
+            <p>Les Bergers des arbres</p>
+
+            <div class="bio-section">
+                <h4>
+                    Description
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="description-ents">+</button>
+                </h4>
+                <div id="description-ents" class="content">
+                    <p>Gardiens des forêts qui ressemblent à des arbres, parmi les êtres les plus anciens de la Terre du Milieu. Lents à se décider, ils deviennent redoutables une fois en colère.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Où les trouver
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="lieux-ents">+</button>
+                </h4>
+                <div id="lieux-ents" class="content">
+                    <p>La forêt de Fangorn.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Rencontres importantes
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="rencontres-ents">+</button>
+                </h4>
+                <div id="rencontres-ents" class="content">
+                    <ul>
+                        <li>Sylvebarbe recueille Merry et Pippin, échappés des Uruk-hai.</li>
+                        <li>Les Ents se réunissent, puis attaquent Isengard et l'inondent en brisant un barrage.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Le saviez-vous ?
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="savoir-ents">+</button>
+                </h4>
+                <div id="savoir-ents" class="content">
+                    <ul>
+                        <li>Sylvebarbe est le plus vieux des Ents.</li>
+                        <li>Les Ents ont perdu les Ents-femmes il y a très longtemps, et les cherchent encore.</li>
+                        <li>La boisson des Ents fait grandir Merry et Pippin.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="aigles" class="character" data-peuple="libres" data-films="sda hobbit" data-sous-titre="Les messagers du ciel" data-alias="aigle gwaihir">
+            <img src="images/bestiaire-aigles.webp" alt="Les Grands Aigles" width="600" height="800" loading="lazy" decoding="async">
+            <h3>Les Grands Aigles</h3>
+            <p>Les messagers du ciel</p>
+
+            <div class="bio-section">
+                <h4>
+                    Description
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="description-aigles">+</button>
+                </h4>
+                <div id="description-aigles" class="content">
+                    <p>Oiseaux immenses et intelligents, qui viennent en aide aux peuples libres aux moments les plus désespérés. Leur seigneur s'appelle Gwaihir.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Où les trouver
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="lieux-aigles">+</button>
+                </h4>
+                <div id="lieux-aigles" class="content">
+                    <p>Les sommets des Monts Brumeux.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Rencontres importantes
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="rencontres-aigles">+</button>
+                </h4>
+                <div id="rencontres-aigles" class="content">
+                    <ul>
+                        <li>Ils sauvent la compagnie de Thorin, encerclée par les orques et les wargs.</li>
+                        <li>Gwaihir délivre Gandalf, prisonnier au sommet de la tour d'Orthanc.</li>
+                        <li>Ils arrivent à la bataille de la Porte Noire, puis sauvent Frodon et Sam sur la Montagne du Destin.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Le saviez-vous ?
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="savoir-aigles">+</button>
+                </h4>
+                <div id="savoir-aigles" class="content">
+                    <ul>
+                        <li>« Pourquoi les Aigles n'ont-ils pas simplement porté l'Anneau jusqu'au Mordor ? » est l'une des questions les plus débattues par les fans.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="mearas" class="character" data-peuple="libres" data-films="sda" data-sous-titre="Gripoil et les chevaux des rois" data-alias="gripoil chevaux">
+            <img src="images/bestiaire-mearas.webp" alt="Les Mearas" width="600" height="800" loading="lazy" decoding="async">
+            <h3>Les Mearas</h3>
+            <p>Gripoil et les chevaux des rois</p>
+
+            <div class="bio-section">
+                <h4>
+                    Description
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="description-mearas">+</button>
+                </h4>
+                <div id="description-mearas" class="content">
+                    <p>Chevaux exceptionnels du Rohan, rapides et intelligents, qui ne se laissent monter que par les rois. Gripoil, le plus grand d'entre eux, choisit de porter Gandalf.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Où les trouver
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="lieux-mearas">+</button>
+                </h4>
+                <div id="lieux-mearas" class="content">
+                    <p>Les plaines du Rohan, autour d'Edoras.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Rencontres importantes
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="rencontres-mearas">+</button>
+                </h4>
+                <div id="rencontres-mearas" class="content">
+                    <ul>
+                        <li>Gandalf appelle Gripoil dans les plaines du Rohan.</li>
+                        <li>Gandalf arrive au Gouffre de Helm à l'aube, monté sur Gripoil, avec les cavaliers d'Éomer.</li>
+                        <li>Gripoil emmène Gandalf et Pippin jusqu'à Minas Tirith.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Le saviez-vous ?
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="savoir-mearas">+</button>
+                </h4>
+                <div id="savoir-mearas" class="content">
+                    <ul>
+                        <li>Gripoil s'appelle Shadowfax en version originale.</li>
+                        <li>Les Mearas descendent de Felaróf, le cheval d'Eorl le Jeune, fondateur du Rohan.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="armee-des-morts" class="character" data-peuple="libres" data-films="sda" data-sous-titre="Les Parjures de la Montagne" data-alias="morts parjures dunharrow">
+            <img src="images/bestiaire-armee-des-morts.webp" alt="L&#x27;Armée des Morts" width="600" height="800" loading="lazy" decoding="async">
+            <h3>L'Armée des Morts</h3>
+            <p>Les Parjures de la Montagne</p>
+
+            <div class="bio-section">
+                <h4>
+                    Description
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="description-armee-des-morts">+</button>
+                </h4>
+                <div id="description-armee-des-morts" class="content">
+                    <p>Esprits des Hommes des Montagnes, maudits par Isildur pour avoir trahi leur serment. Ils hantent les Sentiers des Morts, sous la montagne.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Où les trouver
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="lieux-armee-des-morts">+</button>
+                </h4>
+                <div id="lieux-armee-des-morts" class="content">
+                    <p>Les Sentiers des Morts, près d'Edoras, puis le Gondor.</p>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Rencontres importantes
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="rencontres-armee-des-morts">+</button>
+                </h4>
+                <div id="rencontres-armee-des-morts" class="content">
+                    <ul>
+                        <li>Aragorn, Legolas et Gimli s'aventurent sur les Sentiers des Morts.</li>
+                        <li>En tant qu'héritier d'Isildur, Aragorn les appelle à tenir leur serment, et ils balaient les armées du Mordor.</li>
+                        <li>Aragorn les libère ensuite de leur malédiction.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <h4>
+                    Le saviez-vous ?
+                    <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="savoir-armee-des-morts">+</button>
+                </h4>
+                <div id="savoir-armee-des-morts" class="content">
+                    <ul>
+                        <li>Dans le livre, ils combattent à Pelargir et non aux Champs du Pelennor.</li>
+                        <li>Leur roi a juré fidélité à Isildur avant de refuser de combattre à ses côtés.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p id="noteFinale">Site Web fait par Tiphaine Chapuis - École Ada Tech School</p>
+    <script>
+        // Libellés de la galerie pour le bestiaire (voir biographies.js)
+        window.GALERIE_CONFIG = {
+            categories: { ombre: "L'Ombre", libres: 'Peuples libres' },
+            libelleCategorie: 'Camp',
+            singulier: 'créature',
+            pluriel: 'créatures',
+            rechercheSur: 'créature',
+            aucun: 'Aucune',
+            tous: 'toutes'
+        };
+    </script>
+    <script src="liens.js"></script>
+    <script src="lotr.js"></script>
+    <script src="spoilers.js"></script>
+    <script src="biographies.js"></script>
+</body>
+</html>
