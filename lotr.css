@@ -162,7 +162,8 @@ strong {
 
 .character-biography .character {
     display: inline-block;
-    width: 1000px; /* Largeur fixe pour chaque bloc */
+    width: 100%;
+    max-width: 1000px; /* 1000px maximum, mais rétrécit sur petit écran */
     min-height: 400px; /* Hauteur minimale pour chaque bloc */
     margin: 10px;
     padding: 20px;
@@ -286,6 +287,7 @@ nav ul li a.active {
 
 .description {
     font-size: 40px;
+    overflow-wrap: break-word; /* Coupe un mot trop long plutôt que de déborder */
 }
 
 #description1, #description2, #description3 {
@@ -418,6 +420,7 @@ nav ul li a.active {
 #search-message {
     margin: 10px 0 0;
     min-height: 1.2em;
+    background: none; /* Pas de bande vide quand il n'y a pas de message */
     color: #f4e8c1;
     font-weight: bold;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
@@ -496,5 +499,42 @@ nav ul li a.active {
 
     nav ul li a:hover {
         transform: none;
+    }
+}
+
+/* ---------- Accueil et biographies sur petit écran ---------- */
+
+@media (max-width: 768px) {
+    .description {
+        font-size: 26px;
+    }
+
+    .character-biography .character {
+        margin: 10px 0;
+        padding: 15px;
+    }
+
+    /* Le portrait prend plus de place quand l'écran est étroit */
+    .character-biography .character img {
+        max-width: 60%;
+    }
+
+    /* La barre de recherche et son bouton s'empilent */
+    #search-button {
+        margin: 10px 0 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .description {
+        font-size: 20px;
+    }
+
+    .character-biography .character {
+        padding: 10px;
+    }
+
+    .character-biography .character img {
+        max-width: 80%;
     }
 }
