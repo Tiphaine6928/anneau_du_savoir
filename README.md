@@ -25,3 +25,4 @@ Améliorations réalisées :
  - Protection anti-spoilers sur les pages Événements et Biographies : événements et sections « Spoiler » des biographies floutés jusqu'au clic sur « Révéler », bouton pour tout afficher ou tout flouter (choix commun aux deux pages, retenu par le navigateur ; sections protégées listées dans spoilers.js)
  - Carte enrichie : 23 lieux (contre 6), dont Bree, la Moria, la Lothlórien, Isengard, le Gouffre de Helm, Edoras, Lacville, la Forêt Noire, la Porte Noire et la Montagne du Destin, chacun relié aux événements qui s'y passent
  - Bestiaire (bestiaire.html) : 15 créatures (Orques, Uruk-hai, Nazgûl, Balrog, Ents, Grands Aigles…) en galerie, avec filtres par camp et par film, fiches détaillées et liens vers les biographies et la carte
+ - Nouvelle page d'accueil : Anneau animé et titre doré, citation et personnage à l'honneur tirés au hasard, cartes vers toutes les sections, présentation des deux trilogies (styles dans accueil.css)
