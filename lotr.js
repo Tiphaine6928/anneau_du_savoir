@@ -36,12 +36,20 @@ function normalizeText(text) {
 
 // Construit la liste des personnages à partir des biographies présentes dans la page :
 // un nouveau personnage ajouté dans biographies.html est donc trouvé automatiquement.
-// Le nom est la partie du titre avant " - " ("Frodon Sacquet - Incarné par..." -> "Frodon Sacquet").
+// Le titre a la forme "Frodon Sacquet - Incarné par Elijah Wood" :
+// le nom est la partie avant " - " et l'acteur la partie après "par ".
 function getCharacters() {
     return Array.from(document.querySelectorAll('.character')).map(function (element) {
         const title = element.querySelector('h3');
-        const name = title ? title.textContent.split(' - ')[0] : element.id;
-        return { element: element, name: normalizeText(name) };
+        const titleText = title ? title.textContent : element.id;
+        const parts = titleText.split(' - ');
+        const actorMatch = (parts[1] || '').match(/par (.+)$/);
+
+        return {
+            element: element,
+            name: normalizeText(parts[0]),
+            actor: actorMatch ? normalizeText(actorMatch[1]) : ''
+        };
     });
 }
 
@@ -58,12 +66,18 @@ function searchCharacter() {
 
     // Une recherche vide ne doit rien faire
     if (filter === '') {
-        showSearchMessage('Veuillez saisir le nom d\'un personnage.');
+        showSearchMessage('Veuillez saisir le nom d\'un personnage ou d\'un acteur.');
         return;
     }
 
-    const found = getCharacters().find(function (character) {
+    const characters = getCharacters();
+
+    // On cherche d'abord parmi les noms de personnages, puis parmi les acteurs :
+    // "sam" trouve donc Sam avant un acteur dont le nom contiendrait "sam".
+    const found = characters.find(function (character) {
         return character.name.includes(filter);
+    }) || characters.find(function (character) {
+        return character.actor.includes(filter);
     });
 
     if (found) {
@@ -73,7 +87,7 @@ function searchCharacter() {
         history.replaceState(null, '', '#' + found.element.id);
         found.element.scrollIntoView({ behavior: 'smooth' });
     } else {
-        showSearchMessage('Aucun personnage trouvé pour « ' + input.value.trim() + ' ».');
+        showSearchMessage('Aucun personnage ni acteur trouvé pour « ' + input.value.trim() + ' ».');
     }
 }
 
