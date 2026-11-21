@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        // Page affichée par l'hébergeur quand une adresse n'existe pas (erreur 404).
+        // Elle peut être affichée à n'importe quelle adresse, même dans un "sous-dossier"
+        // qui n'existe pas (ex. /anneau_du_savoir/films/gandalf). On indique donc au
+        // navigateur où se trouve la racine du site, pour que lotr.css, les images et les
+        // liens du menu fonctionnent partout.
+        (function () {
+            if (window.location.protocol === 'file:') {
+                return; // Page ouverte depuis l'ordinateur : les chemins relatifs suffisent
+            }
+            const segments = window.location.pathname.split('/').filter(Boolean);
+            // Sur GitHub Pages, un projet est publié dans un dossier à son nom :
+            // https://pseudo.github.io/anneau_du_savoir/
+            const racine = window.location.hostname.endsWith('.github.io') && segments.length
+                ? '/' + segments[0] + '/'
+                : '/';
+            const base = document.createElement('base');
+            base.href = racine;
+            document.head.appendChild(base);
+        })();
+    </script>
+    <title>Page introuvable – L'Anneau du Savoir</title>
+    <meta name="description" content="Cette page n'existe pas sur L'Anneau du Savoir.">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="lotr.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body class="background-image">
+    <script src="nav.js"></script>
+
+    <main class="page-404">
+        <img class="page-404-image" src="images/gandalf2.webp" alt="Gandalf, bâton levé, barre le passage" width="480" height="840">
+
+        <div class="page-404-text">
+            <p class="page-404-code" aria-hidden="true">404</p>
+            <h1>Vous ne passerez pas&nbsp;!</h1>
+            <p class="page-404-lead">La page que vous cherchez n'existe pas… ou s'est perdue quelque part dans les Mines de la Moria.</p>
+            <p class="page-404-hint">Vérifiez l'adresse, ou reprenez la route depuis l'un de ces chemins&nbsp;:</p>
+
+            <ul class="page-404-links">
+                <li><a class="perso-button perso-button-main" href="lotr.html">Retourner à l'accueil</a></li>
+                <li><a class="perso-button" href="biographies.html">Les biographies</a></li>
+                <li><a class="perso-button" href="carte.html">La carte</a></li>
+                <li><a class="perso-button" href="quiz.html">Le quiz</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <p id="noteFinale">Site Web fait par Tiphaine Chapuis - École Ada Tech School</p>
+    <script src="lotr.js"></script>
+</body>
+</html>

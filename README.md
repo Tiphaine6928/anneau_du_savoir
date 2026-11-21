@@ -22,3 +22,4 @@ Améliorations réalisées :
  - Biographies en galerie : vignettes, filtres par peuple et par film, recherche pendant la frappe, fiche complète dans une fenêtre avec personnage précédent/suivant et lien partageable (biographies.html#gimli)
  - Liens entre les pages : les personnages et les lieux cités dans les synopsis et les événements mènent à leur biographie ou à la carte, les bulles de la carte listent les événements du lieu, chaque biographie indique dans quels films le personnage apparaît (liste des liens dans liens.js)
  - Test « Quel personnage es-tu ? » (personnage.html) : 10 questions, résultat parmi les 15 personnages avec lien vers sa biographie et partage ; questions et points dans personnage-data.js
+ - Page d'erreur 404 « Vous ne passerez pas ! » (404.html), affichée automatiquement par GitHub Pages quand une adresse n'existe pas

@@ -1470,3 +1470,106 @@ body:has(.bio-dialog[open]) {
 #description3 a {
     color: #ffd98a;
 }
+
+/* ---------- Page d'erreur 404 « Vous ne passerez pas ! » ---------- */
+
+.page-404 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Gandalf barre le passage, avec une lueur blanche autour de lui */
+.page-404-image {
+    width: 260px;
+    height: auto;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.45));
+    animation: lueur-gandalf 3s ease-in-out infinite alternate;
+}
+
+@keyframes lueur-gandalf {
+    from {
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+    }
+    to {
+        filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.7));
+    }
+}
+
+.page-404-text {
+    flex: 1;
+    text-align: center;
+}
+
+.page-404 p {
+    background: none;
+    text-shadow: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f4e8c1;
+}
+
+.page-404 .page-404-code {
+    margin: 0;
+    font-family: 'Aniron', Arial, sans-serif;
+    font-size: 6em;
+    line-height: 1;
+    color: #d4af37;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.page-404 h1 {
+    margin: 10px 0 20px;
+}
+
+.page-404 .page-404-lead {
+    font-size: 1.25em;
+    line-height: 1.5;
+}
+
+.page-404 .page-404-hint {
+    color: #d9c9a3;
+}
+
+.page-404-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin: 15px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.page-404-links li {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .page-404 {
+        flex-direction: column;
+        padding: 20px 15px;
+        gap: 10px;
+    }
+
+    .page-404-image {
+        width: 150px;
+    }
+
+    .page-404 .page-404-code {
+        font-size: 4em;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-404-image {
+        animation: none;
+    }
+}
