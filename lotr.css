@@ -256,66 +256,7 @@ p{
     border-radius: 5px;
 }
 
-nav {
-    background-color: rgba(255, 204, 153, 0.3);
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-}
-
-/* Style du logo */
-nav .logo img {
-    width: 50px; /* Ajustez la taille du logo selon vos besoins */
-    height: auto;
-    margin-right: 20px; /* Espace entre le logo et les boutons */
-    vertical-align: auto;
-}
-
-/* Style des liens de navigation */
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap; /* Les boutons passent à la ligne au lieu de se chevaucher */
-    justify-content: center;
-    min-width: 0; /* Permet à la liste de rétrécir à côté du logo */
-    gap: 12px; /* Espacement entre les boutons */
-}
-
-nav ul li {
-    display: inline;
-}
-
-/* Bouton de navigation */
-nav ul li a {
-    display: inline-block; /* Le padding est pris en compte : pas de chevauchement */
-    white-space: nowrap; /* "Description des films" reste sur une seule ligne */
-    text-decoration: none;
-    color: blanchedalmond;
-    font-family: 'Aniron', Arial, sans-serif; /* Police d’inspiration LOTR */
-    font-size: 1em;
-    padding: 10px 14px;
-    border-radius: 5px;
-    border: 2px solid blanchedalmond; /* Bordure assortie */
-    background-color: var(--fond-texte); /* Fond brun semi-transparent */
-    transition: all 0.3s ease;
-}
-
-/* Effet au survol des boutons */
-nav ul li a:hover {
-    background-color: blanchedalmond; /* Changement de couleur de fond */
-    color: #2f4f4f; /* Couleur de texte contrastante */
-    transform: scale(1.1); /* Légère augmentation de taille */
-}
-
-/* Style actif pour indiquer la page courante */
-nav ul li a.active {
-    background-color: blanchedalmond;
-    color: #2f4f4f;
-}
+/* La barre de navigation : voir la section "Barre de navigation" plus bas */
 
 .description {
     font-size: 40px;
@@ -489,82 +430,6 @@ nav ul li a.active {
     color: #f4e8c1;
     font-weight: bold;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-}
-
-/* ---------- Menu burger (petits écrans) ---------- */
-
-/* Le bouton burger est caché sur grand écran */
-.nav-toggle {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    nav {
-        flex-wrap: wrap; /* La liste des liens passe sous le logo et le burger */
-        justify-content: space-between;
-        padding: 15px;
-    }
-
-    nav .logo img {
-        margin-right: 0;
-    }
-
-    .nav-toggle {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 5px;
-        padding: 10px;
-        background-color: var(--fond-texte);
-        border: 2px solid blanchedalmond;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    /* Les 3 barres du burger */
-    .nav-toggle span {
-        display: block;
-        width: 24px;
-        height: 3px;
-        background-color: blanchedalmond;
-        border-radius: 2px;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    /* Quand le menu est ouvert, le burger se transforme en croix */
-    .nav-toggle[aria-expanded="true"] span:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .nav-toggle[aria-expanded="true"] span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-    /* Les liens sont empilés et cachés tant que le menu est fermé */
-    nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        gap: 10px;
-        margin-top: 15px;
-    }
-
-    nav ul.open {
-        display: flex;
-    }
-
-    nav ul li a {
-        display: block;
-        text-align: center;
-    }
-
-    nav ul li a:hover {
-        transform: none;
-    }
 }
 
 /* ---------- Accueil et biographies sur petit écran ---------- */
@@ -1679,4 +1544,270 @@ body:has(.bio-dialog[open]) {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.1em;
     line-height: 1.5;
+}
+
+/* ==========================================================================
+   Barre de navigation (créée par nav.js sur toutes les pages)
+   ========================================================================== */
+
+nav {
+    position: sticky; /* Reste visible en haut de l'écran pendant le défilement */
+    top: 10px;
+    z-index: 1100;    /* Au-dessus de la carte Leaflet et du bouton "retour en haut" */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 22px;
+    background: linear-gradient(180deg, rgba(38, 28, 16, 0.97), rgba(20, 14, 8, 0.97));
+    border-top: 1px solid rgba(212, 175, 55, 0.8);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(212, 175, 55, 0.15);
+}
+
+/* Logo : l'Anneau et le nom du site */
+nav .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+nav .logo img {
+    width: 46px;
+    height: auto;
+    filter: drop-shadow(0 0 6px rgba(255, 190, 60, 0.6));
+    transition: transform 0.4s ease;
+}
+
+nav .logo:hover img {
+    transform: rotate(25deg);
+}
+
+.nav-marque {
+    font-family: 'Aniron', Arial, sans-serif;
+    font-size: 1.2em;
+    white-space: nowrap;
+    background: linear-gradient(180deg, #fff6cc, #f5d77a 45%, #d4af37 75%, #a8842a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Liens : lettres elfiques, sans cadre */
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    position: relative;
+    display: block;
+    padding: 10px 12px;
+    font-family: 'Aniron', Arial, sans-serif;
+    font-size: 1em;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #f4e8c1;
+    transition: color 0.25s ease;
+}
+
+/* Trait doré qui s'étend sous le lien au survol */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    bottom: 4px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    transition: left 0.3s ease, right 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffd700;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+    left: 8px;
+    right: 8px;
+}
+
+/* Page actuelle : texte doré et petit losange au-dessus */
+nav ul li a.active {
+    color: #f5d77a;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+}
+
+nav ul li a.active::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background-color: #d4af37;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+nav .logo:focus-visible,
+nav ul li a:focus-visible,
+.nav-toggle:focus-visible {
+    outline: 3px solid #ffd700;
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+
+/* Bouton burger : caché sur grand écran */
+.nav-toggle {
+    display: none;
+}
+
+/* Écrans moyens : le nom du site laisse la place aux liens */
+@media (max-width: 1150px) {
+    .nav-marque {
+        display: none;
+    }
+}
+
+/* Petits écrans : menu burger (dès que les 7 liens ne tiennent plus sur une ligne) */
+@media (max-width: 1000px) {
+    nav {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 8px 14px;
+        top: 6px;
+    }
+
+    .nav-marque {
+        display: inline;
+        font-size: 1.05em;
+    }
+
+    nav .logo img {
+        width: 38px;
+    }
+
+    .nav-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        padding: 10px;
+        background: none;
+        border: 1px solid #d4af37;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .nav-toggle span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background-color: #f5d77a;
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Le burger devient une croix quand le menu est ouvert */
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Liens empilés, séparés par un filet doré */
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+        margin-top: 8px;
+        padding-top: 4px;
+        border-top: 1px solid rgba(212, 175, 55, 0.4);
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+    }
+
+    nav ul.open {
+        display: flex;
+    }
+
+    nav ul li + li {
+        border-top: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    nav ul li a {
+        padding: 12px 10px;
+        text-align: center;
+        font-size: 1.1em;
+    }
+
+    nav ul li a.active::before {
+        top: 50%;
+        left: 12px;
+        transform: translateY(-50%) rotate(45deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    nav .logo img,
+    nav ul li a,
+    nav ul li a::after,
+    .nav-toggle span {
+        transition: none;
+    }
+
+    nav .logo:hover img {
+        transform: none;
+    }
+}
+
+/* Très petits écrans : nom du site un peu plus petit pour laisser la place au burger */
+@media (max-width: 420px) {
+    nav .logo {
+        gap: 8px;
+        min-width: 0;
+    }
+
+    .nav-marque {
+        font-size: 0.92em;
+    }
+}
+
+/* Écrans minuscules : l'Anneau seul */
+@media (max-width: 350px) {
+    .nav-marque {
+        display: none;
+    }
+}
+
+/* La barre de navigation reste en haut de l'écran : les éléments visés par un lien
+   (evenements.html#…, synopsis.html#…) s'arrêtent juste en dessous au lieu d'être cachés */
+html {
+    scroll-padding-top: 100px;
+}
+
+@media (max-width: 1000px) {
+    html {
+        scroll-padding-top: 80px;
+    }
 }

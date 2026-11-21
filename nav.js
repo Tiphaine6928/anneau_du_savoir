@@ -29,7 +29,9 @@ const NAV_PAGES = [
     const logo = document.createElement('a');
     logo.href = NAV_PAGES[0].href;
     logo.className = 'logo';
-    logo.innerHTML = '<img src="images/anneau.webp" alt="L\'Anneau du Savoir - Accueil" width="128" height="85">';
+    logo.setAttribute('aria-label', 'L\'Anneau du Savoir - Accueil');
+    logo.innerHTML = '<img src="images/anneau.webp" alt="" width="128" height="85">'
+        + '<span class="nav-marque" aria-hidden="true">L\'Anneau du Savoir</span>';
 
     // Bouton du menu burger (petits écrans) : son fonctionnement est dans lotr.js
     const toggle = document.createElement('button');

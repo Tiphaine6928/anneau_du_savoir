@@ -26,3 +26,4 @@ Améliorations réalisées :
  - Carte enrichie : 23 lieux (contre 6), dont Bree, la Moria, la Lothlórien, Isengard, le Gouffre de Helm, Edoras, Lacville, la Forêt Noire, la Porte Noire et la Montagne du Destin, chacun relié aux événements qui s'y passent
  - Bestiaire (bestiaire.html) : 15 créatures (Orques, Uruk-hai, Nazgûl, Balrog, Ents, Grands Aigles…) en galerie, avec filtres par camp et par film, fiches détaillées et liens vers les biographies et la carte
  - Nouvelle page d'accueil : Anneau animé et titre doré, citation et personnage à l'honneur tirés au hasard, cartes vers toutes les sections, présentation des deux trilogies (styles dans accueil.css)
+ - Nouvelle barre de navigation : barre sombre bordée d'or qui reste en haut de l'écran, nom du site à côté de l'Anneau, liens en lettres elfiques soulignés d'or, menu burger sous 1000 px
