@@ -11,7 +11,7 @@ body {
 }
 
 body.background-image {
-    background-image: url('images/middle_earth.jpg');
+    background-image: url('images/middle_earth.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -175,6 +175,7 @@ strong {
 
 .character-biography .character img {
     max-width: 35%;
+    height: auto; /* garde les proportions malgré les attributs width/height */
 }
 
 .character-biography .character h3 {
