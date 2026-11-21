@@ -163,6 +163,30 @@
         .best-score[hidden] {
             display: none;
         }
+        .best-score:not([hidden]) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .reset-best-button {
+            padding: 5px 12px;
+            font-size: 0.85em;
+            color: #f4e8c1;
+            background: none;
+            border: 1px solid #f4e8c1;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .reset-best-button:hover {
+            color: #ffd700;
+            border-color: #ffd700;
+        }
+        .reset-best-button:focus-visible {
+            outline: 3px solid #ffd700;
+            outline-offset: 2px;
+        }
         .result .record {
             color: #ffd700;
             font-weight: bold;
@@ -201,7 +225,10 @@
     
     <div class="quiz-container">
         <h1>Quiz Seigneur des Anneaux/Hobbit</h1>
-        <p id="best-score" class="best-score" hidden></p>
+        <div id="best-score" class="best-score" hidden>
+            <span id="best-score-text"></span>
+            <button type="button" class="reset-best-button">Réinitialiser</button>
+        </div>
         <form id="quiz-form" novalidate>
             <div id="quiz"></div>
             <div class="quiz-buttons">
@@ -332,6 +359,8 @@
             // try/catch : le stockage peut être bloqué (navigation privée, réglages).
             const BEST_SCORE_KEY = 'anneauDuSavoir.quiz.meilleurScore';
             const bestScoreElement = document.getElementById('best-score');
+            const bestScoreText = document.getElementById('best-score-text');
+            const resetBestButton = bestScoreElement.querySelector('.reset-best-button');
 
             function loadBestScore() {
                 try {
@@ -357,8 +386,25 @@
                 const best = loadBestScore();
                 bestScoreElement.hidden = !best;
                 if (best) {
-                    bestScoreElement.textContent = `🏆 Votre meilleur score : ${best.score} / ${best.total}`;
+                    bestScoreText.textContent = `🏆 Votre meilleur score : ${best.score} / ${best.total}`;
                 }
+            }
+
+            // Efface le meilleur score, après confirmation
+            function resetBestScore() {
+                if (!confirm('Voulez-vous vraiment effacer votre meilleur score ?')) {
+                    return;
+                }
+                try {
+                    localStorage.removeItem(BEST_SCORE_KEY);
+                } catch (error) {
+                    // Stockage indisponible : rien à effacer
+                }
+                showBestScore();
+                // Le bouton disparaît : on replace le focus sur le titre du quiz
+                const title = document.querySelector('.quiz-container h1');
+                title.setAttribute('tabindex', '-1');
+                title.focus();
             }
 
             // Compare en proportion : le record reste juste si des questions sont ajoutées
@@ -529,6 +575,7 @@
 
             quizForm.addEventListener('submit', submitQuiz);
             restartButton.addEventListener('click', restartQuiz);
+            resetBestButton.addEventListener('click', resetBestScore);
             loadQuiz();
             showBestScore();
         </script>
