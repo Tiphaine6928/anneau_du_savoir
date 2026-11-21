@@ -1,3 +1,11 @@
+/* Couleurs communes : un brun foncé translucide derrière les textes clairs
+   garantit un bon contraste quelle que soit la partie de la carte en fond */
+:root {
+    --fond-texte: rgba(43, 30, 18, 0.75);
+    --fond-texte-fort: rgba(43, 30, 18, 0.85);
+    --ombre-texte: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
 @font-face {
     font-family: 'Aniron';
     src: url('polices/anirb___.ttf') format('truetype');
@@ -22,7 +30,8 @@ h1 {
     color: blanchedalmond;
     font-family: 'Aniron', 'Arial', sans-serif;
     text-align: center;
-    background-color: rgba(255, 204, 153, 0.3);
+    background-color: var(--fond-texte);
+    text-shadow: var(--ombre-texte);
     border-radius: 10px;
     padding: 1%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
@@ -30,7 +39,8 @@ h1 {
 
 h2, h3 {
     color: blanchedalmond;
-    background-color: rgba(150, 100, 100, 0.3);
+    background-color: var(--fond-texte);
+    text-shadow: var(--ombre-texte);
     text-align: center;
     border-radius: 10px;
     padding: 1%;
@@ -91,7 +101,8 @@ h2, h3 {
     padding: 10px;
     margin-top: 10px;
     border: none;
-    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: var(--fond-texte-fort);
     transition: max-height 0.3s ease; /* Transition pour une ouverture en douceur */
     overflow: hidden;
 }
@@ -99,7 +110,12 @@ h2, h3 {
 .content p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #fff;
-    padding: none;
+    background: none; /* Le fond est déjà donné par le bloc .content */
+    line-height: 1.6; /* Lignes plus aérées pour les longs synopsis */
+    max-width: 75ch; /* Lignes pas trop longues : plus faciles à suivre */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 10px;
 }
 
 ul {
@@ -187,6 +203,8 @@ strong {
 .character-biography .character p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
+    background: none;
+    text-shadow: none;
     text-align: center;
 }
 
@@ -214,13 +232,16 @@ strong {
 .event p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
+    background: none;
+    text-shadow: none;
 }
 
 p{
     text-align: center;
     font-family: 'Aniron';
     color:blanchedalmond;
-    background-color: rgba(255, 204, 153, 0.3);
+    background-color: var(--fond-texte);
+    text-shadow: var(--ombre-texte);
     border-radius: 5px;
 }
 
@@ -268,7 +289,7 @@ nav ul li a {
     padding: 10px 14px;
     border-radius: 5px;
     border: 2px solid blanchedalmond; /* Bordure assortie */
-    background-color: rgba(0, 0, 0, 0.3); /* Fond semi-transparent */
+    background-color: var(--fond-texte); /* Fond brun semi-transparent */
     transition: all 0.3s ease;
 }
 
@@ -291,7 +312,7 @@ nav ul li a.active {
 }
 
 #description1, #description2, #description3 {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: var(--fond-texte);
 }
 
 #titre {
@@ -300,7 +321,7 @@ nav ul li a.active {
 }
 
 #noteFinale {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: var(--fond-texte);
 }
 
 #search-input {
@@ -370,6 +391,11 @@ nav ul li a.active {
     display: none; /* Contenu caché par défaut */
     padding-left: 20px;
     margin-top: 5px;
+}
+
+/* Sections des biographies : fond clair pour le texte foncé */
+.character .content {
+    background-color: rgba(255, 255, 255, 0.45);
 }
 
 
@@ -450,7 +476,7 @@ nav ul li a.active {
         justify-content: center;
         gap: 5px;
         padding: 10px;
-        background-color: rgba(0, 0, 0, 0.3);
+        background-color: var(--fond-texte);
         border: 2px solid blanchedalmond;
         border-radius: 5px;
         cursor: pointer;
