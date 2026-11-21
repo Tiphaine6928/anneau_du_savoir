@@ -331,9 +331,6 @@ nav ul li a.active {
     background: none;
 }
 
-#noteFinale {
-    background-color: var(--fond-texte);
-}
 
 #search-input {
     width: 100%;
