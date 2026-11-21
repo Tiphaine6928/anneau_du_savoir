@@ -307,9 +307,29 @@
             const restartButton = quizForm.querySelector('.restart-button');
             const resultContainer = document.getElementById('result');
 
-            // Crée une question : un groupe de boutons radio (fieldset + legend)
+            // Questions de la partie en cours, dans un ordre mélangé
+            let currentQuiz = [];
+
+            // Mélange de Fisher-Yates : renvoie une copie mélangée du tableau,
+            // chaque ordre ayant la même probabilité de sortir
+            function shuffle(array) {
+                const copy = [...array];
+                for (let i = copy.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [copy[i], copy[j]] = [copy[j], copy[i]];
+                }
+                return copy;
+            }
+
+            // Crée les questions : chacune est un groupe de boutons radio (fieldset + legend)
             function loadQuiz() {
-                quizData.forEach((currentQuestion, questionIndex) => {
+                // Nouvel ordre des questions et des réponses à chaque partie
+                currentQuiz = shuffle(quizData).map(question => ({
+                    ...question,
+                    answers: shuffle(question.answers)
+                }));
+
+                currentQuiz.forEach((currentQuestion, questionIndex) => {
                     const fieldset = document.createElement('fieldset');
                     fieldset.classList.add('question');
 
@@ -400,7 +420,7 @@
 
                 // 2. Corriger
                 let score = 0;
-                quizData.forEach((currentQuestion, questionIndex) => {
+                currentQuiz.forEach((currentQuestion, questionIndex) => {
                     quizContainer.querySelectorAll(`input[name="question${questionIndex}"]`).forEach(input => {
                         const label = input.parentElement;
                         if (input.value === currentQuestion.correct) {
