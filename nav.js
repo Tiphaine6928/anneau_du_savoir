@@ -10,11 +10,11 @@
 
 const NAV_PAGES = [
     { href: 'lotr.html', label: 'Accueil' },
-    { href: 'synopsis.html', label: 'Description des films' },
+    { href: 'synopsis.html', label: 'Films' },
     { href: 'biographies.html', label: 'Biographies' },
     { href: 'bestiaire.html', label: 'Bestiaire' },
     { href: 'carte.html', label: 'Carte' },
-    { href: 'evenements.html', label: 'Événements Importants' },
+    { href: 'evenements.html', label: 'Événements' },
     { href: 'quiz.html', label: 'Quiz' }
 ];
 
