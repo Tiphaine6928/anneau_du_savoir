@@ -119,3 +119,28 @@ if (navToggle && navLinks) {
         navToggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
     });
 }
+
+// Bouton "retour en haut" : créé ici pour qu'il soit présent sur toutes les pages.
+// Il apparaît une fois que l'on a fait défiler la page de 400 px.
+const backToTop = document.createElement('button');
+backToTop.id = 'back-to-top';
+backToTop.type = 'button';
+backToTop.setAttribute('aria-label', 'Remonter en haut de la page');
+backToTop.title = 'Remonter en haut de la page';
+backToTop.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">'
+    + '<path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="3" '
+    + 'stroke-linecap="round" stroke-linejoin="round"/></svg>';
+document.body.appendChild(backToTop);
+
+function updateBackToTop() {
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+}
+
+window.addEventListener('scroll', updateBackToTop, { passive: true });
+updateBackToTop();
+
+backToTop.addEventListener('click', function () {
+    // Défilement fluide, sauf si l'utilisateur a demandé à réduire les animations
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+});
