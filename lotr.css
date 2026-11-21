@@ -1573,3 +1573,76 @@ body:has(.bio-dialog[open]) {
         animation: none;
     }
 }
+
+/* ---------- Protection anti-spoilers (page Événements) ---------- */
+
+.spoiler-controles {
+    max-width: 900px;
+    margin: 0 auto 10px;
+    text-align: center;
+}
+
+.spoiler-controles p {
+    margin: 0 0 5px;
+    padding: 10px 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Contenu flouté : on devine qu'il y a un texte, sans pouvoir le lire */
+.event-contenu {
+    transition: filter 0.3s ease;
+}
+
+.spoiler-masque .event-contenu {
+    filter: blur(8px);
+    user-select: none;
+}
+
+/* Bouton "Révéler" posé au centre de la carte floutée */
+.spoiler-reveal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    padding: 10px 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    color: #f4e8c1;
+    white-space: nowrap;
+    background-color: #2d2b24;
+    border: 2px solid #d4af37;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.spoiler-reveal::before {
+    content: '👁 ';
+}
+
+.spoiler-reveal:hover {
+    color: #ffd700;
+    border-color: #ffd700;
+}
+
+.spoiler-reveal:focus-visible {
+    outline: 3px solid #ffd700;
+    outline-offset: 2px;
+}
+
+.spoiler-reveal[hidden] {
+    display: none;
+}
+
+/* Titre d'un événement qui reçoit le focus après la révélation */
+.event-contenu h3:focus {
+    outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .event-contenu {
+        transition: none;
+    }
+}
