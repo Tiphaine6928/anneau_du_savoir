@@ -149,6 +149,24 @@
             outline: 3px solid #ffd700;
             outline-offset: 2px;
         }
+        /* Meilleur score, affiché sous le titre */
+        .best-score {
+            margin: 0 0 20px;
+            padding: 10px;
+            color: #f4e8c1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.1em;
+            background-color: #2d2b24;
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+        }
+        .best-score[hidden] {
+            display: none;
+        }
+        .result .record {
+            color: #ffd700;
+            font-weight: bold;
+        }
         .result {
             margin-top: 20px;
             font-size: 1.2em;
@@ -183,6 +201,7 @@
     
     <div class="quiz-container">
         <h1>Quiz Seigneur des Anneaux/Hobbit</h1>
+        <p id="best-score" class="best-score" hidden></p>
         <form id="quiz-form" novalidate>
             <div id="quiz"></div>
             <div class="quiz-buttons">
@@ -306,6 +325,47 @@
             const submitButton = quizForm.querySelector('.submit-button');
             const restartButton = quizForm.querySelector('.restart-button');
             const resultContainer = document.getElementById('result');
+
+            // ---------- Meilleur score ----------
+            // Gardé dans le navigateur du visiteur (localStorage) : il reste après
+            // avoir fermé la page, mais seulement sur cet appareil et ce navigateur.
+            // try/catch : le stockage peut être bloqué (navigation privée, réglages).
+            const BEST_SCORE_KEY = 'anneauDuSavoir.quiz.meilleurScore';
+            const bestScoreElement = document.getElementById('best-score');
+
+            function loadBestScore() {
+                try {
+                    const saved = JSON.parse(localStorage.getItem(BEST_SCORE_KEY));
+                    if (saved && Number.isInteger(saved.score) && Number.isInteger(saved.total) && saved.total > 0) {
+                        return saved;
+                    }
+                } catch (error) {
+                    // Stockage indisponible ou valeur illisible : pas de meilleur score
+                }
+                return null;
+            }
+
+            function saveBestScore(score, total) {
+                try {
+                    localStorage.setItem(BEST_SCORE_KEY, JSON.stringify({ score, total }));
+                } catch (error) {
+                    // Stockage indisponible : le record n'est simplement pas gardé
+                }
+            }
+
+            function showBestScore() {
+                const best = loadBestScore();
+                bestScoreElement.hidden = !best;
+                if (best) {
+                    bestScoreElement.textContent = `🏆 Votre meilleur score : ${best.score} / ${best.total}`;
+                }
+            }
+
+            // Compare en proportion : le record reste juste si des questions sont ajoutées
+            function isNewRecord(score, total) {
+                const best = loadBestScore();
+                return !best || score / total > best.score / best.total;
+            }
 
             // Questions de la partie en cours, dans un ordre mélangé
             let currentQuiz = [];
@@ -438,10 +498,19 @@
                 quizForm.classList.add('quiz-done');
                 submitButton.hidden = true;
                 restartButton.hidden = false;
-                showResult([
+                const lines = [
                     [`Vous avez obtenu ${score} bonne${score > 1 ? 's' : ''} réponse${score > 1 ? 's' : ''} sur ${quizData.length}.`, 'score'],
                     [getAppreciation(score, quizData.length)]
-                ]);
+                ];
+                const hadBestScore = loadBestScore() !== null;
+                if (isNewRecord(score, quizData.length)) {
+                    saveBestScore(score, quizData.length);
+                    if (hadBestScore) {
+                        lines.push(['🏆 Nouveau record !', 'record']);
+                    }
+                    showBestScore();
+                }
+                showResult(lines);
                 resultContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 restartButton.focus({ preventScroll: true });
             }
@@ -461,6 +530,7 @@
             quizForm.addEventListener('submit', submitQuiz);
             restartButton.addEventListener('click', restartQuiz);
             loadQuiz();
+            showBestScore();
         </script>
 
         <p id="noteFinale">Site Web fait par Tiphaine Chapuis - École Ada Tech School</p>
