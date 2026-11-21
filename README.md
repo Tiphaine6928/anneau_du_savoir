@@ -14,3 +14,4 @@ Améliorations réalisées :
  - Barre de navigation adaptée au mobile (menu burger), accueil et biographies lisibles sur téléphone
  - Flèche qui remonte en haut de la page, sur toutes les pages
  - Meilleure lisibilité : fonds bruns foncés derrière les textes clairs, tous les textes respectent le contraste minimum recommandé (WCAG)
+ - Sections dépliables animées (biographies et films), accessibles au clavier et aux lecteurs d'écran

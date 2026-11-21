@@ -1,33 +1,93 @@
-// Affiche ou masque un bloc de la page "Description des films"
-// (synopsis, acteurs, équipe technique). Les autres blocs ouverts sont refermés.
-function toggleContent(contentId) {
-    const content = document.getElementById(contentId);
-    if (!content) {
+// ---------- Sections dépliables ----------
+// Boutons +/− des biographies (.toggle-btn) et boutons Synopsis / Acteurs /
+// Équipe technique des films (.toggle-button). Chaque bouton indique le bloc
+// qu'il contrôle avec aria-controls, et son état avec aria-expanded
+// (lu par les lecteurs d'écran).
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+// Ouvre ou ferme un bloc avec une animation de hauteur
+function animateContent(content, open) {
+    // Arrête une animation en cours (clics rapides)
+    content.getAnimations().forEach(function (animation) {
+        animation.cancel();
+    });
+
+    content.style.display = 'block';
+
+    if (prefersReducedMotion.matches) {
+        content.style.display = open ? 'block' : 'none';
         return;
     }
 
-    document.querySelectorAll('.content').forEach(function (el) {
-        if (el !== content) {
-            el.style.display = 'none'; // Masquer tous les autres contenus
-        }
+    // Hauteur et marges réelles du bloc ouvert
+    const style = getComputedStyle(content);
+    const opened = {
+        height: content.scrollHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom) + 'px',
+        paddingTop: style.paddingTop,
+        paddingBottom: style.paddingBottom,
+        marginTop: style.marginTop,
+        opacity: 1
+    };
+    const closed = { height: '0px', paddingTop: '0px', paddingBottom: '0px', marginTop: '0px', opacity: 0 };
+
+    const animation = content.animate(open ? [closed, opened] : [opened, closed], {
+        duration: open ? 300 : 200,
+        easing: 'ease-out'
     });
 
-    content.style.display = (content.style.display === 'block') ? 'none' : 'block';
-}
-
-// Affiche ou masque une section d'une biographie et met à jour le bouton +/-
-function toggleSection(sectionId) {
-    const content = document.getElementById(sectionId);
-    const button = content.previousElementSibling.querySelector('.toggle-btn');
-
-    if (content.style.display === "none" || content.style.display === "") {
-        content.style.display = "block";
-        button.textContent = "-";
-    } else {
-        content.style.display = "none";
-        button.textContent = "+";
+    if (!open) {
+        animation.onfinish = function () {
+            content.style.display = 'none';
+        };
     }
 }
+
+function setExpanded(button, open) {
+    const content = document.getElementById(button.getAttribute('aria-controls'));
+    if (!content || (button.getAttribute('aria-expanded') === 'true') === open) {
+        return;
+    }
+
+    button.setAttribute('aria-expanded', open);
+    if (button.classList.contains('toggle-btn')) {
+        button.textContent = open ? '−' : '+';
+    }
+    animateContent(content, open);
+}
+
+// Boutons +/− des biographies
+document.querySelectorAll('.toggle-btn').forEach(function (button) {
+    const title = button.closest('h4');
+    // Nom lu par les lecteurs d'écran : le titre de la section plutôt que "+"
+    button.setAttribute('aria-label', title.textContent.replace(/[+−-]\s*$/, '').trim());
+
+    button.addEventListener('click', function (event) {
+        event.stopPropagation(); // Évite un double déclenchement via le titre
+        setExpanded(button, button.getAttribute('aria-expanded') !== 'true');
+    });
+
+    // Cliquer sur le titre de la section fonctionne aussi
+    title.addEventListener('click', function () {
+        button.click();
+    });
+});
+
+// Boutons des films : ouvrir un bloc referme les autres
+const filmButtons = document.querySelectorAll('.toggle-button');
+filmButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+        const open = button.getAttribute('aria-expanded') !== 'true';
+        if (open) {
+            filmButtons.forEach(function (other) {
+                if (other !== button) {
+                    setExpanded(other, false);
+                }
+            });
+        }
+        setExpanded(button, open);
+    });
+});
 
 // Met en minuscules et retire les accents ("Éowyn" -> "eowyn", "Kíli" -> "kili")
 function normalizeText(text) {

@@ -95,6 +95,18 @@ h2, h3 {
     transform: scale(0.95);
 }
 
+/* Bouton du bloc actuellement ouvert */
+.toggle-button[aria-expanded="true"] {
+    background: linear-gradient(to right, #5b8033, #ffe6cc);
+}
+
+/* Contour visible quand on navigue au clavier */
+.toggle-button:focus-visible,
+.toggle-btn:focus-visible {
+    outline: 3px solid #ffd700;
+    outline-offset: 2px;
+}
+
 .content {
     display: none;
     background: none;
@@ -103,8 +115,7 @@ h2, h3 {
     border: none;
     border-radius: 10px;
     background-color: var(--fond-texte-fort);
-    transition: max-height 0.3s ease; /* Transition pour une ouverture en douceur */
-    overflow: hidden;
+    overflow: hidden; /* Nécessaire pour l'animation d'ouverture (lotr.js) */
 }
 
 .content p {
@@ -376,15 +387,46 @@ nav ul li a.active {
     margin-top: 10px;
 }
 
-.toggle-btn {
-    font-size: 1em;
-    background-color: #ccc;
-    border: none;
-    border-radius: 5px;
+/* Titre d'une section de biographie : cliquable en entier */
+.bio-section h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     cursor: pointer;
-    width: 25px;
-    height: 25px;
-    margin-right: 5px;
+    user-select: none;
+}
+
+/* Bouton +/− : rond, aux couleurs de la barre de recherche */
+.toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 1;
+    color: #f4e8c1;
+    background-color: #2d2b24;
+    border: 2px solid #d4af37;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.bio-section h4:hover .toggle-btn,
+.toggle-btn:focus-visible {
+    color: #ffd700;
+    border-color: #ffd700;
+    background-color: #3a372f;
+}
+
+/* Le bouton pivote quand la section est ouverte */
+.toggle-btn[aria-expanded="true"] {
+    transform: rotate(180deg);
 }
 
 .content {
