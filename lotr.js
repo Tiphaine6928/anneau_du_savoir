@@ -73,15 +73,20 @@ document.querySelectorAll('.toggle-btn').forEach(function (button) {
     });
 });
 
-// Boutons des films : ouvrir un bloc referme les autres
-const filmButtons = document.querySelectorAll('.toggle-button');
-filmButtons.forEach(function (button) {
+// Onglets des films (Synopsis / Acteurs / Équipe technique) : ouvrir un onglet
+// referme les autres onglets du même film ; cliquer sur l'onglet ouvert le referme
+document.querySelectorAll('.toggle-button').forEach(function (button) {
     button.addEventListener('click', function () {
         const open = button.getAttribute('aria-expanded') !== 'true';
+        const film = button.closest('.film-carte') || document;
         if (open) {
-            filmButtons.forEach(function (other) {
-                if (other !== button) {
-                    setExpanded(other, false);
+            film.querySelectorAll('.toggle-button').forEach(function (other) {
+                if (other !== button && other.getAttribute('aria-expanded') === 'true') {
+                    // Fermeture immédiate : l'onglet suivant s'ouvre à la même place
+                    other.setAttribute('aria-expanded', 'false');
+                    const panneau = document.getElementById(other.getAttribute('aria-controls'));
+                    panneau.getAnimations().forEach(function (a) { a.cancel(); });
+                    panneau.style.display = 'none';
                 }
             });
         }

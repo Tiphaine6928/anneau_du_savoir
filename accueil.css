@@ -2,75 +2,11 @@
    Page d'accueil (lotr.html)
    ========================================================================== */
 
-.page-accueil {
-    --or: #d4af37;
-    --or-clair: #f5d77a;
-    --or-vif: #ffd700;
-    --encre: #2d2b24;
-    --creme: #f4e8c1;
-    --feu: #ff9a3c;
-}
-
 /* Les paragraphes de l'accueil n'ont pas le bandeau brun des autres pages */
 .page-accueil main p {
     background: none;
     text-shadow: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* ---------- Boutons ---------- */
-
-.bouton-or,
-.bouton-contour {
-    display: inline-block;
-    padding: 12px 26px;
-    font-family: 'Aniron', Arial, sans-serif;
-    font-size: 1.05em;
-    text-decoration: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-}
-
-.bouton-or {
-    color: var(--encre);
-    background: linear-gradient(180deg, var(--or-clair), var(--or) 55%, #a8842a);
-    border: 2px solid var(--or-vif);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-}
-
-.bouton-contour {
-    color: var(--creme);
-    background-color: rgba(20, 14, 8, 0.6);
-    border: 2px solid var(--or);
-}
-
-.bouton-or:hover,
-.bouton-contour:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45);
-}
-
-.bouton-contour:hover {
-    color: var(--or-vif);
-    border-color: var(--or-vif);
-}
-
-.bouton-or:focus-visible,
-.bouton-contour:focus-visible,
-.carte-section:focus-visible,
-.trilogie:focus-visible {
-    outline: 3px solid var(--or-vif);
-    outline-offset: 3px;
-}
-
-.bouton-contour.petit {
-    padding: 8px 18px;
-    font-size: 0.9em;
-}
-
-.bouton-contour[hidden] {
-    display: none;
 }
 
 /* ---------- En-tête ---------- */
@@ -164,20 +100,6 @@
     letter-spacing: 0.04em;
 }
 
-.ornement svg {
-    width: min(240px, 60vw);
-    height: 24px;
-    margin: 18px auto 6px;
-    display: block;
-    fill: var(--or);
-    stroke: var(--or);
-    stroke-width: 1.5;
-}
-
-.ornement path:first-child {
-    fill: none;
-}
-
 .page-accueil main .hero-intro {
     max-width: 640px;
     margin: 10px auto 28px;
@@ -200,33 +122,6 @@
     margin: 50px auto;
     text-align: center;
     scroll-margin-top: 20px;
-}
-
-/* Titre de bloc : lettres dorées entre deux traits, sans bandeau */
-.page-accueil .bloc-titre {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    margin: 0 0 24px;
-    padding: 0;
-    font-family: 'Aniron', Arial, sans-serif;
-    font-size: clamp(1.4em, 3.5vw, 2em);
-    color: var(--or-clair);
-    background: none;
-    box-shadow: none;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
-}
-
-.page-accueil .bloc-titre::before,
-.page-accueil .bloc-titre::after {
-    content: '';
-    flex: 1;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--or));
-}
-
-.page-accueil .bloc-titre::after {
-    background: linear-gradient(90deg, var(--or), transparent);
 }
 
 .page-accueil main .bloc-intro {
@@ -550,4 +445,11 @@
 /* Groupe de mots qui ne doit pas être coupé ("es-tu ?") */
 .insecable {
     white-space: nowrap;
+}
+
+/* Contour visible au clavier sur les cartes de l'accueil */
+.carte-section:focus-visible,
+.trilogie:focus-visible {
+    outline: 3px solid var(--or-vif);
+    outline-offset: 3px;
 }

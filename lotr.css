@@ -1811,3 +1811,15 @@ html {
         scroll-padding-top: 80px;
     }
 }
+
+/* Sans JavaScript, les sections repliables (synopsis, acteurs, sections des biographies…)
+   sont affichées directement, et les boutons qui ne fonctionneraient pas sont masqués.
+   La classe "js" est ajoutée par nav.js. */
+html:not(.js) .content {
+    display: block;
+}
+
+html:not(.js) .toggle-btn,
+html:not(.js) .film-onglets {
+    display: none;
+}

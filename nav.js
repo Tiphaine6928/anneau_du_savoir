@@ -18,6 +18,9 @@ const NAV_PAGES = [
     { href: 'quiz.html', label: 'Quiz' }
 ];
 
+// Signale au CSS que JavaScript fonctionne (sinon, les sections repliables restent ouvertes)
+document.documentElement.classList.add('js');
+
 (function () {
     // Nom du fichier de la page actuelle ("carte.html"...) ; l'adresse du site
     // seule (".../") correspond à la page d'accueil
