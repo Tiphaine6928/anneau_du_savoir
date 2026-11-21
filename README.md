@@ -20,7 +20,7 @@ Améliorations réalisées :
  - Frise chronologique visuelle des événements : étapes numérotées, couleur différente pour le Seigneur des Anneaux et le Hobbit, adaptée au mobile
  - Biographies en galerie : vignettes, filtres par peuple et par film, recherche pendant la frappe, fiche complète dans une fenêtre avec personnage précédent/suivant et lien partageable (biographies.html#gimli)
  - Liens entre les pages : les personnages et les lieux cités dans les synopsis et les événements mènent à leur biographie ou à la carte, les bulles de la carte listent les événements du lieu, chaque biographie indique dans quels films le personnage apparaît (liste des liens dans liens.js)
- - Test « Quel personnage es-tu ? » (personnage.html) : 10 questions, résultat parmi les 15 personnages avec lien vers sa biographie et partage ; questions et points dans personnage-data.js
+ - Test « Quel personnage es-tu ? » (personnage.html) : 10 questions, résultat parmi 15 personnages et 6 créatures du bestiaire avec lien vers sa biographie et partage ; questions et points dans personnage-data.js
  - Page d'erreur 404 « Vous ne passerez pas ! » (404.html), affichée automatiquement par GitHub Pages quand une adresse n'existe pas
  - Protection anti-spoilers sur les pages Événements et Biographies : événements et sections « Spoiler » des biographies floutés jusqu'au clic sur « Révéler », bouton pour tout afficher ou tout flouter (choix commun aux deux pages, retenu par le navigateur ; sections protégées listées dans spoilers.js)
  - Carte enrichie : 23 lieux (contre 6), dont Bree, la Moria, la Lothlórien, Isengard, le Gouffre de Helm, Edoras, Lacville, la Forêt Noire, la Porte Noire et la Montagne du Destin, chacun relié aux événements qui s'y passent

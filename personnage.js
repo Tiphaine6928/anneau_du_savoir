@@ -18,6 +18,7 @@
     let reponses = [];      // Index de la réponse choisie pour chaque question
     let ordreReponses = []; // Ordre mélangé des réponses de chaque question
     let resultat = null;
+    let dernierScores = {}; // Points de chaque personnage à la dernière partie
 
     // Mélange de Fisher-Yates : renvoie une copie mélangée du tableau
     function melanger(tableau) {
@@ -107,6 +108,7 @@
             });
         });
         // Classement : le plus de points, puis des points venant du plus de questions différentes
+        dernierScores = scores;
         return ids.slice().sort(function (a, b) {
             return scores[b] - scores[a]
                 || questionsMarquees[b] - questionsMarquees[a]
@@ -122,7 +124,8 @@
         const image = document.getElementById('perso-result-image');
         image.src = perso.image;
         image.alt = perso.nom;
-        document.getElementById('perso-result-name').textContent = perso.nom + '\u00a0!';
+        // Majuscule en début de titre : "Un Ent !" (le nom reste "un Ent" dans les phrases)
+        document.getElementById('perso-result-name').textContent = perso.nom.charAt(0).toUpperCase() + perso.nom.slice(1) + '\u00a0!';
         document.getElementById('perso-result-description').textContent = typo(perso.description);
 
         const traits = document.getElementById('perso-result-traits');
@@ -133,15 +136,21 @@
         }));
 
         // "de Frodon", mais "d'Aragorn", "d'Éowyn" devant une voyelle
+        // "de Frodon", "d'Aragorn", "d'un Ent" : élision devant une voyelle ou "un"
         const deNom = function (id) {
             const nom = PERSONNAGES[id].nom;
             return (/^[aeiouyéèêàâîôû]/i.test(nom) ? 'd\'' : 'de ') + nom;
         };
-        const aussi = classement.slice(1, 3).map(deNom);
-        document.getElementById('perso-result-also').textContent =
-            'Tu as aussi un peu ' + aussi.join(' et ') + '.';
+        // Les deux suivants du classement, seulement s'ils ont vraiment marqué des points
+        const aussi = classement.slice(1, 3).filter(function (id) { return dernierScores[id] > 0; }).map(deNom);
+        const ligneAussi = document.getElementById('perso-result-also');
+        ligneAussi.textContent = aussi.length ? 'Tu as aussi un peu ' + aussi.join(' et ') + '.' : '';
+        ligneAussi.hidden = !aussi.length;
 
-        document.getElementById('perso-result-bio').href = 'biographies.html#' + resultat;
+        // Personnage : sa biographie ; créature : sa fiche du bestiaire
+        const lienFiche = document.getElementById('perso-result-bio');
+        lienFiche.href = perso.lien || 'biographies.html#' + resultat;
+        lienFiche.textContent = perso.lien ? 'Voir sa fiche du bestiaire' : 'Lire sa biographie';
         messagePartage.textContent = '';
 
         afficher('resultat');
