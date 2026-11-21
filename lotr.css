@@ -1099,3 +1099,113 @@ body:has(.bio-dialog[open]) {
     width: auto;
     max-height: 55vh;
 }
+
+/* ---------- Liens entre les pages ---------- */
+
+/* Liens ajoutés dans les textes (liens.js) et lignes "Apparaît dans" :
+   soulignés en pointillés pour rester discrets dans la lecture */
+.lien-auto,
+.bio-films a,
+.bulle-lieu a {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    font-weight: 600;
+}
+
+.lien-auto:hover,
+.bio-films a:hover,
+.bulle-lieu a:hover {
+    text-decoration-style: solid;
+}
+
+.lien-auto:focus-visible,
+.bio-films a:focus-visible,
+.bulle-lieu a:focus-visible {
+    outline: 3px solid #ffd700;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Sur les fonds sombres (synopsis) : doré clair */
+.film .content .lien-auto {
+    color: #ffd98a;
+}
+
+/* Sur les fonds clairs (événements, biographies, bulles de la carte) : brun foncé */
+.event .lien-auto,
+.bio-films a,
+.bulle-lieu a {
+    color: #6b3d0e;
+}
+
+.bio-films {
+    font-size: 0.95em;
+}
+
+/* Événement ou partie de page visée par un lien (evenements.html#le-conseil-d-elrond) :
+   un peu d'espace au-dessus et une mise en évidence */
+.event,
+.film-section {
+    scroll-margin-top: 20px;
+}
+
+.event:target {
+    outline: 4px solid #ffd700;
+    outline-offset: 4px;
+    animation: evenement-cible 1.5s ease-out;
+}
+
+@keyframes evenement-cible {
+    from {
+        box-shadow: 0 0 0 12px rgba(255, 215, 0, 0.6);
+    }
+    to {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .event:target {
+        animation: none;
+    }
+}
+
+/* Bulles de la carte */
+.bulle-lieu strong {
+    display: block;
+    font-size: 1.1em;
+    color: #2d2b24; /* Sinon blanc (règle générale "strong"), invisible sur la bulle blanche */
+}
+
+/* Plus précis que la règle de Leaflet (.leaflet-container a), qui colore les liens en bleu */
+.leaflet-container .bulle-lieu a {
+    color: #6b3d0e;
+}
+
+.bulle-lieu p {
+    margin: 4px 0;
+    color: #333;
+    text-align: left;
+    background: none;
+    text-shadow: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bulle-lieu .bulle-intro {
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+.bulle-lieu ul {
+    margin: 0;
+    padding-left: 18px;
+    list-style: disc;
+}
+
+.bulle-lieu li {
+    margin: 3px 0;
+    color: #333;
+    text-align: left;
+}

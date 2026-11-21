@@ -21,6 +21,12 @@ const FILMS = {
     hobbit: 'Le Hobbit'
 };
 
+// Partie de la page "Description des films" consacrée à chaque trilogie
+const FILMS_LIENS = {
+    sda: 'synopsis.html#seigneur-des-anneaux',
+    hobbit: 'synopsis.html#le-hobbit'
+};
+
 // Met en minuscules et retire les accents ("Éowyn" -> "eowyn", "Kíli" -> "kili")
 function normalizeText(text) {
     return text.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
@@ -47,6 +53,9 @@ function normalizeText(text) {
         const placeholder = document.createComment(' fiche ' + element.id + ' ');
         element.before(placeholder);
 
+        const films = (element.dataset.films || '').split(' ').filter(Boolean);
+        addFilmsLine(element, films);
+
         return {
             id: element.id,
             element: element,
@@ -55,10 +64,31 @@ function normalizeText(text) {
             actor: actor,
             image: element.querySelector('img').getAttribute('src'),
             peuple: element.dataset.peuple || 'autre',
-            films: (element.dataset.films || '').split(' ').filter(Boolean),
+            films: films,
             search: normalizeText(name + ' ' + actor)
         };
     });
+
+    // Ajoute sous le résumé de la fiche : "Apparaît dans : Le Seigneur des Anneaux et Le Hobbit"
+    function addFilmsLine(element, films) {
+        if (!films.length) {
+            return;
+        }
+        const line = document.createElement('p');
+        line.className = 'bio-films';
+        line.append('Apparaît dans : ');
+        films.forEach(function (film, index) {
+            if (index > 0) {
+                line.append(index === films.length - 1 ? ' et ' : ', ');
+            }
+            const link = document.createElement('a');
+            link.href = FILMS_LIENS[film] || 'synopsis.html';
+            link.textContent = FILMS[film] || film;
+            line.appendChild(link);
+        });
+        const summary = element.querySelector('h3 + p');
+        (summary || element.querySelector('h3')).after(line);
+    }
 
     // ---------- Filtres ----------
     const state = { peuple: 'tous', film: 'tous', query: '' };

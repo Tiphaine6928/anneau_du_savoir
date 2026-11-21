@@ -40,25 +40,112 @@
                 let imageUrl = 'images/carte_terre_milieu.jpg'; // Chemin vers l'image de carte
                 L.imageOverlay(imageUrl, bounds).addTo(map);
 
-                // Marqueurs des lieux importants
-                let rivendell = L.marker([380, 10]).addTo(map) // L représente l'objet Leaflet global.
-                // la méthode marker() est une fonction de la bibliothèque Leaflet
-                .bindPopup('<b>Fondcombe</b><br>Royaume Elfique.');
+                // Lieux importants : position sur l'image, description et événements qui s'y passent.
+                // L'identifiant (id) permet d'ouvrir la carte sur un lieu : carte.html#fondcombe
+                const lieux = [
+                    {
+                        id: 'comte', nom: 'La Comté', position: [330, -500],
+                        description: 'Havre de paix pour les Hobbits.',
+                        evenements: [
+                            ['le-depart-de-bilbon', 'Le Départ de Bilbon'],
+                            ['la-decouverte-de-l-anneau', 'La Découverte de l\'Anneau'],
+                            ['le-depart-de-frodon', 'Le Départ de Frodon'],
+                            ['le-retour-a-la-comte', 'Le Retour à la Comté']
+                        ]
+                    },
+                    {
+                        id: 'fondcombe', nom: 'Fondcombe', position: [380, 10],
+                        description: 'Royaume Elfique.',
+                        evenements: [
+                            ['le-passage-par-fondcombe', 'Le Passage par Fondcombe'],
+                            ['le-conseil-d-elrond', 'Le Conseil d\'Elrond']
+                        ]
+                    },
+                    {
+                        id: 'montagne-solitaire', nom: 'La Montagne Solitaire', position: [525, 360],
+                        description: 'Le royaume des nains.',
+                        evenements: [
+                            ['la-rencontre-avec-smaug', 'La Rencontre avec Smaug'],
+                            ['les-nains-a-erebor', 'Les Nains à Erebor'],
+                            ['la-bataille-des-cinq-armees', 'La Bataille des Cinq Armées']
+                        ]
+                    },
+                    {
+                        id: 'gondor', nom: 'Gondor', position: [-350, -50],
+                        description: 'Le royaume des hommes.',
+                        evenements: [
+                            ['la-rencontre-avec-faramir', 'La Rencontre avec Faramir'],
+                            ['le-chemin-des-morts', 'Le Chemin des Morts']
+                        ]
+                    },
+                    {
+                        id: 'minas-tirith', nom: 'Minas Tirith', position: [-300, 300],
+                        description: 'La Cité Blanche.',
+                        evenements: [
+                            ['la-bataille-des-champs-du-pelennor', 'La Bataille des Champs du Pelennor'],
+                            ['le-siege-de-minas-tirith', 'Le Siège de Minas Tirith'],
+                            ['le-couronnement-d-aragorn', 'Le Couronnement d\'Aragorn']
+                        ]
+                    },
+                    {
+                        id: 'mordor', nom: 'Mordor', position: [-350, 600],
+                        description: 'Le pays du mal.',
+                        evenements: [
+                            ['la-bataille-de-la-porte-noire', 'La Bataille de la Porte Noire'],
+                            ['la-destruction-de-l-anneau', 'La Destruction de l\'Anneau']
+                        ]
+                    }
+                ];
 
-                let mordor = L.marker([-350, 600]).addTo(map)
-                .bindPopup('<b>Mordor</b><br>Le pays du mal.');
+                // Contenu d'une bulle : nom, description et liens vers les événements
+                function contenuBulle(lieu) {
+                    const div = document.createElement('div');
+                    div.className = 'bulle-lieu';
 
-                let gondor = L.marker([-350, -50]).addTo(map)
-                .bindPopup('<b>Gondor</b><br>Le royaume des hommes.');
+                    const titre = document.createElement('strong');
+                    titre.textContent = lieu.nom;
+                    const description = document.createElement('p');
+                    description.textContent = lieu.description;
+                    div.append(titre, description);
 
-                let lonelyMountain = L.marker([525, 360]).addTo(map)
-                .bindPopup('<b>La Montagne Solitaire</b><br>Le royaume des nains.');
+                    if (lieu.evenements.length) {
+                        const intro = document.createElement('p');
+                        intro.className = 'bulle-intro';
+                        intro.textContent = 'Ce qui s\'y passe :';
+                        const liste = document.createElement('ul');
+                        lieu.evenements.forEach(([id, nom]) => {
+                            const item = document.createElement('li');
+                            const lien = document.createElement('a');
+                            lien.href = 'evenements.html#' + id;
+                            lien.textContent = nom;
+                            item.appendChild(lien);
+                            liste.appendChild(item);
+                        });
+                        div.append(intro, liste);
+                    }
+                    return div;
+                }
 
-                let minasTirith = L.marker([-300, 300]).addTo(map)
-                .bindPopup('<b>Minas Tirith</b><br>La Cité Blanche.');
+                // L représente l'objet Leaflet global ; marker() crée un marqueur
+                const marqueurs = {};
+                lieux.forEach(lieu => {
+                    marqueurs[lieu.id] = L.marker(lieu.position, { title: lieu.nom, alt: lieu.nom })
+                        .addTo(map)
+                        .bindPopup(() => contenuBulle(lieu));
+                });
 
-                let shire = L.marker([330, -500]).addTo(map)
-                .bindPopup('<b>La Comté</b><br>Havre de paix pour les Hobbits.');
+                // carte.html#fondcombe : centre la carte sur le lieu et ouvre sa bulle
+                function ouvrirLieuDepuisAdresse() {
+                    const id = decodeURIComponent(window.location.hash.slice(1));
+                    const lieu = lieux.find(l => l.id === id);
+                    if (lieu) {
+                        map.setView(lieu.position, 1);
+                        marqueurs[lieu.id].openPopup();
+                        document.getElementById('map').scrollIntoView({ block: 'center' });
+                    }
+                }
+                ouvrirLieuDepuisAdresse();
+                window.addEventListener('hashchange', ouvrirLieuDepuisAdresse);
 
             </script>
     </div>

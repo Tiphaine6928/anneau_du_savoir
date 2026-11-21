@@ -1,0 +1,97 @@
+// Liens automatiques vers les biographies et la carte.
+//
+// Dans les blocs de texte choisis plus bas (synopsis, acteurs, événements), le nom
+// d'un personnage devient un lien vers sa biographie, et le nom d'un lieu un lien
+// vers la carte. Seule la première mention dans chaque bloc devient un lien, pour
+// que le texte reste lisible.
+//
+// Pour ajouter un personnage ou un lieu, il suffit de compléter la liste LIENS.
+// Mettre les noms les plus longs en premier ("Frodon Sacquet" avant "Frodon").
+
+const LIENS = [
+    // Personnages -> biographies.html#id (la fiche s'ouvre directement)
+    { noms: ['Frodon Sacquet', 'Frodon'], url: 'biographies.html#frodon', titre: 'Biographie de Frodon' },
+    { noms: ['Samsagace Gamegie', 'Sam Gamegie', 'Sam'], url: 'biographies.html#sam', titre: 'Biographie de Sam' },
+    { noms: ['Bilbon Sacquet', 'Bilbon'], url: 'biographies.html#bilbon', titre: 'Biographie de Bilbon' },
+    { noms: ['Gandalf'], url: 'biographies.html#gandalf', titre: 'Biographie de Gandalf' },
+    { noms: ['Aragorn', 'Grands-Pas'], url: 'biographies.html#aragorn', titre: 'Biographie d\'Aragorn' },
+    { noms: ['Legolas'], url: 'biographies.html#legolas', titre: 'Biographie de Legolas' },
+    { noms: ['Arwen'], url: 'biographies.html#arwen', titre: 'Biographie d\'Arwen' },
+    { noms: ['Gollum', 'Sméagol'], url: 'biographies.html#gollum', titre: 'Biographie de Gollum' },
+    { noms: ['Thorin'], url: 'biographies.html#thorin', titre: 'Biographie de Thorin' },
+    { noms: ['Kíli', 'Kili'], url: 'biographies.html#kili', titre: 'Biographie de Kili' },
+    { noms: ['Galadriel'], url: 'biographies.html#galadriel', titre: 'Biographie de Galadriel' },
+    { noms: ['Tauriel'], url: 'biographies.html#tauriel', titre: 'Biographie de Tauriel' },
+    { noms: ['Sauron'], url: 'biographies.html#sauron', titre: 'Biographie de Sauron' },
+    { noms: ['Gimli'], url: 'biographies.html#gimli', titre: 'Biographie de Gimli' },
+    { noms: ['Éowyn', 'Eowyn'], url: 'biographies.html#eowyn', titre: 'Biographie d\'Éowyn' },
+
+    // Lieux -> carte.html#id (la carte se centre sur le lieu)
+    { noms: ['Fondcombe'], url: 'carte.html#fondcombe', titre: 'Voir Fondcombe sur la carte' },
+    { noms: ['Montagne Solitaire', 'Erebor'], url: 'carte.html#montagne-solitaire', titre: 'Voir la Montagne Solitaire sur la carte' },
+    { noms: ['Minas Tirith'], url: 'carte.html#minas-tirith', titre: 'Voir Minas Tirith sur la carte' },
+    { noms: ['Mordor'], url: 'carte.html#mordor', titre: 'Voir le Mordor sur la carte' },
+    { noms: ['Gondor'], url: 'carte.html#gondor', titre: 'Voir le Gondor sur la carte' },
+    { noms: ['Comté'], url: 'carte.html#comte', titre: 'Voir la Comté sur la carte' }
+];
+
+// Blocs dans lesquels les liens sont ajoutés (chaque bloc a ses propres "premières mentions")
+const BLOCS_AVEC_LIENS = [
+    '.film .content', // Synopsis, acteurs et équipe technique de chaque film
+    '.event'          // Chaque événement de la frise
+];
+
+// Éléments dont le texte n'est jamais transformé en lien
+const SANS_LIENS = 'a, h1, h2, h3, h4, u, button';
+
+(function () {
+    // Le nom doit être un mot entier : "Sam" ne doit pas toucher "Samsagace"
+    const lettre = '\\p{L}';
+    const regles = LIENS.map(function (lien) {
+        const noms = lien.noms.map(function (nom) {
+            return nom.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        });
+        return {
+            lien: lien,
+            regex: new RegExp('(?<!' + lettre + ')(' + noms.join('|') + ')(?!' + lettre + ')', 'u')
+        };
+    });
+
+    // Remplace la première mention trouvée dans le bloc par un lien
+    function lierPremiereMention(bloc, regle) {
+        const walker = document.createTreeWalker(bloc, NodeFilter.SHOW_TEXT, {
+            acceptNode: function (node) {
+                return node.parentElement.closest(SANS_LIENS) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+            }
+        });
+
+        let node;
+        while ((node = walker.nextNode())) {
+            const match = regle.regex.exec(node.nodeValue);
+            if (!match) {
+                continue;
+            }
+            const motTrouve = node.splitText(match.index);
+            motTrouve.splitText(match[0].length);
+
+            const a = document.createElement('a');
+            a.href = regle.lien.url;
+            a.title = regle.lien.titre;
+            a.className = 'lien-auto';
+            motTrouve.replaceWith(a);
+            a.appendChild(motTrouve);
+            return;
+        }
+    }
+
+    // Ne pas faire de lien vers la page sur laquelle on se trouve déjà
+    const pageActuelle = window.location.pathname.split('/').pop();
+
+    document.querySelectorAll(BLOCS_AVEC_LIENS.join(',')).forEach(function (bloc) {
+        regles.forEach(function (regle) {
+            if (regle.lien.url.split('#')[0] !== pageActuelle) {
+                lierPremiereMention(bloc, regle);
+            }
+        });
+    });
+})();
