@@ -16,3 +16,4 @@ Améliorations réalisées :
  - Meilleure lisibilité : fonds bruns foncés derrière les textes clairs, tous les textes respectent le contraste minimum recommandé (WCAG)
  - Sections dépliables animées (biographies et films), accessibles au clavier et aux lecteurs d'écran
  - Quiz amélioré : questions et réponses mélangées à chaque partie, meilleur score sauvegardé dans le navigateur, questions oubliées signalées, correction lisible (couleurs contrastées et textes), score avec appréciation, bouton Recommencer
+ - Barre de navigation commune à toutes les pages (fichier nav.js) : pour ajouter ou renommer une page du menu, il suffit de modifier la liste dans nav.js
