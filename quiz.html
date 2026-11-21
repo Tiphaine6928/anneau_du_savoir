@@ -163,12 +163,33 @@
         .best-score[hidden] {
             display: none;
         }
-        .best-score:not([hidden]) {
+        /* Ligne du score, et ligne de confirmation qui la remplace */
+        .best-score-view,
+        .best-score-confirm {
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 10px;
+        }
+        .best-score-view[hidden],
+        .best-score-confirm[hidden] {
+            display: none;
+        }
+        .confirm-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        /* Bouton de l'action qui efface : en rouge pour attirer l'attention */
+        .reset-best-button.confirm-yes {
+            color: #fff;
+            background-color: #a8382c;
+            border-color: #a8382c;
+        }
+        .reset-best-button.confirm-yes:hover {
+            color: #fff;
+            background-color: #8c2c22;
+            border-color: #ffd700;
         }
         .reset-best-button {
             padding: 5px 12px;
@@ -226,8 +247,17 @@
     <div class="quiz-container">
         <h1>Quiz Seigneur des Anneaux/Hobbit</h1>
         <div id="best-score" class="best-score" hidden>
-            <span id="best-score-text"></span>
-            <button type="button" class="reset-best-button">Réinitialiser</button>
+            <div class="best-score-view">
+                <span id="best-score-text"></span>
+                <button type="button" class="reset-best-button" id="reset-best">Réinitialiser</button>
+            </div>
+            <div class="best-score-confirm" role="group" aria-labelledby="confirm-question" hidden>
+                <span id="confirm-question">Effacer votre meilleur score ?</span>
+                <span class="confirm-buttons">
+                    <button type="button" class="reset-best-button confirm-yes">Oui, effacer</button>
+                    <button type="button" class="reset-best-button confirm-no">Annuler</button>
+                </span>
+            </div>
         </div>
         <form id="quiz-form" novalidate>
             <div id="quiz"></div>
@@ -360,7 +390,11 @@
             const BEST_SCORE_KEY = 'anneauDuSavoir.quiz.meilleurScore';
             const bestScoreElement = document.getElementById('best-score');
             const bestScoreText = document.getElementById('best-score-text');
-            const resetBestButton = bestScoreElement.querySelector('.reset-best-button');
+            const bestScoreView = bestScoreElement.querySelector('.best-score-view');
+            const bestScoreConfirm = bestScoreElement.querySelector('.best-score-confirm');
+            const resetBestButton = document.getElementById('reset-best');
+            const confirmYesButton = bestScoreElement.querySelector('.confirm-yes');
+            const confirmNoButton = bestScoreElement.querySelector('.confirm-no');
 
             function loadBestScore() {
                 try {
@@ -385,23 +419,35 @@
             function showBestScore() {
                 const best = loadBestScore();
                 bestScoreElement.hidden = !best;
+                // Toujours revenir à l'affichage normal (pas la confirmation)
+                bestScoreView.hidden = false;
+                bestScoreConfirm.hidden = true;
                 if (best) {
                     bestScoreText.textContent = `🏆 Votre meilleur score : ${best.score} / ${best.total}`;
                 }
             }
 
-            // Efface le meilleur score, après confirmation
-            function resetBestScore() {
-                if (!confirm('Voulez-vous vraiment effacer votre meilleur score ?')) {
-                    return;
-                }
+            // Réinitialiser : la ligne du score est remplacée par une confirmation
+            function askResetConfirmation() {
+                bestScoreView.hidden = true;
+                bestScoreConfirm.hidden = false;
+                confirmNoButton.focus(); // Choix sans risque sélectionné par défaut
+            }
+
+            function cancelReset() {
+                bestScoreConfirm.hidden = true;
+                bestScoreView.hidden = false;
+                resetBestButton.focus();
+            }
+
+            function confirmReset() {
                 try {
                     localStorage.removeItem(BEST_SCORE_KEY);
                 } catch (error) {
                     // Stockage indisponible : rien à effacer
                 }
                 showBestScore();
-                // Le bouton disparaît : on replace le focus sur le titre du quiz
+                // Le bandeau disparaît : on replace le focus sur le titre du quiz
                 const title = document.querySelector('.quiz-container h1');
                 title.setAttribute('tabindex', '-1');
                 title.focus();
@@ -575,7 +621,13 @@
 
             quizForm.addEventListener('submit', submitQuiz);
             restartButton.addEventListener('click', restartQuiz);
-            resetBestButton.addEventListener('click', resetBestScore);
+            resetBestButton.addEventListener('click', askResetConfirmation);
+            confirmYesButton.addEventListener('click', confirmReset);
+            confirmNoButton.addEventListener('click', cancelReset);
+            // Échap annule la confirmation
+            bestScoreConfirm.addEventListener('keydown', event => {
+                if (event.key === 'Escape') cancelReset();
+            });
             loadQuiz();
             showBestScore();
         </script>
