@@ -1,15 +1,75 @@
-// Protection anti-spoilers de la page Événements.
+// Protection anti-spoilers (pages Événements et Biographies).
 //
-// Chaque événement de la frise est flouté jusqu'à ce qu'on clique sur "Révéler".
-// Un bouton en haut de la page affiche ou masque tout d'un coup ; ce choix est
-// retenu dans le navigateur du visiteur pour ses prochaines visites.
-// L'événement visé par un lien (evenements.html#le-conseil-d-elrond) est révélé
-// directement. Sans JavaScript, tous les événements sont simplement affichés.
+// Les passages qui révèlent l'histoire sont floutés jusqu'à ce qu'on clique sur
+// "Révéler". Un bouton en haut de la page affiche ou floute tout d'un coup ; ce
+// choix est commun aux deux pages et retenu dans le navigateur du visiteur.
+// Sans JavaScript, tout est simplement affiché.
+
+// Sections des biographies considérées comme des spoilers (début du titre de la section)
+const SECTIONS_SPOILERS = [
+    'Chronologie Personnelle',
+    'Évolution du Personnage',
+    'Rôle dans la quête',
+    'Anecdotes et Faits Divers'
+];
 
 (function () {
     const CLE_PREFERENCE = 'anneauDuSavoir.spoilers';
-    const evenements = Array.from(document.querySelectorAll('.frise > .event'));
-    if (!evenements.length) {
+
+    // ---------- Ce qui est protégé sur chaque page ----------
+    const pages = [
+        {
+            // Page Événements : chaque carte de la frise (titre compris)
+            trouver: function () {
+                return Array.from(document.querySelectorAll('.frise > .event'));
+            },
+            texteBouton: 'Révéler l\'événement',
+            focusApres: function (cible) { return cible.querySelector('h3'); },
+            messages: {
+                masque: 'Les événements sont floutés pour ne rien vous gâcher. Cliquez sur « Révéler » pour découvrir un événement.',
+                visible: 'Tous les événements sont affichés. Attention, cette page raconte toute l\'histoire !',
+                afficher: 'Afficher tous les événements',
+                flouter: 'Flouter à nouveau les événements'
+            }
+        },
+        {
+            // Page Biographies : le contenu des sections listées dans SECTIONS_SPOILERS
+            trouver: function () {
+                return Array.from(document.querySelectorAll('.bio-section')).filter(function (section) {
+                    const titre = section.querySelector('h4');
+                    return titre && SECTIONS_SPOILERS.some(function (debut) {
+                        return titre.textContent.trim().startsWith(debut);
+                    });
+                }).map(function (section) {
+                    // Badge "Spoiler" à côté du titre de la section
+                    const badge = document.createElement('span');
+                    badge.className = 'spoiler-badge';
+                    badge.textContent = 'Spoiler';
+                    section.querySelector('h4 .toggle-btn').before(badge);
+                    return section.querySelector('.content');
+                });
+            },
+            texteBouton: 'Révéler le spoiler',
+            focusApres: function (cible) { return cible.querySelector('.spoiler-contenu'); },
+            messages: {
+                masque: 'Les passages qui dévoilent la suite de l\'histoire (marqués « Spoiler ») sont floutés. Cliquez sur « Révéler » pour les lire.',
+                visible: 'Tous les spoilers sont affichés.',
+                afficher: 'Afficher tous les spoilers',
+                flouter: 'Flouter à nouveau les spoilers'
+            }
+        }
+    ];
+
+    let page = null;
+    let cibles = [];
+    for (const candidate of pages) {
+        cibles = candidate.trouver();
+        if (cibles.length) {
+            page = candidate;
+            break;
+        }
+    }
+    if (!page) {
         return;
     }
 
@@ -29,46 +89,48 @@
         }
     }
 
-    // ---------- Préparation de chaque événement ----------
+    // ---------- Préparation de chaque passage protégé ----------
     // Le contenu est regroupé dans un bloc qu'on peut flouter et rendre inactif
-    // (inert : ni lien cliquable au clavier, ni lecture par les lecteurs d'écran)
-    evenements.forEach(function (evenement) {
-        const contenu = document.createElement('div');
-        contenu.className = 'event-contenu';
-        contenu.append(...evenement.childNodes);
-        evenement.appendChild(contenu);
+    // (inert : ni lien atteignable au clavier, ni lecture par les lecteurs d'écran)
+    cibles.forEach(function (cible) {
+        cible.classList.add('spoiler-cible');
 
-        const titre = contenu.querySelector('h3');
-        if (titre) {
-            titre.setAttribute('tabindex', '-1'); // Pour y placer le focus après la révélation
+        const contenu = document.createElement('div');
+        contenu.className = 'spoiler-contenu';
+        contenu.append(...cible.childNodes);
+        cible.appendChild(contenu);
+
+        const aFocaliser = page.focusApres(cible);
+        if (aFocaliser) {
+            aFocaliser.setAttribute('tabindex', '-1'); // Pour y placer le focus après la révélation
         }
 
         const bouton = document.createElement('button');
         bouton.type = 'button';
         bouton.className = 'spoiler-reveal';
-        bouton.textContent = 'Révéler l\'événement';
+        bouton.textContent = page.texteBouton;
         bouton.addEventListener('click', function () {
-            reveler(evenement);
-            if (titre) {
-                titre.focus();
+            reveler(cible);
+            if (aFocaliser) {
+                aFocaliser.focus();
             }
         });
-        evenement.appendChild(bouton);
+        cible.appendChild(bouton);
     });
 
-    function masquer(evenement) {
-        evenement.classList.add('spoiler-masque');
-        evenement.querySelector('.event-contenu').inert = true;
-        evenement.querySelector('.spoiler-reveal').hidden = false;
+    function masquer(cible) {
+        cible.classList.add('spoiler-masque');
+        cible.querySelector('.spoiler-contenu').inert = true;
+        cible.querySelector('.spoiler-reveal').hidden = false;
     }
 
-    function reveler(evenement) {
-        evenement.classList.remove('spoiler-masque');
-        evenement.querySelector('.event-contenu').inert = false;
-        evenement.querySelector('.spoiler-reveal').hidden = true;
+    function reveler(cible) {
+        cible.classList.remove('spoiler-masque');
+        cible.querySelector('.spoiler-contenu').inert = false;
+        cible.querySelector('.spoiler-reveal').hidden = true;
     }
 
-    // ---------- Bouton "tout afficher / tout masquer" ----------
+    // ---------- Bouton "tout afficher / tout flouter" ----------
     const controles = document.createElement('div');
     controles.className = 'spoiler-controles';
 
@@ -82,13 +144,11 @@
     let modeMasque = lirePreference();
 
     function appliquerMode() {
-        evenements.forEach(modeMasque ? masquer : reveler);
-        explication.textContent = modeMasque
-            ? 'Les événements sont floutés pour ne rien vous gâcher. Cliquez sur « Révéler » pour découvrir un événement.'
-            : 'Tous les événements sont affichés. Attention, cette page raconte toute l\'histoire !';
-        boutonTout.textContent = modeMasque ? 'Afficher tous les événements' : 'Flouter à nouveau les événements';
+        cibles.forEach(modeMasque ? masquer : reveler);
+        explication.textContent = modeMasque ? page.messages.masque : page.messages.visible;
+        boutonTout.textContent = modeMasque ? page.messages.afficher : page.messages.flouter;
         boutonTout.setAttribute('aria-pressed', String(!modeMasque));
-        revelerEvenementVise();
+        revelerCibleVisee();
     }
 
     boutonTout.addEventListener('click', function () {
@@ -97,15 +157,15 @@
         appliquerMode();
     });
 
-    // ---------- Lien direct vers un événement ----------
-    function revelerEvenementVise() {
+    // ---------- Lien direct vers un événement (evenements.html#le-conseil-d-elrond) ----------
+    function revelerCibleVisee() {
         const id = decodeURIComponent(window.location.hash.slice(1));
-        const vise = evenements.find(function (evenement) { return evenement.id === id; });
-        if (vise) {
-            reveler(vise);
+        const visee = cibles.find(function (cible) { return id && cible.id === id; });
+        if (visee) {
+            reveler(visee);
         }
     }
 
-    window.addEventListener('hashchange', revelerEvenementVise);
+    window.addEventListener('hashchange', revelerCibleVisee);
     appliquerMode();
 })();

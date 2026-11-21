@@ -1589,11 +1589,11 @@ body:has(.bio-dialog[open]) {
 }
 
 /* Contenu flouté : on devine qu'il y a un texte, sans pouvoir le lire */
-.event-contenu {
+.spoiler-contenu {
     transition: filter 0.3s ease;
 }
 
-.spoiler-masque .event-contenu {
+.spoiler-masque .spoiler-contenu {
     filter: blur(8px);
     user-select: none;
 }
@@ -1637,12 +1637,37 @@ body:has(.bio-dialog[open]) {
 }
 
 /* Titre d'un événement qui reçoit le focus après la révélation */
-.event-contenu h3:focus {
+.spoiler-contenu h3:focus {
     outline: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .event-contenu {
+    .spoiler-contenu {
         transition: none;
     }
+}
+
+/* Sections de biographie protégées : le bouton "Révéler" se place sur le texte flouté */
+.content.spoiler-cible {
+    position: relative;
+}
+
+.content.spoiler-masque {
+    min-height: 70px; /* Place pour le bouton, même quand le texte est court */
+}
+
+.spoiler-contenu:focus {
+    outline: none;
+}
+
+/* Badge "Spoiler" à côté du titre d'une section de biographie */
+.spoiler-badge {
+    padding: 2px 8px;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #fff;
+    background-color: #a8382c;
+    border-radius: 10px;
 }

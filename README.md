@@ -23,4 +23,4 @@ Améliorations réalisées :
  - Liens entre les pages : les personnages et les lieux cités dans les synopsis et les événements mènent à leur biographie ou à la carte, les bulles de la carte listent les événements du lieu, chaque biographie indique dans quels films le personnage apparaît (liste des liens dans liens.js)
  - Test « Quel personnage es-tu ? » (personnage.html) : 10 questions, résultat parmi les 15 personnages avec lien vers sa biographie et partage ; questions et points dans personnage-data.js
  - Page d'erreur 404 « Vous ne passerez pas ! » (404.html), affichée automatiquement par GitHub Pages quand une adresse n'existe pas
- - Protection anti-spoilers sur la page Événements : événements floutés jusqu'au clic sur « Révéler », bouton pour tout afficher ou tout flouter (choix retenu par le navigateur)
+ - Protection anti-spoilers sur les pages Événements et Biographies : événements et sections « Spoiler » des biographies floutés jusqu'au clic sur « Révéler », bouton pour tout afficher ou tout flouter (choix commun aux deux pages, retenu par le navigateur ; sections protégées listées dans spoilers.js)
