@@ -1209,3 +1209,264 @@ body:has(.bio-dialog[open]) {
     color: #333;
     text-align: left;
 }
+
+/* ---------- Test "Quel personnage es-tu ?" ---------- */
+
+.perso-container {
+    max-width: 900px;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.perso-screen[hidden] {
+    display: none;
+}
+
+.perso-container p,
+.perso-hint {
+    background: none;
+    text-shadow: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f4e8c1;
+}
+
+.perso-lead {
+    font-size: 1.3em;
+    margin: 20px 0 10px;
+}
+
+.perso-hint {
+    color: #d9c9a3;
+}
+
+.perso-hint a,
+.perso-container .perso-hint a {
+    color: #ffd98a;
+}
+
+/* Boutons */
+.perso-button {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1em;
+    color: #f4e8c1;
+    text-decoration: none;
+    background-color: #2d2b24;
+    border: 2px solid #d4af37;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.perso-button:hover {
+    color: #ffd700;
+    border-color: #ffd700;
+}
+
+.perso-button-main {
+    font-size: 1.15em;
+    font-weight: bold;
+    color: #2d2b24;
+    background-color: #d4af37;
+}
+
+.perso-button-main:hover {
+    color: #2d2b24;
+    background-color: #ffd700;
+}
+
+.perso-button-link {
+    border-color: transparent;
+    background: none;
+    text-decoration: underline;
+}
+
+.perso-button[hidden] {
+    display: none;
+}
+
+.perso-button:focus-visible,
+.perso-answer:focus-visible {
+    outline: 3px solid #ffd700;
+    outline-offset: 2px;
+}
+
+/* Progression */
+.perso-progress {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #d9c9a3;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.perso-progress progress {
+    flex: 1;
+    height: 12px;
+    accent-color: #d4af37;
+}
+
+#perso-title:focus,
+#perso-result-name:focus {
+    outline: none;
+}
+
+/* Réponses : de grands boutons faciles à toucher sur téléphone */
+.perso-answers {
+    display: grid;
+    gap: 12px;
+    margin: 20px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.perso-answers li {
+    margin: 0;
+}
+
+.perso-answer {
+    width: 100%;
+    padding: 15px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.05em;
+    text-align: left;
+    color: #fff;
+    background-color: #2d2b24;
+    border: 2px solid #6b5a3a;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.perso-answer:hover {
+    border-color: #ffd700;
+    background-color: #3a372f;
+    transform: translateX(4px);
+}
+
+/* Réponse choisie auparavant, quand on revient en arrière */
+.perso-answer-chosen {
+    border-color: #d4af37;
+    background-color: #4a4230;
+}
+
+/* Résultat */
+.perso-result-intro {
+    margin: 10px 0 0;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.perso-result-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin: 15px 0;
+    padding: 20px;
+    background-color: #fbd6b0;
+    border: 3px solid #d4af37;
+    border-radius: 12px;
+}
+
+.perso-result-card img {
+    width: 40%;
+    max-width: 300px;
+    height: auto;
+    max-height: 420px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.perso-result-text {
+    flex: 1;
+}
+
+#perso-result-name {
+    margin: 0 0 10px;
+    font-family: 'Aniron', Arial, sans-serif;
+    font-size: 2em;
+}
+
+.perso-container .perso-result-text p {
+    color: #333;
+    text-align: left;
+    line-height: 1.5;
+}
+
+.perso-container .perso-result-text .perso-hint {
+    color: #5a4a2a;
+    font-style: italic;
+}
+
+.perso-traits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.perso-traits li {
+    margin: 0;
+    padding: 4px 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #2d2b24;
+    background-color: #d4af37;
+    border-radius: 15px;
+}
+
+.perso-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#perso-intro,
+#perso-share-message {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .perso-container {
+        padding: 15px 10px;
+    }
+
+    .perso-result-card {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .perso-result-card img {
+        width: 70%;
+        max-height: 50vh;
+    }
+
+    #perso-result-name {
+        text-align: center;
+        font-size: 1.6em;
+    }
+
+    .perso-traits {
+        justify-content: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .perso-answer,
+    .perso-answer:hover {
+        transition: none;
+        transform: none;
+    }
+}
+
+/* Lien vers le test dans le texte d'accueil */
+#description3 a {
+    color: #ffd98a;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quel personnage es-tu ? – L'Anneau du Savoir</title>
+    <meta name="description" content="Réponds à 10 questions et découvre quel personnage du Seigneur des Anneaux ou du Hobbit te ressemble le plus : Frodon, Gandalf, Aragorn, Galadriel…">
+    <link rel="stylesheet" href="lotr.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body class="background-image">
+    <script src="nav.js"></script>
+
+    <main class="perso-container">
+        <h1>Quel personnage es-tu&nbsp;?</h1>
+
+        <!-- Écran d'accueil du test -->
+        <section id="perso-intro" class="perso-screen">
+            <p class="perso-lead">Réponds à 10 questions et découvre quel personnage de la Terre du Milieu te ressemble le plus.</p>
+            <p class="perso-hint">Il n'y a pas de bonne ou de mauvaise réponse : choisis simplement celle qui te ressemble.</p>
+            <button type="button" id="perso-start" class="perso-button perso-button-main">Commencer</button>
+            <noscript><p class="perso-hint">Ce test a besoin de JavaScript pour fonctionner : active-le dans ton navigateur pour y jouer.</p></noscript>
+            <p class="perso-hint">Envie de tester plutôt tes connaissances ? <a href="quiz.html">Fais le quiz</a>.</p>
+        </section>
+
+        <!-- Une question à la fois -->
+        <section id="perso-question" class="perso-screen" hidden>
+            <div class="perso-progress">
+                <span id="perso-step"></span>
+                <progress id="perso-bar" max="10" value="0"></progress>
+            </div>
+            <h2 id="perso-title" tabindex="-1"></h2>
+            <ul id="perso-answers" class="perso-answers"></ul>
+            <button type="button" id="perso-back" class="perso-button perso-button-link">← Question précédente</button>
+        </section>
+
+        <!-- Résultat -->
+        <section id="perso-result" class="perso-screen" hidden>
+            <p class="perso-result-intro">Tu es…</p>
+            <div class="perso-result-card">
+                <img id="perso-result-image" src="" alt="" width="300" height="400">
+                <div class="perso-result-text">
+                    <h2 id="perso-result-name" tabindex="-1"></h2>
+                    <ul id="perso-result-traits" class="perso-traits"></ul>
+                    <p id="perso-result-description"></p>
+                    <p id="perso-result-also" class="perso-hint"></p>
+                </div>
+            </div>
+            <div class="perso-actions">
+                <a id="perso-result-bio" class="perso-button perso-button-main" href="biographies.html">Lire sa biographie</a>
+                <button type="button" id="perso-share" class="perso-button">Partager mon résultat</button>
+                <button type="button" id="perso-restart" class="perso-button">Recommencer</button>
+            </div>
+            <p id="perso-share-message" class="perso-hint" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <p id="noteFinale">Site Web fait par Tiphaine Chapuis - École Ada Tech School</p>
+    <script src="personnage-data.js"></script>
+    <script src="personnage.js"></script>
+    <script src="lotr.js"></script>
+</body>
+</html>
