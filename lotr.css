@@ -655,3 +655,23 @@ nav ul li a.active {
         height: 44px;
     }
 }
+
+/* ---------- Titre de la page d'accueil ---------- */
+
+/* Plus grand que le texte de bienvenue (40px), pour rester le plus visible */
+h1.site-title {
+    font-size: 64px;
+    padding: 15px;
+}
+
+@media (max-width: 768px) {
+    h1.site-title {
+        font-size: 40px; /* Texte de bienvenue : 26px */
+    }
+}
+
+@media (max-width: 480px) {
+    h1.site-title {
+        font-size: 30px; /* Texte de bienvenue : 20px */
+    }
+}
