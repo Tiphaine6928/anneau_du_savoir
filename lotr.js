@@ -29,28 +29,20 @@ function toggleSection(sectionId) {
     }
 }
 
-// Associe chaque terme de recherche à une ancre sur la page Biographies
-const biographyLinks = {
-    'frodon': 'biographies.html#frodon',
-    'sam': 'biographies.html#sam',
-    'bilbon': 'biographies.html#bilbon',
-    'gandalf': 'biographies.html#gandalf',
-    'aragorn': 'biographies.html#aragorn',
-    'legolas': 'biographies.html#legolas',
-    'arwen': 'biographies.html#arwen',
-    'gollum': 'biographies.html#gollum',
-    'thorin': 'biographies.html#thorin',
-    'kili': 'biographies.html#kili',
-    'galadriel': 'biographies.html#galadriel',
-    'tauriel': 'biographies.html#tauriel',
-    'sauron': 'biographies.html#sauron',
-    'gimli': 'biographies.html#gimli',
-    'eowyn': 'biographies.html#eowyn'
-};
-
 // Met en minuscules et retire les accents ("Éowyn" -> "eowyn", "Kíli" -> "kili")
 function normalizeText(text) {
-    return text.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    return text.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+// Construit la liste des personnages à partir des biographies présentes dans la page :
+// un nouveau personnage ajouté dans biographies.html est donc trouvé automatiquement.
+// Le nom est la partie du titre avant " - " ("Frodon Sacquet - Incarné par..." -> "Frodon Sacquet").
+function getCharacters() {
+    return Array.from(document.querySelectorAll('.character')).map(function (element) {
+        const title = element.querySelector('h3');
+        const name = title ? title.textContent.split(' - ')[0] : element.id;
+        return { element: element, name: normalizeText(name) };
+    });
 }
 
 function showSearchMessage(message) {
@@ -70,16 +62,19 @@ function searchCharacter() {
         return;
     }
 
-    for (const name in biographyLinks) {
-        if (name.includes(filter)) {
-            showSearchMessage('');
-            // Redirige vers la page Biographies avec l'ancre correspondante
-            window.location.href = biographyLinks[name];
-            return;
-        }
-    }
+    const found = getCharacters().find(function (character) {
+        return character.name.includes(filter);
+    });
 
-    showSearchMessage('Aucun personnage trouvé pour « ' + input.value.trim() + ' ».');
+    if (found) {
+        showSearchMessage('');
+        // Met à jour l'adresse (#frodon...) et fait défiler jusqu'à la biographie
+        // (replaceState évite le saut brusque qu'entraînerait location.hash)
+        history.replaceState(null, '', '#' + found.element.id);
+        found.element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        showSearchMessage('Aucun personnage trouvé pour « ' + input.value.trim() + ' ».');
+    }
 }
 
 // La barre de recherche n'existe que sur la page Biographies
