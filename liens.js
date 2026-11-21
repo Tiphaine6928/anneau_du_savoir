@@ -25,6 +25,16 @@ const LIENS = [
     { noms: ['Sauron'], url: 'biographies.html#sauron', titre: 'Biographie de Sauron' },
     { noms: ['Gimli'], url: 'biographies.html#gimli', titre: 'Biographie de Gimli' },
     { noms: ['Éowyn', 'Eowyn'], url: 'biographies.html#eowyn', titre: 'Biographie d\'Éowyn' },
+    { noms: ['Meriadoc Brandebouc', 'Meriadoc', 'Merry'], url: 'biographies.html#merry', titre: 'Biographie de Merry' },
+    { noms: ['Peregrin Touque', 'Peregrin', 'Pippin'], url: 'biographies.html#pippin', titre: 'Biographie de Pippin' },
+    { noms: ['Boromir'], url: 'biographies.html#boromir', titre: 'Biographie de Boromir' },
+    { noms: ['Faramir'], url: 'biographies.html#faramir', titre: 'Biographie de Faramir' },
+    { noms: ['Saroumane'], url: 'biographies.html#saroumane', titre: 'Biographie de Saroumane' },
+    { noms: ['Elrond'], url: 'biographies.html#elrond', titre: 'Biographie d\'Elrond' },
+    { noms: ['Théoden'], url: 'biographies.html#theoden', titre: 'Biographie de Théoden' },
+    { noms: ['Bard'], url: 'biographies.html#bard', titre: 'Biographie de Bard' },
+    { noms: ['Smaug'], url: 'biographies.html#smaug', titre: 'Biographie de Smaug' },
+    { noms: ['Thranduil'], url: 'biographies.html#thranduil', titre: 'Biographie de Thranduil' },
 
     // Lieux -> carte.html#id (la carte se centre sur le lieu)
     { noms: ['Fondcombe'], url: 'carte.html#fondcombe', titre: 'Voir Fondcombe sur la carte' },
