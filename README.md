@@ -19,3 +19,4 @@ Améliorations réalisées :
  - Barre de navigation commune à toutes les pages (fichier nav.js) : pour ajouter ou renommer une page du menu, il suffit de modifier la liste dans nav.js
  - Référencement : un titre principal (h1), un titre d'onglet et une description pour Google sur chaque page
  - Frise chronologique visuelle des événements : étapes numérotées, couleur différente pour le Seigneur des Anneaux et le Hobbit, adaptée au mobile
+ - Biographies en galerie : vignettes, filtres par peuple et par film, recherche pendant la frappe, fiche complète dans une fenêtre avec personnage précédent/suivant et lien partageable (biographies.html#gimli)

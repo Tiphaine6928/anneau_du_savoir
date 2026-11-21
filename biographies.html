@@ -17,11 +17,10 @@
         
         <div class="search-container">
             <input type="search" id="search-input" placeholder="Personnage ou acteur..." aria-label="Rechercher un personnage ou un acteur">
-            <button id="search-button">Go !</button>
-            <p id="search-message" aria-live="polite"></p>
+            <button type="button" id="search-button">Go !</button>
         </div>
 
-        <div id="frodon" class="character">
+        <div id="frodon" class="character" data-peuple="hobbit" data-films="sda hobbit">
             <img src="images/frodon2.webp" alt="Frodon Sacquet" width="645" height="879" decoding="async">
             <h3>Frodon Sacquet - Incarné par Elijah Wood</h3>
             <p>Frodon Sacquet est un hobbit de la Comté qui se voit confier la tâche de détruire l'Anneau Unique.</p>
@@ -144,7 +143,7 @@
                 </div>
             </div>
         </div>
-        <div id="sam" class="character">
+        <div id="sam" class="character" data-peuple="hobbit" data-films="sda">
             <img src="images/sam.webp" alt="Sam Gamegie" width="540" height="730" loading="lazy" decoding="async">
             <h3>Sam - Incarné par Sean Astin</h3>
             <p>Sam est un hobbit de la Comté, fidèle jardinier et ami de Frodon, qui l'accompagne dans sa quête pour détruire l'Anneau Unique.</p>
@@ -268,7 +267,7 @@
                 </div>
             </div>
         </div>
-        <div id="bilbon" class="character">
+        <div id="bilbon" class="character" data-peuple="hobbit" data-films="sda hobbit">
             <img src="images/bilbon2.webp" alt="Bilbon Sacquet" width="490" height="600" loading="lazy" decoding="async">
             <h3>Bilbon Sacquet - Incarné par Martin Freeman</h3>
             <p>Bilbon Sacquet est un hobbit de la Comté qui part à l'aventure avec une compagnie de nains pour reprendre leur royaume et trésor volé par le dragon Smaug.</p>
@@ -395,7 +394,7 @@
                 </div>
             </div>
         </div>
-        <div id="gandalf" class="character">
+        <div id="gandalf" class="character" data-peuple="magicien" data-films="sda hobbit">
             <img src="images/gandalf2.webp" alt="Gandalf le Gris" width="480" height="840" loading="lazy" decoding="async">
             <h3>Gandalf le Gris - Incarné par Ian McKellen</h3>
             <p>Gandalf est un puissant sorcier qui guide et conseille la Communauté de l'Anneau.</p>
@@ -526,7 +525,7 @@
             </div>
         </div>
 
-        <div id="aragorn" class="character">
+        <div id="aragorn" class="character" data-peuple="homme" data-films="sda">
             <img src="images/aragorn.webp" alt="Aragorn" width="480" height="1257" loading="lazy" decoding="async">
             <h3>Aragorn - Incarné par Viggo Mortensen</h3>
             <p>Aragorn est un rôdeur du Nord, héritier de Gondor, qui joue un rôle crucial dans la lutte contre Sauron.</p>
@@ -656,7 +655,7 @@
             </div>
         </div>
 
-        <div id="legolas" class="character">
+        <div id="legolas" class="character" data-peuple="elfe" data-films="sda hobbit">
             <img src="images/legolas2.webp" alt="Legolas" width="689" height="720" loading="lazy" decoding="async">
             <h3>Legolas - Incarné par Orlando Bloom</h3>
             <p>Legolas est un elfe de la Forêt Noire, expert en tir à l'arc, qui rejoint la Communauté de l'Anneau pour détruire l'Anneau Unique.</p>
@@ -782,7 +781,7 @@
             </div>
         </div>
 
-        <div id="arwen" class="character">
+        <div id="arwen" class="character" data-peuple="elfe" data-films="sda">
             <img src="images/arwen.webp" alt="Arwen" width="700" height="1182" loading="lazy" decoding="async">
             <h3>Arwen - Incarnée par Liv Tyler</h3>
             <p>Arwen est une elfe de Fondcombe, fille d'Elrond, qui renonce à son immortalité pour épouser Aragorn et soutenir la lutte contre Sauron.</p>
@@ -905,7 +904,7 @@
             </div>
         </div>
         
-        <div id="gollum" class="character">
+        <div id="gollum" class="character" data-peuple="autre" data-films="sda hobbit">
             <img src="images/gollum.webp" alt="Gollum" width="700" height="933" loading="lazy" decoding="async">
             <h3>Gollum - Incarné par Andy Serkis</h3>
             <p>Gollum est une créature corrompue par l'Anneau Unique, qui guide Frodon et Sam vers le Mont Destin tout en cherchant à récupérer l'Anneau pour lui-même.</p>
@@ -1029,7 +1028,7 @@
                 </div>
             </div>
         </div>
-        <div id="thorin" class="character">
+        <div id="thorin" class="character" data-peuple="nain" data-films="hobbit">
             <img src="images/thorin2.webp" alt="Thorin" width="642" height="1037" loading="lazy" decoding="async">
             <h3>Thorin - Incarné par Richard Armitage</h3>
             <p>Thorin est un nain du peuple de Durin, qui se voit confier la tâche de reconquérir Erebor et son trésor des griffes du dragon Smaug.</p>
@@ -1152,7 +1151,7 @@
                 </div>
             </div>
         </div>
-        <div id="kili" class="character">
+        <div id="kili" class="character" data-peuple="nain" data-films="hobbit">
             <img src="images/kili.webp" alt="Kili" width="567" height="1115" loading="lazy" decoding="async">
             <h3>Kili - Incarné par Aidan Turner</h3>
             <p>Kili est un jeune nain courageux qui rejoint la quête de son oncle Thorin pour reconquérir Erebor et son trésor.</p>
@@ -1275,7 +1274,7 @@
                 </div>
             </div>
         </div>
-        <div id="galadriel" class="character">
+        <div id="galadriel" class="character" data-peuple="elfe" data-films="sda hobbit">
             <img src="images/galadriel.webp" alt="Galadriel" width="700" height="910" loading="lazy" decoding="async">
             <h3>Galadriel - Incarnée par Cate Blanchett</h3>
             <p>Galadriel est une elfe de Lothlórien, dotée d'une grande sagesse et de pouvoirs magiques, qui aide la Communauté de l'Anneau dans leur quête.</p>
@@ -1403,7 +1402,7 @@
                 </div>
             </div>
         </div>
-        <div id="tauriel" class="character">
+        <div id="tauriel" class="character" data-peuple="elfe" data-films="hobbit">
             <img src="images/tauriel.webp" alt="Tauriel" width="480" height="822" loading="lazy" decoding="async">
             <h3>Tauriel - Incarnée par Evangeline Lilly</h3>
             <p>Tauriel est une elfe sylvestre, capitaine des gardes de la Forêt Noire, qui se distingue par son courage et son attachement à Kili, l'un des nains.</p>
@@ -1530,7 +1529,7 @@
                 </div>
             </div>
         </div>
-        <div id="sauron" class="character">
+        <div id="sauron" class="character" data-peuple="autre" data-films="sda hobbit">
             <img src="images/sauron.webp" alt="Sauron" width="480" height="821" loading="lazy" decoding="async">
             <h3>Sauron - Incarné par Sala Baker</h3>
             <p>Sauron est un seigneur des ténèbres qui forge l'Anneau Unique pour dominer la Terre du Milieu et cherche à le récupérer pour restaurer son pouvoir.</p>
@@ -1658,7 +1657,7 @@
             </div>
         </div>
 
-        <div id="gimli" class="character">
+        <div id="gimli" class="character" data-peuple="nain" data-films="sda">
             <img src="images/gimli.webp" alt="Gimli" width="700" height="700" loading="lazy" decoding="async">
             <h3>Gimli - Incarné par John Rhys-Davies</h3>
             <p>Gimli est un nain de la lignée de Durin qui rejoint la Communauté de l'Anneau, combattant avec loyauté et forgeant une amitié improbable avec l'elfe Legolas.</p>
@@ -1783,7 +1782,7 @@
                 </div>
             </div>
         </div>
-        <div id="eowyn" class="character">
+        <div id="eowyn" class="character" data-peuple="homme" data-films="sda">
             <img src="images/eowyn.webp" alt="Éowyn" width="700" height="1452" loading="lazy" decoding="async">
             <h3>Éowyn - Incarnée par Miranda Otto</h3>
             <p>Éowyn est une noble du Rohan, déterminée et courageuse, qui se déguise en homme pour combattre au côté des siens et vaincre le Roi-Sorcier d'Angmar.</p>
@@ -1911,6 +1910,7 @@
         </div>
 
         <script src="lotr.js"></script>
+        <script src="biographies.js"></script>
 
         <p id="noteFinale">Site Web fait par Tiphaine Chapuis - École Ada Tech School</p>
 </body>
